@@ -6,8 +6,7 @@ import { useRouter } from "next/router";
 
 const nav = [
     { '/': 'Dashboard' },
-    { '/position': 'Market Position' },
-    { '/advantages': 'Market Advantages' }
+    { '/position': 'Market Position' }
 ]
 
 function SubBar() {

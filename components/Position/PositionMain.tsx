@@ -1,6 +1,7 @@
 import React from "react";
 import { SimpleGrid } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
+import Guage from "../../components/Rechart/RGuage";
 import RLineChart from "../Rechart/RLineChart";
 import Card from "../Container/CardCategory";
 const gdata = {
@@ -94,7 +95,7 @@ const cdata = {
             "trendScore3": "0.45%",
             "summary1": "Quaters current market position has been maintained",
             "summaryvalue1": "0",
-            "summary2": "Similar competitors who maintained this position",
+            "summary2": "Positioned 3rd from top and below 12% of other Easter Region competitors, presents Banner University with room to move up the Market position dial. Your closest Easter Region competitor is Colorado and is 0.007 points below leaving your current Easter Region position fairly vulnerable",
             "summaryvalue2": "1.5%",
             "chartwidth": 340,
             "gdata": {

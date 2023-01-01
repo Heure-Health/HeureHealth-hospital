@@ -1,115 +1,126 @@
 import React from "react";
 import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend, ResponsiveContainer
+  ComposedChart,
+  Line,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  Area
 } from "recharts";
 
 const data = [
-    {
-        name: 'Page A',
-        uv: 4000 
-    },
-    {
-        name: 'Page B',
-        uv: 3000
-    },
-    {
-        name: 'Page C',
-        uv: 2000
-    },
-    {
-        name: 'Page D',
-        uv: 2780
-    },
-    {
-        name: 'Page A',
-        uv: 4000
-    },
-    {
-        name: 'Page B',
-        uv: 3000
-    },
-    {
-        name: 'Page C',
-        uv: 2000
-    },
-    {
-        name: 'Page D',
-        uv: 2780
-    },
-    {
-        name: 'Page A',
-        uv: 4000
-    },
-    {
-        name: 'Page B',
-        uv: 3000
-    },
-    {
-        name: 'Page C',
-        uv: 2000
-    },
-    {
-        name: 'Page D',
-        uv: 2780
-    },
-    {
-        name: 'Page B',
-        uv: 3000
-    },
-    {
-        name: 'Page C',
-        uv: 2000
-    },
-    {
-        name: 'Page D',
-        uv: 2780
-    },
-    {
-        name: 'Page A',
-        uv: 4000
-    },
-    {
-        name: 'Page B',
-        uv: 3000
-    },
-    {
-        name: 'Page C',
-        uv: 2000
-    },
-    {
-        name: 'Page D',
-        uv: 2780
-    }
+  {
+    name: "Page A",
+    uv: 590,
+    pv: 800,
+    amt: 1400,
+    cnt: 490
+  },
+  {
+    name: "Page B",
+    uv: 868,
+    pv: 967,
+    amt: 1506,
+    cnt: 590
+  },
+  {
+    name: "Page C",
+    uv: 1397,
+    pv: 1098,
+    amt: 989,
+    cnt: 350
+  },
+  {
+    name: "Page D",
+    uv: 1480,
+    pv: 1200,
+    amt: 1228,
+    cnt: 480
+  },
+  {
+    name: "Page E",
+    uv: 1520,
+    pv: 1108,
+    amt: 1100,
+    cnt: 460
+  },
+  {
+    name: "Page F",
+    uv: 1400,
+    pv: 680,
+    amt: 1700,
+    cnt: 380
+  },
+  {
+    name: "Page A",
+    uv: 590,
+    pv: 800,
+    amt: 1400,
+    cnt: 490
+  },
+  {
+    name: "Page B",
+    uv: 868,
+    pv: 967,
+    amt: 1506,
+    cnt: 590
+  },
+  {
+    name: "Page C",
+    uv: 1397,
+    pv: 1098,
+    amt: 989,
+    cnt: 350
+  },
+  {
+    name: "Page D",
+    uv: 1480,
+    pv: 1200,
+    amt: 1228,
+    cnt: 480
+  },
+  {
+    name: "Page E",
+    uv: 1520,
+    pv: 1108,
+    amt: 1100,
+    cnt: 460
+  },
+  {
+    name: "Page F",
+    uv: 1400,
+    pv: 680,
+    amt: 1700,
+    cnt: 380
+  },
+  
 ];
 
-export default function RBar() {
-    //static demoUrl = 'https://codesandbox.io/s/simple-bar-chart-tpz8r';
-
-    return (
-         
-            <BarChart
-                layout="vertical"
-                width={300}
-                height={500}
-                data={data}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-            > 
-                <XAxis type="number" />
-                <YAxis type="category" dataKey="name" />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="uv" fill="#82ca9d" />
-            </BarChart> 
-    );
+export default function App() {
+  return (
+    <ComposedChart
+      layout="vertical"
+      width={300}
+      height={500}
+      data={data}
+      margin={{
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 20
+      }}
+    >
+      <CartesianGrid stroke="#f5f5f5" />
+      <XAxis type="number" />
+{/*       <YAxis dataKey="name" type="category" scale="band" />
+ */}      <Tooltip />
+      <Legend />
+{/*       <Area dataKey="amt" fill="#8884d8" stroke="#8884d8" />
+ */}      <Bar dataKey="pv" barSize={20} fill="#413ea0" />
+{/*       <Line dataKey="uv" stroke="#ff7300" />
+ */}    </ComposedChart>
+  );
 }

@@ -2,7 +2,9 @@ import React from "react";
 import { Box, Text, Heading, Flex, Center, Tooltip, useColorModeValue } from "@chakra-ui/react";
 import { HiTrendingUp, HiTrendingDown, HiInformationCircle } from "react-icons/hi";
 import { IoCaretUpOutline, IoCaretDownOutline } from "react-icons/io5";
-import Scorecard from "./ScoreCard";
+import Scorecard from "../ScoreCard";
+
+
 
 
 type Props = {
@@ -30,7 +32,7 @@ type Props = {
 };
 
 
-const CardCategoryLg = (props: Props) => {
+const CardTrendDaily = (props: Props) => {
     const color = useColorModeValue("grey.100", "gray.800");
 
     return (
@@ -41,11 +43,11 @@ const CardCategoryLg = (props: Props) => {
                     bg="blue.800"
                     shadow="lg"  >
                     <Flex w="95%">
-                        <Heading as="h3" textAlign="center" fontSize="0.8em">
+                        <Heading as="h2" textAlign="center" fontSize="0.8em">
                             <Flex>
                                 <Text color="gray.50">{props.headerlabel}</Text>
-                                <Text pl="2" color="green.500">{props.headervalue}</Text>
-                            </Flex>
+{/*                                 <Text pl="2" color="green.500">{props.headervalue}</Text>
+ */}                            </Flex>
                         </Heading>
                     </Flex>
                     <Flex direction="row-reverse">
@@ -57,8 +59,16 @@ const CardCategoryLg = (props: Props) => {
                     </Flex>
 
                 </Flex>
+                <Flex w="100%" mt="2" bg="blue.100" shadow="md">
+                        <Flex w="100%" bg="blue.100">
 
-                {/*  <Flex width="100%" p="3"
+                            <Center fontSize="10px" color="blue.800">
+                                {props.summary1}
+                            </Center>
+
+                        </Flex>
+                    </Flex>
+                {/* <Flex width="100%" p="3"
                     bg="blue.100"
                     shadow="lg" >
                     <Heading as="h3" textAlign="center" fontSize="0.8em">
@@ -68,17 +78,6 @@ const CardCategoryLg = (props: Props) => {
                         </Flex>
                     </Heading>
                 </Flex> */}
-
-                <Flex w="100%" mt="2" bg="blue.100" shadow="md">
-                    <Flex w="100%" bg="blue.100">
-
-                        <Center fontSize="10px" color="blue.800">
-                            {props.summary1}
-                        </Center>
-
-                    </Flex>
-                </Flex>
-
                 {/* <Flex w="100%" my="2" px="1" py="2" bgGradient="linear(to-r, white, gray.100)" shadow="md">
                     <Flex w="33%" borderRight="1px" borderColor="gray.300" px="1">
                         <Flex>
@@ -157,4 +156,4 @@ const CardCategoryLg = (props: Props) => {
     );
 };
 
-export default CardCategoryLg;
+export default CardTrendDaily;

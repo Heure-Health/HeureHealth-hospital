@@ -4,12 +4,28 @@ import dynamic from "next/dynamic";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ColorModeScript } from "@chakra-ui/react";
 //import "./styles/main.css";
-import theme from "../theme";
+//import theme from "../theme";
 import "./styles/allstyles.scss";
+import { extendTheme } from '@chakra-ui/react'
 
 const TopProgressBar = dynamic(() => import("components/Layout/TopProgress"), {
   ssr: false,
 });
+
+const colors = {
+  app: {
+    primary: '#1a365d',
+    secondary: '#153e75',
+    success: '#2a69ac',
+  },
+  chart:{
+    primary:'#1ABC9C',
+    secondary:'#566573'
+  }
+}
+
+const theme = extendTheme({ colors })
+
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

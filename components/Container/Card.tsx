@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
+
 type Props = {
     Title:string;
     hasImg: boolean;
@@ -7,7 +8,8 @@ type Props = {
 };
 const Card = (props: Props) => {
     return (
-        <>
+        <><Flex w="50%" borderRight="1px" borderColor="gray.300" m="1">
+                        {props.chart} </Flex>
             <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
                 {props.hasImg && <Image src="props.imgsrc" alt="props.imgalt" />}
                 <Box p="6">
