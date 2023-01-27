@@ -1,17 +1,11 @@
 import React, { useMemo } from "react";
-import { BarGroupHorizontal, Bar } from "@visx/shape";
+import { Bar } from "@visx/shape";
 import { Group } from "@visx/group";
-//import { GradientTealBlue } from '@visx/gradient';
-import { AxisLeft, AxisBottom, AreaClosed } from "@visx/axis";
-import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
-//import { curveMonotoneX } from "@visx/curve";
+import { AxisLeft, AxisBottom } from "@visx/axis";
+import { scaleBand, scaleLinear } from "@visx/scale";
 import { GridRows, GridColumns } from "@visx/grid";
-import { useTooltip, Tooltip, TooltipWithBounds, useTooltipInPortal } from "@visx/tooltip";
-import { LegendOrdinal } from "@visx/legend";
+import { useTooltip, TooltipWithBounds } from "@visx/tooltip";
 import { localPoint } from "@visx/event";
-import { ParentSize } from "@visx/responsive";
-//import { extent, max, bisector } from "d3-array";
-
 import useResizeObserver from "use-resize-observer";
 
 
@@ -116,84 +110,78 @@ export default function BarChart() {
     //         const innerHeight = height - margin;
     //         const barHeight = Math.max(10, innerHeight / data.length);
 
-    return (
-        <div style={{ width: "100%", height: "100%", position: 'relative' }} ref={ref}>
-            <svg width={width} height={height}>
-                {/* <GradientTealBlue id="teal" />   */}
-                <Group top={margin.top} left={margin.left} >
-                    <rect width={width} height={height} fill="url(#teal)" rx={15}
-                    />
-                    <AxisLeft
-                        scale={yScale} top={0} left={30}
-                        hideTicks={true}
-                        //numTicks={data.length - 1}
-                        label="Value"
-                        tickLabelProps={(value, index) => ({
-                            fontSize: 11,
-                            textAnchor: 'end',
-                        })}
-                    />
-                    <AxisBottom
-                        scale={xScale} top={yMax}
-                        label="Country"
-                        //labelOffset={15}
-                        //numTicks={data.length - 1}
-                        tickLabelProps={(value, index) => ({
-                            fontSize: 11,
-                            textAnchor: 'middle'
-                        })}
-                    />
-                    <GridRows
-                        lineStyle={{ pointerEvents: "none" }}
-                        scale={yScale}
-                        width={xMax}
-                        strokeDasharray="2,2"
-                        strokeWidth=".2"
-                        stroke="#333"
-                    />
-
-                    <GridColumns
-                        lineStyle={{ pointerEvents: "none" }}
-                        scale={xScale}
-                        height={yMax}
-                        strokeDasharray="2,2"
-                        strokeWidth=".2"
-                        stroke="#333"
-                    />
-
-                    {data.map((d, i) => {
-                        const xv = getX(d);
-                        const barWidth = xScale.bandwidth();
-                        const barHeight = yMax - (yScale(getY(d)) ?? 0);
-                        const barX = xScale(xv);
-                        const barY = yMax - barHeight;
-                        return (
-                            <Bar
-                                key={`bar-${xv}`}
-                                x={barX}
-                                y={barY}
-                                width={barWidth}
-                                height={barHeight}
-                                fill="#074b667d"
-                                onMouseOver={(e) => handleMouseOver(e, d.value)}
-                                onMouseOut={ hideTooltip}
-                            />
-                        );
+    return <div style={{ width: "100%", height: "100%", position: 'relative' }} ref={ref}>
+        <svg width={width} height={height}>
+            {/* <GradientTealBlue id="teal" />   */}
+            <Group top={margin.top} left={margin.left} >
+                <rect width={width} height={height} fill="url(#teal)" rx={15}
+                />
+                <AxisLeft
+                    scale={yScale} top={0} left={30}
+                    hideTicks={true}
+                    //numTicks={data.length - 1}
+                    label="Value"
+                    tickLabelProps={() => ({
+                        fontSize: 11,
+                        textAnchor: 'end',
                     })}
-                </Group>
-            </svg>
-            {tooltipOpen && (
-                <TooltipWithBounds
-                    // set this to random so it correctly updates with parent bounds
-                    key={Math.random()}
-                    top={tooltipTop}
-                    left={tooltipLeft}
-                >
-                    Data value <strong>{tooltipData}</strong>
-                </TooltipWithBounds>
-            )}
-        </div>
-    );
+                />
+                <AxisBottom
+                    scale={xScale} top={yMax}
+                    label="Country"
+                    //labelOffset={15}
+                    //numTicks={data.length - 1}
+                    tickLabelProps={() => ({
+                        fontSize: 11,
+                        textAnchor: 'middle'
+                    })}
+                />
+                <GridRows
+                    lineStyle={{ pointerEvents: "none" }}
+                    scale={yScale}
+                    width={xMax}
+                    strokeDasharray="2,2"
+                    strokeWidth=".2"
+                    stroke="#333"
+                />
+
+                <GridColumns
+                    lineStyle={{ pointerEvents: "none" }}
+                    scale={xScale}
+                    height={yMax}
+                    strokeDasharray="2,2"
+                    strokeWidth=".2"
+                    stroke="#333"
+                />
+
+                {data.map((d) => {
+                    const xv = getX(d);
+                    const barWidth = xScale.bandwidth();
+                    const barHeight = yMax - (yScale(getY(d)) ?? 0);
+                    const barX = xScale(xv);
+                    const barY = yMax - barHeight;
+                    return <Bar
+                            key={`bar-${xv}`}
+                            x={barX}
+                            y={barY}
+                            width={barWidth}
+                            height={barHeight}
+                            fill="#074b667d"
+                            onMouseOver={(e) => handleMouseOver(e, d.value)}
+                            onMouseOut={ hideTooltip}
+                        />;
+                })}
+            </Group>
+        </svg>
+        {tooltipOpen && <TooltipWithBounds
+                // set this to random so it correctly updates with parent bounds
+                key={Math.random()}
+                top={tooltipTop}
+                left={tooltipLeft}
+            >
+                Data value <strong>{tooltipData}</strong>
+            </TooltipWithBounds>}
+    </div>;
     //  }}
     // </ParentSize>
     // );

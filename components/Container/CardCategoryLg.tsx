@@ -111,7 +111,7 @@ const CardCategoryLg = (props: Props) => {
                     <Flex w="70%" borderRight="1px" borderColor="gray.300" m="1">
                         {props.chart} </Flex>
                     <Flex w="30%" borderRight="1px" borderColor="gray.300" m="1">
-                        <Scorecard></Scorecard>
+                        <Scorecard Title={""} hasImg={false} children={undefined}></Scorecard>
                     </Flex>
                 </Flex>
 
