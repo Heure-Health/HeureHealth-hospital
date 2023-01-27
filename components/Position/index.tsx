@@ -1,5 +1,5 @@
 import React from "react";
-import PositionMain from "./PositionMain1"
+import PositionMain from "./PositionMain"
 const Position = () => {
   return (
     <PositionMain />

@@ -2,26 +2,14 @@ import React from "react";
 import { Flex, Box, Text, Icon, useDisclosure } from "@chakra-ui/react";
 import { IoFilterSharp } from "react-icons/io5";
 import { DashFilters } from "@/components/Nav";
-import { useRouter } from "next/router";
-
-const nav = [
-    { '/': 'Dashboard' },
-    { '/position': 'Market Position' }
-]
-
 function SubBar() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
-    const router = useRouter();
-    let pathn = router.pathname;
-     
     return (
         <div className="w-full flex flex-wrap items-center justify-between p-3">
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-
                 <Flex flexDirection="row" justifyContent="center" alignItems="center">
                     <Box py={2}>
-                        {pathn}
                     </Box>
                 </Flex>
                 <Flex>
@@ -40,7 +28,7 @@ function SubBar() {
                     />
                 </Flex>
             </div>
-            </div>
+        </div>
     );
 }
 export default SubBar;

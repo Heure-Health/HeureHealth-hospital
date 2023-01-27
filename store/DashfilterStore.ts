@@ -1,4 +1,3 @@
-import { makeAutoObservable } from "mobx";
 
 export interface DashFilters {
     region: Region;
@@ -22,11 +21,6 @@ export interface  MainFilters {
 class DashfilterStore {
     dashfil = [];
     regionSel = "";
-
-    constructor(Store) {
-        this.Store = Store;
-        makeAutoObservable(this);
-    }
    setRegion = (region:string)=>{
     this.regionSel = region;
    }

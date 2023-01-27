@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Text, Spacer, SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 //import Guage from "./Guage";
 import RBar from "./RBar";
 import RLine from "./RLineChart";
