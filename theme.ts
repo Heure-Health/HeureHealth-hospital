@@ -1,5 +1,5 @@
 // 1. import `extendTheme` function
-import { extendTheme, useColorModeValue } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 import { createBreakpoints } from "@chakra-ui/theme-tools";
 
 // 2. Add your color mode config

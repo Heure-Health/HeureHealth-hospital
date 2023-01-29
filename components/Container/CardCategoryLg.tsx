@@ -33,8 +33,8 @@ const CardCategoryLg = (props: Props) => {
     useColorModeValue("grey.100", "gray.800");
     return (
         <>
-            <Box w={props.width} h='{props.height}' m="2" p="2" shadow="lg"
-                bg="gray.50" borderWidth="2px" borderRadius="md" overflow="hidden">
+            <Box w={props.width} h='{props.height}' margin="1" padding="0" shadow="lg"
+                bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
                 <Flex width="100%" p="3"
                     bg="blue.800"
                     shadow="lg"  >
@@ -111,7 +111,7 @@ const CardCategoryLg = (props: Props) => {
                     <Flex w="70%" borderRight="1px" borderColor="gray.300" m="1">
                         {props.chart} </Flex>
                     <Flex w="30%" borderRight="1px" borderColor="gray.300" m="1">
-                        <Scorecard Title={""} hasImg={false} children={undefined}></Scorecard>
+                        <Scorecard></Scorecard>
                     </Flex>
                 </Flex>
 

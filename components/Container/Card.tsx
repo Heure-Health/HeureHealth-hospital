@@ -1,7 +1,8 @@
-import React from "react";
-import { Box, Text, Image } from "@chakra-ui/react";
+import React, {ReactNode} from "react";
+import {Box, Text, Image, Flex} from "@chakra-ui/react";
 
 type Props = {
+    chart: ReactNode;
     Title:string;
     hasImg: boolean;
     children: ReactNode;

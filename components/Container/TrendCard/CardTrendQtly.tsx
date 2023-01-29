@@ -1,12 +1,7 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import { Box, Text, Heading, Flex, Center, Tooltip, useColorModeValue } from "@chakra-ui/react";
-import { HiTrendingUp, HiTrendingDown, HiInformationCircle } from "react-icons/hi";
-import { IoCaretUpOutline, IoCaretDownOutline } from "react-icons/io5";
+import { HiInformationCircle } from "react-icons/hi";
 import Scorecard from "../ScoreCard";
-
-
-
-
 type Props = {
     width: string;
     height: string;
@@ -33,12 +28,11 @@ type Props = {
 
 
 const CardTrendQtly = (props: Props) => {
-    const color = useColorModeValue("grey.100", "gray.800");
-
+    useColorModeValue("grey.100", "gray.800");
     return (
         <>
-            <Box w={props.width} h='{props.height}' m="2" p="2" shadow="lg"
-                bg="gray.50" borderWidth="2px" borderRadius="md" overflow="hidden">
+            <Box w={props.width} h='{props.height}' margin="1" padding="0" shadow="lg"
+                bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
                 <Flex width="100%" p="3"
                     bg="blue.800"
                     shadow="lg"  >

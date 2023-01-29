@@ -1,36 +1,25 @@
 import {
-    Box, Center, Flex, Text, Heading, Progress,
-    CircularProgress, CircularProgressLabel
+    Box, Center, Flex, Text, Heading, Progress
 } from '@chakra-ui/react';
-
-
-
-const SCSamePosPct = () => {
+const SCSamePosPct = (params) => {
     return (
         <>
-            <Flex direction="column" bgColor="chart.primary" color="white" shadow="lg"  borderRadius='5px'>
-                <Center display='flex' > With</Center>
-
-                <Center display='flex' mt='2'>
-                    <Heading as='h4' size='md'>
-                        50%
+            <Flex direction="column" bgColor="chart.primary" color="white" shadow="lg"  borderRadius='10px'>
+                <Center display='flex' fontSize={{base: '24px', md: '26px', lg: '28px'}} mt='1'> With</Center>
+                <Center display='flex' mt='7'>
+                    <Heading fontSize={{base: '26px', md: '30px', lg: '36px'}}>
+                        {params.value + "%"}
                     </Heading>
                 </Center>
-
-                <Center display='flex' mt='2'>
-                    <Text fontSize='xs'>of all competitors</Text>
+                <Center display='flex' mt='7'>
+                    <Text fontSize={{ base: '14px', md: '16px', lg: '18px' }}>of all competitors</Text>
                 </Center>
-                <Box mx='1' my='2'>
-                    <Progress hasStripe value={50} colorScheme="orange" />
+                <Box mx='25' my='25'>
+                    <Progress hasStripe value={params.value} colorScheme="orange" max={100}/>
                 </Box>
-
-                <Center display='flex' my='2.5'>  <Text fontSize='10px'> in your Market Position </Text></Center>
-                
-
+                <Center display='flex' my='2.5'>  <Text fontSize={{ base: '14px', md: '16px', lg: '18px' }}> in your Market Position </Text></Center>
             </Flex>
-
         </>
     );
 };
-
 export default SCSamePosPct;

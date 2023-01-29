@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Text, Heading, Flex, HStack } from "@chakra-ui/react";
+import React, {ReactNode} from "react";
+import { Box, Text, Heading, Flex} from "@chakra-ui/react";
 type Props = {
     width: number;
     height: number;
@@ -48,5 +48,4 @@ const ChartCard = (props: Props) => {
         </>
     );
 };
-
 export default ChartCard;

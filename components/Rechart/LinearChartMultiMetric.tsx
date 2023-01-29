@@ -5,8 +5,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend,
   LabelList
 } from "recharts";
 
@@ -80,7 +78,6 @@ const data = [
 
 const CustomizedLabel: FunctionComponent<any> = (props: any) => {
   const { x, y, stroke, value } = props;
-
   return (
     <text x={x} y={y} dy={-4} fill={stroke} fontSize={10} textAnchor="middle">
       {value}
@@ -90,7 +87,6 @@ const CustomizedLabel: FunctionComponent<any> = (props: any) => {
 
 const CustomizedAxisTick: FunctionComponent<any> = (props: any) => {
   const { x, y, payload } = props;
-
   return (
     <g transform={`translate(${x},${y})`}>
       <text

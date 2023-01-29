@@ -35,7 +35,6 @@ const wrapperStyle = {
        
         <ResponsiveContainer width={'95%'} minHeight={240}>
             <LineChart
-                // width={500} 
                 width={width}
                 height={200}
                 data={data}

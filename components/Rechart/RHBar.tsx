@@ -1,14 +1,11 @@
 import React from "react";
 import {
   ComposedChart,
-  Line,
   Bar,
   XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-  Area
+  Legend
 } from "recharts";
 
 const data = [
@@ -95,16 +92,14 @@ const data = [
     pv: 680,
     amt: 1700,
     cnt: 380
-  },
-  
+  }
 ];
-
 export default function App() {
   return (
     <ComposedChart
       layout="vertical"
       width={300}
-      height={500}
+      height={1100}
       data={data}
       margin={{
         top: 20,
@@ -115,12 +110,9 @@ export default function App() {
     >
       <CartesianGrid stroke="#f5f5f5" />
       <XAxis type="number" />
-{/*       <YAxis dataKey="name" type="category" scale="band" />
- */}      <Tooltip />
+      <Tooltip />
       <Legend />
-{/*       <Area dataKey="amt" fill="#8884d8" stroke="#8884d8" />
- */}      <Bar dataKey="pv" barSize={20} fill="#413ea0" />
-{/*       <Line dataKey="uv" stroke="#ff7300" />
- */}    </ComposedChart>
+      <Bar dataKey="pv" barSize={25} fill="#af3a13" />
+    </ComposedChart>
   );
 }

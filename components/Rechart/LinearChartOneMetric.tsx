@@ -4,10 +4,7 @@ import {
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  LabelList
+  CartesianGrid
 } from "recharts";
 
 const data = [
@@ -50,7 +47,6 @@ const CustomizedLabel: FunctionComponent<any> = (props: any) => {
     </text>
   );
 };
-
 const CustomizedAxisTick: FunctionComponent<any> = (props: any) => {
   const { x, y, payload } = props;
 
@@ -87,11 +83,6 @@ export default function LinearChartOneMetric() {
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" height={40} tick={<CustomizedAxisTick />} />
       <YAxis dataKey="score" tick={<CustomizedAxisTick />}/>
-     {/*  <Tooltip /> */}
-     {/*  <Legend /> */}
-     {/*  <Line type="monotone" dataKey="pv" stroke="#8884d8">
-        <LabelList content={<CustomizedLabel />} />
-      </Line> */}
       <Line type="monotone" dataKey="score" stroke="#82ca9d" />
     </LineChart>
   );
