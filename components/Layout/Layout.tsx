@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
-import { Header, Main, Footer } from ".";
+import { Header, Main } from ".";
 type Props = {
   children: ReactNode;
 };
@@ -23,7 +23,6 @@ const Layout = (props: Props) => {
         </Head>
         <Header/>
         <Main>{props.children}</Main>
-        <Footer/>
     </>
     </>;
     return element;

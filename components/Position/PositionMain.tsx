@@ -16,6 +16,7 @@ import SCMvOutNbr from "../SCWidget/SCMvOutNbr";
 import CardTrendDaily from "../Container/TrendCard/CardTrendDaily";
 import CardTrendAnnual from "../Container/TrendCard/CardTrendAnnual";
 import CardTrendQtly from "../Container/TrendCard/CardTrendQtly";
+import {Footer} from "@/components/Layout";
 
 const cdata = {
     "position": [
@@ -220,6 +221,9 @@ const PositionMain = () => {
                                             width={""} height={""}                                />
                         ))}
                     </Box>
+                </GridItem>
+                <GridItem colSpan={7} rowSpan={1}>
+                    <Footer/>
                 </GridItem>
             </Grid>
         </>

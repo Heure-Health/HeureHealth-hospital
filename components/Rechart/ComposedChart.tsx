@@ -4,12 +4,7 @@ import {
   ComposedChart,
   Line,
   Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Area
+  CartesianGrid
 } from "recharts";
 
 const data = [

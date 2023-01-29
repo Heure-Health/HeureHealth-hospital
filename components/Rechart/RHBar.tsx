@@ -99,7 +99,7 @@ export default function App() {
     <ComposedChart
       layout="vertical"
       width={300}
-      height={1100}
+      height={1025}
       data={data}
       margin={{
         top: 20,

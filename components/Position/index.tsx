@@ -5,5 +5,4 @@ const Position = () => {
     <PositionMain />
   )
 }
-
 export default Position;
