@@ -4,7 +4,7 @@ import {
 const SCSamePosPct = (params) => {
     return (
         <>
-            <Flex direction="column" bgColor="chart.primary" color="white" shadow="lg"  borderRadius='10px'>
+            <Flex direction="column" bgColor="chart.primary" color="white" shadow="lg"  borderRadius='10px' minWidth={"30%"}>
                 <Center display='flex' fontSize={{base: '24px', md: '26px', lg: '28px'}} mt='1'> With</Center>
                 <Center display='flex' mt='7'>
                     <Heading fontSize={{base: '26px', md: '30px', lg: '36px'}}>

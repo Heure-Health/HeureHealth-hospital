@@ -2,7 +2,7 @@
 
 
 import React from "react";
-import {Box, Center, Grid, GridItem, Text} from "@chakra-ui/react";
+import {Box, Center, Grid, GridItem, SimpleGrid, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import Card from "../Container/CardCategoryLg";
 import RLineChart from "../Rechart/RLineChart";
@@ -103,126 +103,128 @@ const PositionMain = () => {
         <>
             <Grid
                 h='200px'
-                templateRows='repeat(4, 1fr)'
-                templateColumns='repeat(7, 1fr)'
-                gap={2}>
-                <GridItem colSpan={7} rowSpan={1}>
-                    <Box bg='blue.600' width={"100%"} height={"100%"}>
+                templateRows='repeat(3, 1fr)'
+                templateColumns='repeat(1, 1fr)'
+                gap={2} minWidth={"25%"} minHeight={"25%"}>
+                <GridItem colSpan={1} rowSpan={1}>
+                    <Box bg='blue.600'>
                         <Center display='flex' my='1.2'>  <Text fontSize={{ base: '18px', md: '22px', lg: '26px' }} color={"white"} fontWeight={"bold"}> WMRMC IS CURRENTLY POSITIONED AS A EASTERN REGION MARKET LEADER </Text></Center>
                     </Box>
                 </GridItem>
-
-                <GridItem colSpan={2} rowSpan={1} flexWrap={"wrap"}>
-                    <Box width="100%">
-                        <SCPositioncPct
-                            title ="Today"
-                            value={"80"}
-                            region={"Eastern region"}
-                            circleSize={"3.2em"}
-                            circleThickness={"12px"}
-                        />
-                    </Box>
+                <GridItem colSpan={1} rowSpan={1}>
+                    <Wrap>
+                        <WrapItem width={"32%"} minWidth={"340px"}>
+                            <Box width="100%"  p={"5"}>
+                                <SCPositioncPct
+                                    title ="Today"
+                                    value={"80"}
+                                    region={"Eastern region"}
+                                    circleSize={"3.2em"}
+                                    circleThickness={"12px"}
+                                />
+                            </Box>
+                        </WrapItem>
+                        <WrapItem width={"32%"} minWidth={"340px"}>
+                            <Box width="100%"  p={"5"}>
+                                <SCSamePosPct value={"42"} region={"Eastern region"}/>
+                            </Box>
+                        </WrapItem>
+                        <WrapItem width={"32%"} minWidth={"340px"}>
+                            <Box width="100%"  p={"5"}>
+                                <SCMvOutNbr value={"7"} region={"Eastern region"}/>
+                            </Box>
+                        </WrapItem>
+                    </Wrap>
                 </GridItem>
-                <GridItem colSpan={2} rowSpan={1}>
-                    <Box width="100%">
-                        <SCSamePosPct value={"42"} region={"Eastern region"}/>
-                    </Box>
+                <GridItem colSpan={1} rowSpan={1}>
+                    <Wrap spacing='20px'>
+                        <WrapItem width={"48%"}>
+                            <Box width="100%">
+                                {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                    <CardTrendQtly key={data2.card}
+                                                   headerlabel={"Banner University Market Position : QUARTERLY TRENDLINE"}
+                                                   headervalue={data2.headervalue}
+                                                   subheaderlabel={data2.subheaderlabel}
+                                                   subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
+                                                   trend1={data2.trend1} trendInd1={data2.trendInd1}
+                                                   trendScore1={data2.trendScore1}
+                                                   trend2={data2.trend2} trendInd2={data2.trendInd2}
+                                                   trendScore2={data2.trendScore2}
+                                                   trend3={data2.trend3} trendInd3={data2.trendInd3}
+                                                   trendScore3={data2.trendScore3}
+                                                   summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
+                                                   summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
+                                                   chart={renderChart("linearchartonemetric", data2.chartwidth, data2.gdata)}
+                                                   width={""} height={""}                                />
+                                ))}
+                            </Box>
+                        </WrapItem>
+                        <WrapItem width={"48%"}>
+                            <Box width="100%">
+                                {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                    <CardTrendDaily key={data2.card}
+                                                    headerlabel={"Banner University Market Position : DAILY TRENDLINE"}
+                                                    headervalue={data2.headervalue}
+                                                    subheaderlabel={data2.subheaderlabel}
+                                                    subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
+                                                    trend1={data2.trend1} trendInd1={data2.trendInd1}
+                                                    trendScore1={data2.trendScore1}
+                                                    trend2={data2.trend2} trendInd2={data2.trendInd2}
+                                                    trendScore2={data2.trendScore2}
+                                                    trend3={data2.trend3} trendInd3={data2.trendInd3}
+                                                    trendScore3={data2.trendScore3}
+                                                    summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
+                                                    summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
+                                                    chart={renderChart("composedchart", data2.chartwidth, data2.gdata)}
+                                                    width={""} height={""}                                />
+                                ))}
+                            </Box>
+                        </WrapItem>
+                    </Wrap>
                 </GridItem>
-                <GridItem colSpan={2} rowSpan={1}>
-                    <Box width="100%">
-                        <SCMvOutNbr value={"7"} region={"Eastern region"}/>
-                    </Box>
+                <GridItem colSpan={1} rowSpan={1}>
+                    <Wrap spacing='20px'>
+                        <WrapItem  width={"48%"}>
+                            <Box width="100%">
+                                {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                    <Card key={data2.card}
+                                          headerlabel={"Banner University Market Position"} headervalue={data2.headervalue}
+                                          subheaderlabel={data2.subheaderlabel} subheadervalue={data2.subheadervalue}
+                                          tooltip={data2.tooltip}
+                                          trend1={data2.trend1} trendInd1={data2.trendInd1} trendScore1={data2.trendScore1}
+                                          trend2={data2.trend2} trendInd2={data2.trendInd2} trendScore2={data2.trendScore2}
+                                          trend3={data2.trend3} trendInd3={data2.trendInd3} trendScore3={data2.trendScore3}
+                                          summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
+                                          summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
+                                          chart={renderChart(data2.cardtype, data2.chartwidth, data2.gdata)} width={""}
+                                          height={""}                                />
+                                ))}
+                            </Box>
+                        </WrapItem>
+                        <WrapItem width={"48%"}>
+                            <Box width="100%">
+                                {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                    <CardTrendAnnual key={data2.card}
+                                                     headerlabel={"Banner University Market Position : ANNUAL TRENDLINE"}
+                                                     headervalue={data2.headervalue}
+                                                     subheaderlabel={data2.subheaderlabel}
+                                                     subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
+                                                     trend1={data2.trend1} trendInd1={data2.trendInd1}
+                                                     trendScore1={data2.trendScore1}
+                                                     trend2={data2.trend2} trendInd2={data2.trendInd2}
+                                                     trendScore2={data2.trendScore2}
+                                                     trend3={data2.trend3} trendInd3={data2.trendInd3}
+                                                     trendScore3={data2.trendScore3}
+                                                     summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
+                                                     summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
+                                                     chart={renderChart("linearchartmultimetric", data2.chartwidth, data2.gdata)}
+                                                     width={""} height={""}                                />
+                                ))}
+                            </Box>
+                        </WrapItem>
+                    </Wrap>
                 </GridItem>
-                <GridItem colSpan={1} rowSpan={3}>
-                    <Box width="100%">
-                        <RHBar />
-                    </Box>
-                </GridItem>
-
-
-
-                <GridItem colSpan={3} rowSpan={1}>
-                    <Box width="100%">
-                        {cdata.position.filter(x => x.card == "1").map((data2) => (
-                            <Card key={data2.card}
-                                  headerlabel={"Banner University Market Position"} headervalue={data2.headervalue}
-                                  subheaderlabel={data2.subheaderlabel} subheadervalue={data2.subheadervalue}
-                                  tooltip={data2.tooltip}
-                                  trend1={data2.trend1} trendInd1={data2.trendInd1} trendScore1={data2.trendScore1}
-                                  trend2={data2.trend2} trendInd2={data2.trendInd2} trendScore2={data2.trendScore2}
-                                  trend3={data2.trend3} trendInd3={data2.trendInd3} trendScore3={data2.trendScore3}
-                                  summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                  summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                  chart={renderChart(data2.cardtype, data2.chartwidth, data2.gdata)} width={""}
-                                  height={""}                                />
-                        ))}
-                    </Box>
-                </GridItem>
-                <GridItem colSpan={3} rowSpan={1}>
-                    <Box width="100%">
-                        {cdata.position.filter(x => x.card == "1").map((data2) => (
-                            <CardTrendAnnual key={data2.card}
-                                             headerlabel={"Banner University Market Position : ANNUAL TRENDLINE"}
-                                             headervalue={data2.headervalue}
-                                             subheaderlabel={data2.subheaderlabel}
-                                             subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                             trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                             trendScore1={data2.trendScore1}
-                                             trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                             trendScore2={data2.trendScore2}
-                                             trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                             trendScore3={data2.trendScore3}
-                                             summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                             summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                             chart={renderChart("linearchartmultimetric", data2.chartwidth, data2.gdata)}
-                                             width={""} height={""}                                />
-                        ))}
-                    </Box>
-                </GridItem>
-
-                <GridItem colSpan={3} rowSpan={1}>
-                    <Box width="100%">
-                        {cdata.position.filter(x => x.card == "1").map((data2) => (
-                            <CardTrendQtly key={data2.card}
-                                           headerlabel={"Banner University Market Position : QUARTERLY TRENDLINE"}
-                                           headervalue={data2.headervalue}
-                                           subheaderlabel={data2.subheaderlabel}
-                                           subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                           trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                           trendScore1={data2.trendScore1}
-                                           trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                           trendScore2={data2.trendScore2}
-                                           trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                           trendScore3={data2.trendScore3}
-                                           summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                           summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                           chart={renderChart("linearchartonemetric", data2.chartwidth, data2.gdata)}
-                                           width={""} height={""}                                />
-                        ))}
-                    </Box>
-                </GridItem>
-                <GridItem colSpan={3} rowSpan={1}>
-                    <Box width="100%">
-                        {cdata.position.filter(x => x.card == "1").map((data2) => (
-                            <CardTrendDaily key={data2.card}
-                                            headerlabel={"Banner University Market Position : DAILY TRENDLINE"}
-                                            headervalue={data2.headervalue}
-                                            subheaderlabel={data2.subheaderlabel}
-                                            subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                            trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                            trendScore1={data2.trendScore1}
-                                            trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                            trendScore2={data2.trendScore2}
-                                            trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                            trendScore3={data2.trendScore3}
-                                            summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                            summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                            chart={renderChart("composedchart", data2.chartwidth, data2.gdata)}
-                                            width={""} height={""}                                />
-                        ))}
-                    </Box>
-                </GridItem>
-                <GridItem colSpan={7} rowSpan={1}>
+                <GridItem colSpan={1} rowSpan={1}>
                     <Footer/>
                 </GridItem>
             </Grid>

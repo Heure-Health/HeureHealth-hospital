@@ -6,7 +6,7 @@ import {
 const SCPositioncPct = (params) => {
   return (
     <>
-       <Flex direction="column" bgColor="chart.primary" color="white" shadow="md"  borderRadius='10px'>
+       <Flex direction="column" bgColor="chart.primary" color="white" shadow="md"  borderRadius='10px' minWidth={"50%"}>
           <Center display='flex' fontSize={{base: '24px', md: '26px', lg: '28px'}}>{params.title}</Center>
           <Center display='flex'>
             <CircularProgress value={params.value} color='orange.400' size={params.circleSize} thickness={params.circleThickness}>
