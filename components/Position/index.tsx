@@ -1,8 +1,9 @@
 import React from "react";
 import PositionMain from "./PositionMain"
+
 const Position = () => {
-  return (
-    <PositionMain />
-  )
+    return (
+        <PositionMain/>
+    )
 }
 export default Position;

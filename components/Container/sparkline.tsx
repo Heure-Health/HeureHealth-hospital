@@ -1,8 +1,8 @@
 import React from "react";
-import { LinePath } from "@visx/shape";
-import { curveLinear } from "@visx/curve";
-import { scaleTime, scaleLinear } from "@visx/scale";
-import { extent, max, min } from "d3-array";
+import {LinePath} from "@visx/shape";
+import {curveLinear} from "@visx/curve";
+import {scaleLinear, scaleTime} from "@visx/scale";
+import {extent, max, min} from "d3-array";
 //import { observer } from "mobx-react-lite";
 import styled from '@emotion/styled';
 
@@ -21,22 +21,22 @@ type SparkLineProps = {
 };
 
 const StyledSpark = styled.svg<{ sentiment: Sentiment; metric: string }>`
-  stroke: ${({ theme, sentiment }) => theme[sentiment]};
-  ${({ theme, metric }) =>
-        !!metric &&
-        css`
+  stroke: ${({theme, sentiment}) => theme[sentiment]};
+  ${({theme, metric}) =>
+    !!metric &&
+    css`
       stroke: ${theme.metrics[metric]};
     `};
 `;
 
 const Sparkline: React.FC<SparkLineProps> = ({
-    height,
-    width,
-    data,
-    sentiment = "neutral",
-    metric,
-    paddingTop = 10,
-}) => {
+                                                 height,
+                                                 width,
+                                                 data,
+                                                 sentiment = "neutral",
+                                                 metric,
+                                                 paddingTop = 10,
+                                             }) => {
     // bounds
     const xMax = width;
     const yMax = height - paddingTop; // account for padding

@@ -1,7 +1,8 @@
 import React, {ReactNode} from "react";
-import { Box, Text, Heading, Flex, Center, Tooltip, useColorModeValue } from "@chakra-ui/react";
-import { HiInformationCircle } from "react-icons/hi";
+import {Box, Center, Flex, Heading, Text, Tooltip, useColorModeValue} from "@chakra-ui/react";
+import {HiInformationCircle} from "react-icons/hi";
 import Scorecard from "../ScoreCard";
+
 type Props = {
     width: string;
     height: string;
@@ -32,10 +33,10 @@ const CardTrendQtly = (props: Props) => {
     return (
         <>
             <Box w={props.width} h='{props.height}' margin="1" padding="0" shadow="lg"
-                bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
+                 bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
                 <Flex width="100%" p="3"
-                    bg="blue.800"
-                    shadow="lg"  >
+                      bg="blue.800"
+                      shadow="lg">
                     <Flex w="95%">
                         <Heading as="h6" textAlign="center" fontSize="0.8em">
                             <Flex>
@@ -46,7 +47,7 @@ const CardTrendQtly = (props: Props) => {
                     <Flex direction="row-reverse">
                         <Tooltip hasArrow label={props.tooltip} placement="bottom" bg="gray.100" color="gray.800">
                             <Box>
-                                <Box as={HiInformationCircle} size="1em" color="gray.100" />
+                                <Box as={HiInformationCircle} size="1em" color="gray.100"/>
                             </Box>
                         </Tooltip>
                     </Flex>

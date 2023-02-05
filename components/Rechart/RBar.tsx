@@ -1,13 +1,5 @@
 import React from "react";
-import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend, ResponsiveContainer
-} from "recharts";
+import {Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
 const data = [
     {
@@ -40,7 +32,7 @@ export default function RBar() {
     //static demoUrl = 'https://codesandbox.io/s/simple-bar-chart-tpz8r';
 
     return (
-        <ResponsiveContainer width={'95%'} height={400} >
+        <ResponsiveContainer width={'95%'} height={400}>
             <BarChart
                 width={600}
                 height={300}
@@ -52,14 +44,14 @@ export default function RBar() {
                     bottom: 5,
                 }}
             >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" fill="#8884d8" />
-                <Bar dataKey="uv" fill="#82ca9d" />
+                <CartesianGrid strokeDasharray="3 3"/>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <Tooltip/>
+                <Legend/>
+                <Bar dataKey="pv" fill="#8884d8"/>
+                <Bar dataKey="uv" fill="#82ca9d"/>
             </BarChart>
-         </ResponsiveContainer>
+        </ResponsiveContainer>
     );
 }

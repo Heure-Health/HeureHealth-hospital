@@ -1,14 +1,15 @@
 import React from "react";
-import {Box, Center, Text} from "@chakra-ui/react";
-import { useTheme, useColorModeValue } from "@chakra-ui/react";
+import {Box, Center, Text, useColorModeValue, useTheme} from "@chakra-ui/react";
+
 const Footer = () => {
-  const theme = useTheme();
-  const bg = useColorModeValue(theme.colors.gray[100], theme.colors.gray[800])
-  const color = useColorModeValue("gray.800","gray.100")
-  return (
-      <Box textAlign="center" color={color} background={bg}>
-          <Center display='flex' my='1.5'>  <Text fontSize={{ base: '10px', md: '12px', lg: '14px' }} color={"black"} > © Copyright 2023 Heure Health</Text></Center>
-      </Box>
-  );
+    const theme = useTheme();
+    const bg = useColorModeValue(theme.colors.gray[100], theme.colors.gray[800])
+    const color = useColorModeValue("gray.800", "gray.100")
+    return (
+        <Box textAlign="center" color={color} background={bg}>
+            <Center display='flex' my='1.5'> <Text fontSize={{base: '10px', md: '12px', lg: '14px'}} color={"black"}> ©
+                Copyright 2023 Heure Health</Text></Center>
+        </Box>
+    );
 };
 export default Footer;

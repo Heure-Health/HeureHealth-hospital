@@ -1,5 +1,6 @@
 import React, {ReactNode} from "react";
-import { Box, Text, Heading, Flex} from "@chakra-ui/react";
+import {Box, Flex, Heading, Text} from "@chakra-ui/react";
+
 type Props = {
     width: number;
     height: number;
@@ -24,7 +25,7 @@ const ChartCard = (props: Props) => {
                 <Flex width="100%">
                     <Box w="50%" bg="green.100" borderRight="3px" borderRightStyle="solid" borderColor="gray.200">
                         <Text fontSize="md">
-                           SubHead
+                            SubHead
                         </Text>
                     </Box>
                     <Box w="50%" bg="blue.100" minH="80px">
@@ -34,14 +35,14 @@ const ChartCard = (props: Props) => {
                 <Flex w="100%">
                     {props.chart}
                 </Flex>
-                <Flex w="100%" bg="blue.100"> 
-                        <Text fontSize="md" textAlign="center">
-                            Explanation {props.explanation}
-                        </Text>
+                <Flex w="100%" bg="blue.100">
+                    <Text fontSize="md" textAlign="center">
+                        Explanation {props.explanation}
+                    </Text>
                 </Flex>
                 <Flex w="100%" bg="yellow.100">
                     <Text fontSize="md" textAlign="center">
-                       Summary {props.summary}
+                        Summary {props.summary}
                     </Text>
                 </Flex>
             </Box>

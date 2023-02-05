@@ -1,7 +1,8 @@
-import React from "react";
-import { Box, Text, Heading, Flex, Center, Tooltip, useColorModeValue } from "@chakra-ui/react";
-import { HiTrendingUp, HiTrendingDown, HiInformationCircle } from "react-icons/hi";
-import { IoCaretUpOutline, IoCaretDownOutline } from "react-icons/io5";
+import React, {ReactNode} from "react";
+import {Box, Center, Flex, Heading, Text, Tooltip, useColorModeValue} from "@chakra-ui/react";
+import {HiInformationCircle} from "react-icons/hi";
+import {IoCaretDownOutline, IoCaretUpOutline} from "react-icons/io5";
+
 type Props = {
     width: string;
     height: string;
@@ -28,15 +29,15 @@ type Props = {
 
 
 const CardCategory = (props: Props) => {
- const color = useColorModeValue("grey.100", "gray.800");
+    const color = useColorModeValue("grey.100", "gray.800");
 
     return (
         <>
             <Box maxW="lg" w={props.width} h={props.height} m="2" p="2" shadow="lg"
-                bg="gray.50" borderWidth="2px" borderRadius="md" overflow="hidden">
+                 bg="gray.50" borderWidth="2px" borderRadius="md" overflow="hidden">
                 <Flex width="100%" p="3"
-                    bg="blue.800"
-                    shadow="lg"  >
+                      bg="blue.800"
+                      shadow="lg">
                     <Flex w="95%">
                         <Heading as="h3" textAlign="center" fontSize="0.8em">
                             <Flex>
@@ -48,7 +49,7 @@ const CardCategory = (props: Props) => {
                     <Flex direction="row-reverse">
                         <Tooltip hasArrow label={props.tooltip} placement="bottom" bg="gray.100" color="gray.800">
                             <Box>
-                                <Box as={HiInformationCircle} size="1em" color="gray.100" />
+                                <Box as={HiInformationCircle} size="1em" color="gray.100"/>
                             </Box>
                         </Tooltip>
                     </Flex>
@@ -56,8 +57,8 @@ const CardCategory = (props: Props) => {
                 </Flex>
 
                 <Flex width="100%" p="3"
-                    bg="blue.100"
-                    shadow="lg" >
+                      bg="blue.100"
+                      shadow="lg">
                     <Heading as="h3" textAlign="center" fontSize="0.8em">
                         <Flex>
                             <Text color="white">{props.subheaderlabel}</Text>
@@ -71,7 +72,7 @@ const CardCategory = (props: Props) => {
                             <Text fontSize="0.6em" color="gray.800">{props.trend1}</Text>
                             <Center>
                                 <Box>
-                                    <Box as={IoCaretDownOutline} size="1.5em" color="red.500" />
+                                    <Box as={IoCaretDownOutline} size="1.5em" color="red.500"/>
                                 </Box>
                                 <Text color="green.500" size="1.5em">{props.trendScore1}</Text></Center>
                         </Flex>
@@ -88,7 +89,7 @@ const CardCategory = (props: Props) => {
                             <Text fontSize="0.6em" color="gray.800">{props.trend3}</Text>
                             <Center>
                                 <Box>
-                                    <Box as={IoCaretUpOutline} size="1.5em" color="green.700" />
+                                    <Box as={IoCaretUpOutline} size="1.5em" color="green.700"/>
                                 </Box>
                                 <Text color="green.500" size="1.5em">{props.trendScore3}</Text>
                             </Center>
@@ -118,7 +119,7 @@ const CardCategory = (props: Props) => {
                             </Center>
                         </Flex>
                         <Flex w="56%" m="1">
-                            <Center fontSize="0.7em" color="blue.800"> 
+                            <Center fontSize="0.7em" color="blue.800">
                                 {props.summary2}
                             </Center>
                         </Flex>

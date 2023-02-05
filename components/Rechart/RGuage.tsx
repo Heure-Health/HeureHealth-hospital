@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sector, Cell, PieChart, Pie, ResponsiveContainer } from 'recharts';
+import {Cell, Pie, PieChart, ResponsiveContainer, Sector} from 'recharts';
 
 type Props = {
     width: number;
@@ -9,7 +9,7 @@ type Props = {
 
 const Gauge = (props: Props) => {
 
-    const { width, colorData, chartValue } = props;
+    const {width, colorData, chartValue} = props;
     // const width = 400;
     // const chartValue = 250;
     // const colorData = [
@@ -30,7 +30,7 @@ const Gauge = (props: Props) => {
         .map((cur, index, arr) => {
             const curMax = [...arr]
                 .splice(0, index + 1)
-                .reduce((a, b) => ({ value: a.value + b.value })).value;
+                .reduce((a, b) => ({value: a.value + b.value})).value;
             return chartValue > curMax - cur.value && chartValue <= curMax;
         })
         .findIndex((cur) => cur);
@@ -38,9 +38,9 @@ const Gauge = (props: Props) => {
     const sumValues = colorData.map((cur) => cur.value).reduce((a, b) => a + b);
 
     const arrowData = [
-        { value: chartValue },
-        { value: 0 },
-        { value: sumValues - chartValue },
+        {value: chartValue},
+        {value: 0},
+        {value: sumValues - chartValue},
     ];
 
     const pieProps = {
@@ -56,7 +56,7 @@ const Gauge = (props: Props) => {
         outerRadius: (width / 2) * 0.7,
     };
 
-    const Arrow = ({ cx, cy, midAngle, outerRadius }) => {
+    const Arrow = ({cx, cy, midAngle, outerRadius}) => {
         //eslint-disable-line react/no-multi-comp
         const RADIAN = Math.PI / 180;
         const sin = Math.sin(-RADIAN * midAngle);
@@ -65,7 +65,7 @@ const Gauge = (props: Props) => {
         const my = cy + (outerRadius + width * 0.03) * sin;
         return (
             <g>
-                <circle cx={cx} cy={cy} r={width * 0.03} fill="#666" stroke="none" />
+                <circle cx={cx} cy={cy} r={width * 0.03} fill="#666" stroke="none"/>
                 <path
                     d={`M${cx},${cy}L${mx},${my}`}
                     strokeWidth="6"
@@ -78,14 +78,14 @@ const Gauge = (props: Props) => {
     };
 
     const ActiveSectorMark = ({
-        cx,
-        cy,
-        innerRadius,
-        outerRadius,
-        startAngle,
-        endAngle,
-        fill,
-    }) => {
+                                  cx,
+                                  cy,
+                                  innerRadius,
+                                  outerRadius,
+                                  startAngle,
+                                  endAngle,
+                                  fill,
+                              }) => {
         //eslint-disable-line react/no-multi-comp
         return (
             <g>
@@ -105,10 +105,10 @@ const Gauge = (props: Props) => {
         return entry.name;
     }
     const CustomizedLabel = ({
-        x, y, name
-    }) => {
+                                 x, y, name
+                             }) => {
         return (
-            <text x={x+25} y={y+10} fontSize="0.9em" fill="black" textAnchor="end" dominantBaseline="central">
+            <text x={x + 25} y={y + 10} fontSize="0.9em" fill="black" textAnchor="end" dominantBaseline="central">
                 {name}
             </text>
         );
@@ -116,21 +116,22 @@ const Gauge = (props: Props) => {
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({
-        cx, cy, midAngle, innerRadius, outerRadius, name
-    }) => {
+                                       cx, cy, midAngle, innerRadius, outerRadius, name
+                                   }) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 1.21;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN) ;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         return (
-            <text x={x} y={y} fontSize="0.9em" fill="black" textAnchor={name == 'Challenger' ? 'middle' : x > cx ? 'start' : 'end'} dominantBaseline="central">
+            <text x={x} y={y} fontSize="0.9em" fill="black"
+                  textAnchor={name == 'Challenger' ? 'middle' : x > cx ? 'start' : 'end'} dominantBaseline="central">
                 {name}
             </text>
         );
     };
     return (
         <ResponsiveContainer width={'99%'} minHeight={240}>
-            <PieChart width={width} >//height={width / 2 + 40}
+            <PieChart width={width}>//height={width / 2 + 40}
                 <Pie
                     activeIndex={activeSectorIndex}
                     activeShape={ActiveSectorMark}
@@ -138,13 +139,13 @@ const Gauge = (props: Props) => {
                     fill="#8884d8"
                     {...pieRadius}
                     {...pieProps}
-                    dataKey="value" 
+                    dataKey="value"
                     labelLine={false}
                     //label={(entry) => entry.name}
                     label={renderCustomizedLabel}
                 >
                     {colorData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={colorData[index].color} />
+                        <Cell key={`cell-${index}`} fill={colorData[index].color}/>
                     ))}
                 </Pie>
                 <Pie
@@ -154,7 +155,7 @@ const Gauge = (props: Props) => {
                     data={arrowData}
                     outerRadius={pieRadius.innerRadius}
                     fill="none"
-                    dataKey="value" 
+                    dataKey="value"
                     {...pieProps}
                 />
             </PieChart>

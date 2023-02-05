@@ -1,11 +1,12 @@
 import React from 'react';
 
-import {PieChart,Pie,Cell} from 'recharts';
+import {Cell, Pie, PieChart} from 'recharts';
+
 const RRadial = () => {
 
     const data1 = [
-        { id: "1", name: "L1", value: 75 },
-        { id: "2", name: "L2", value: 25 }
+        {id: "1", name: "L1", value: 75},
+        {id: "2", name: "L2", value: 25}
     ];
     return (
         <PieChart width={50} height={50}>

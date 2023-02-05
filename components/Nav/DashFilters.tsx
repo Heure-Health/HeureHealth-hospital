@@ -1,11 +1,5 @@
 import React from "react";
-import { Text, Box, Flex } from "@chakra-ui/react";
-import {
-    Drawer,
-    DrawerBody,
-    DrawerHeader,
-    DrawerContent, DrawerCloseButton
-} from "@chakra-ui/react";
+import {Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, Text} from "@chakra-ui/react";
 import Filterlist from "./Filterlist";
 
 type Props = {
@@ -15,7 +9,7 @@ type Props = {
     finalFocusRef: any;
 };
 const DashFilters = (props: Props) => {
-    const { isOpen, placement, onClose, finalFocusRef } = props;
+    const {isOpen, placement, onClose, finalFocusRef} = props;
     return (
         <Drawer
             isOpen={isOpen}
@@ -27,11 +21,11 @@ const DashFilters = (props: Props) => {
         >
             <DrawerContent>
                 <DrawerCloseButton mt={2}/>
-                <DrawerHeader >
+                <DrawerHeader>
                     <Text pt={1}>Filters</Text>
                 </DrawerHeader>
                 <DrawerBody className="bg-slate-50 h-screen">
-                    <Filterlist />
+                    <Filterlist/>
                 </DrawerBody>
             </DrawerContent>
         </Drawer>

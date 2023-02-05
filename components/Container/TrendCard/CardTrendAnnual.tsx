@@ -1,9 +1,7 @@
-import React, { ReactNode } from "react";
-import { Box, Text, Heading, Flex, Center, Tooltip } from "@chakra-ui/react";
-import { HiInformationCircle } from "react-icons/hi";
+import React, {ReactNode} from "react";
+import {Box, Center, Flex, Heading, Text, Tooltip} from "@chakra-ui/react";
+import {HiInformationCircle} from "react-icons/hi";
 import Scorecard from "../ScoreCard";
-
-
 
 
 type Props = {
@@ -36,22 +34,22 @@ const CardTrendAnnual = (props: Props) => {
     return (
         <>
             <Box w={props.width} h='{props.height}' margin="1" padding="0" shadow="lg"
-                bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
+                 bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
                 <Flex width="100%" p="3"
-                    bg="blue.800"
-                    shadow="lg"  >
+                      bg="blue.800"
+                      shadow="lg">
                     <Flex w="95%">
                         <Heading as="h3" textAlign="center" fontSize="0.8em">
                             <Flex>
                                 <Text color="gray.50">{props.headerlabel}</Text>
-{/*                                 <Text pl="2" color="green.500">{props.headervalue}</Text>
+                                {/*                                 <Text pl="2" color="green.500">{props.headervalue}</Text>
  */}                            </Flex>
                         </Heading>
                     </Flex>
                     <Flex direction="row-reverse">
                         <Tooltip hasArrow label={props.tooltip} placement="bottom" bg="gray.100" color="gray.800">
                             <Box>
-                                <Box as={HiInformationCircle} size="1em" color="gray.100" />
+                                <Box as={HiInformationCircle} size="1em" color="gray.100"/>
                             </Box>
                         </Tooltip>
                     </Flex>

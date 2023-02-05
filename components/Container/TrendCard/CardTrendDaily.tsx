@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
-import { Box, Text, Heading, Flex, Center, Tooltip } from "@chakra-ui/react";
-import { HiInformationCircle } from "react-icons/hi";
+import React, {ReactNode} from "react";
+import {Box, Center, Flex, Heading, Text, Tooltip} from "@chakra-ui/react";
+import {HiInformationCircle} from "react-icons/hi";
 import Scorecard from "../ScoreCard";
 
 type Props = {
@@ -32,36 +32,36 @@ const CardTrendDaily = (props: Props) => {
     return (
         <>
             <Box w={props.width} h='{props.height}' margin="1" padding="0" shadow="lg"
-                bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
+                 bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
                 <Flex width="100%" p="3"
-                    bg="blue.800"
-                    shadow="lg"  >
+                      bg="blue.800"
+                      shadow="lg">
                     <Flex w="95%">
                         <Heading as="h2" textAlign="center" fontSize="0.8em">
                             <Flex>
                                 <Text color="gray.50">{props.headerlabel}</Text>
-{/*                                 <Text pl="2" color="green.500">{props.headervalue}</Text>
+                                {/*                                 <Text pl="2" color="green.500">{props.headervalue}</Text>
  */}                            </Flex>
                         </Heading>
                     </Flex>
                     <Flex direction="row-reverse">
                         <Tooltip hasArrow label={props.tooltip} placement="bottom" bg="gray.100" color="gray.800">
                             <Box>
-                                <Box as={HiInformationCircle} size="1em" color="gray.100" />
+                                <Box as={HiInformationCircle} size="1em" color="gray.100"/>
                             </Box>
                         </Tooltip>
                     </Flex>
 
                 </Flex>
                 <Flex w="100%" mt="2" bg="blue.100" shadow="md">
-                        <Flex w="100%" bg="blue.100">
+                    <Flex w="100%" bg="blue.100">
 
-                            <Center fontSize="10px" color="blue.800">
-                                {props.summary1}
-                            </Center>
+                        <Center fontSize="10px" color="blue.800">
+                            {props.summary1}
+                        </Center>
 
-                        </Flex>
                     </Flex>
+                </Flex>
                 {/* <Flex width="100%" p="3"
                     bg="blue.100"
                     shadow="lg" >

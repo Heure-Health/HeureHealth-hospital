@@ -1,5 +1,6 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from 'recharts';
+
 type Props = {
     width: number;
     data: Object[];
@@ -24,15 +25,15 @@ const wrapperStyle = {
     marginBottom: '20px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    width:'95%'
+    width: '95%'
 }
 //export default function RLineChart() {
-    const RLineChart = (props: Props) => {
+const RLineChart = (props: Props) => {
     // static demoUrl = 'https://codesandbox.io/s/simple-line-chart-kec3v';
-     const { width, data } = props;
-     
+    const {width, data} = props;
+
     return (
-       
+
         <ResponsiveContainer width={'95%'} minHeight={240}>
             <LineChart
                 width={width}
@@ -45,14 +46,14 @@ const wrapperStyle = {
                     bottom: 5,
                 }}
             >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis type="number" domain={[0, 7]} />
-                <Tooltip />
+                <CartesianGrid strokeDasharray="3 3"/>
+                <XAxis dataKey="name"/>
+                <YAxis type="number" domain={[0, 7]}/>
+                <Tooltip/>
                 <Legend verticalAlign="bottom" height={36}/>
-                <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{r: 8}}/>
             </LineChart>
-         </ResponsiveContainer> 
+        </ResponsiveContainer>
     );
 
 }

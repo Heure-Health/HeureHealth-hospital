@@ -1,19 +1,19 @@
-import React, { useMemo } from "react";
-import { Bar } from "@visx/shape";
-import { Group } from "@visx/group";
-import { AxisLeft, AxisBottom } from "@visx/axis";
-import { scaleBand, scaleLinear } from "@visx/scale";
-import { GridRows, GridColumns } from "@visx/grid";
-import { useTooltip, TooltipWithBounds } from "@visx/tooltip";
-import { localPoint } from "@visx/event";
+import React, {useMemo} from "react";
+import {Bar} from "@visx/shape";
+import {Group} from "@visx/group";
+import {AxisBottom, AxisLeft} from "@visx/axis";
+import {scaleBand, scaleLinear} from "@visx/scale";
+import {GridColumns, GridRows} from "@visx/grid";
+import {TooltipWithBounds, useTooltip} from "@visx/tooltip";
+import {localPoint} from "@visx/event";
 import useResizeObserver from "use-resize-observer";
 
 
 const data = [
-    { country: "United States", value: 12394 },
-    { country: "Russia", value: 6148 },
-    { country: "Germany", value: 1653 },
-    { country: "United Kingdom", value: 2162 }
+    {country: "United States", value: 12394},
+    {country: "Russia", value: 6148},
+    {country: "Germany", value: 1653},
+    {country: "United Kingdom", value: 2162}
 ];
 // const xSelector = d => d.country;
 // const ySelector = d => d.value;
@@ -21,7 +21,7 @@ const data = [
 const width = 500;
 const height = 300;
 //const verticalMargin = 120;
-const margin = { top: 40, bottom: 50, left: 40, right: 40 };
+const margin = {top: 40, bottom: 50, left: 40, right: 40};
 const xMax = width - margin.left - margin.right;
 const yMax = height - margin.top - margin.bottom;
 
@@ -46,7 +46,7 @@ export default function BarChart() {
         hideTooltip,
     } = useTooltip();
 
-    const { ref, width = 500, height = 300 } = useResizeObserver();
+    const {ref, width = 500, height = 300} = useResizeObserver();
     //let tooltipTimeout;
     const xScale = useMemo(
         () =>
@@ -77,7 +77,7 @@ export default function BarChart() {
             tooltipData: datum
         });
     };
- 
+
     // const { containerRef, TooltipInPortal } = useTooltipInPortal({
     //     // use TooltipWithBounds
     //     detectBounds: true,
@@ -103,17 +103,17 @@ export default function BarChart() {
     //         tooltipTop: yScale(ySelector(d)),
     //     });
     // };
-   // return (
+    // return (
     // <ParentSize>
     //     {({ width, height }) => {
     //         const innerWidth = width - margin;
     //         const innerHeight = height - margin;
     //         const barHeight = Math.max(10, innerHeight / data.length);
 
-    return <div style={{ width: "100%", height: "100%", position: 'relative' }} ref={ref}>
+    return <div style={{width: "100%", height: "100%", position: 'relative'}} ref={ref}>
         <svg width={width} height={height}>
             {/* <GradientTealBlue id="teal" />   */}
-            <Group top={margin.top} left={margin.left} >
+            <Group top={margin.top} left={margin.left}>
                 <rect width={width} height={height} fill="url(#teal)" rx={15}
                 />
                 <AxisLeft
@@ -137,7 +137,7 @@ export default function BarChart() {
                     })}
                 />
                 <GridRows
-                    lineStyle={{ pointerEvents: "none" }}
+                    lineStyle={{pointerEvents: "none"}}
                     scale={yScale}
                     width={xMax}
                     strokeDasharray="2,2"
@@ -146,7 +146,7 @@ export default function BarChart() {
                 />
 
                 <GridColumns
-                    lineStyle={{ pointerEvents: "none" }}
+                    lineStyle={{pointerEvents: "none"}}
                     scale={xScale}
                     height={yMax}
                     strokeDasharray="2,2"
@@ -161,26 +161,26 @@ export default function BarChart() {
                     const barX = xScale(xv);
                     const barY = yMax - barHeight;
                     return <Bar
-                            key={`bar-${xv}`}
-                            x={barX}
-                            y={barY}
-                            width={barWidth}
-                            height={barHeight}
-                            fill="#074b667d"
-                            onMouseOver={(e) => handleMouseOver(e, d.value)}
-                            onMouseOut={ hideTooltip}
-                        />;
+                        key={`bar-${xv}`}
+                        x={barX}
+                        y={barY}
+                        width={barWidth}
+                        height={barHeight}
+                        fill="#074b667d"
+                        onMouseOver={(e) => handleMouseOver(e, d.value)}
+                        onMouseOut={hideTooltip}
+                    />;
                 })}
             </Group>
         </svg>
         {tooltipOpen && <TooltipWithBounds
-                // set this to random so it correctly updates with parent bounds
-                key={Math.random()}
-                top={tooltipTop}
-                left={tooltipLeft}
-            >
-                Data value <strong>{tooltipData}</strong>
-            </TooltipWithBounds>}
+            // set this to random so it correctly updates with parent bounds
+            key={Math.random()}
+            top={tooltipTop}
+            left={tooltipLeft}
+        >
+            Data value <strong>{tooltipData}</strong>
+        </TooltipWithBounds>}
     </div>;
     //  }}
     // </ParentSize>

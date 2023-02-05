@@ -1,15 +1,10 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
-import { useTheme } from "@chakra-ui/react";
+import PositionMain from "./HomeMain"
 
-const Home = () => {
-  const theme = useTheme();
-  return (
-    <>
-      <h2>Home</h2>
-      <Box>This is a box</Box>
-    </>
-  );
-};
+const HomeMain = () => {
+    return (
+        <PositionMain/>
+    )
+}
+export default HomeMain;
 
-export default Home;

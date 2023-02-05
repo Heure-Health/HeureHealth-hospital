@@ -6,4 +6,4 @@ import Main from "./Main";
 import Footer from "./Footer";
 import SubBar from "./SubBar";
 
-export { Layout, Header, Main, Footer, AppBar, SideBar, SubBar};
+export {Layout, Header, Main, Footer, AppBar, SideBar, SubBar};
