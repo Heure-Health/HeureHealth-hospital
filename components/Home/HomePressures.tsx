@@ -7,7 +7,7 @@ const HomePressures = (params) => {
     return (
         <>
             <Flex direction="column"
-                  bgImage={"linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%)"}
+                  bgImage={"linear-gradient(to top, #7028e4 0%, #e5b2ca 100%)"}
                   color="white" shadow="md" borderRadius='10px'>
                 <Center display='flex' fontSize={{base: '24px', md: '26px', lg: '28px'}} mt='1'> Market
                     Pressures</Center>

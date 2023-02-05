@@ -6,12 +6,10 @@ type Props = {
 };
 const Main = (props: Props) => {
     return (
-        <div className="max-w-screen-2xl px-4 mx-auto flex flex-wrap items-center justify-center">
-            <Flex
-                w="100%" minHeight={450} bg='#fafbfe'>
-                {props.children}
-            </Flex>
-        </div>
+        <Flex className="max-w-screen-2xl px-4 mx-auto flex flex-wrap items-center justify-center"
+            w="100%" width={"100%"}>
+            {props.children}
+        </Flex>
     );
 };
 export default Main;

@@ -6,7 +6,7 @@ import React from "react";
 const HomePosition = (params) => {
     return (
         <>
-            <Flex direction="column" bgImage={"linear-gradient(to right, #ff758c 0%, #ff7eb3 100%)"} color="white"
+            <Flex direction="column" bgImage={"linear-gradient(-60deg, #ff5858 0%, #f09819 100%)"} color="white"
                   shadow="md" borderRadius='10px'>
                 <Center display='flex' fontSize={{base: '24px', md: '26px', lg: '28px'}} mt='1'> Market
                     Performance</Center>

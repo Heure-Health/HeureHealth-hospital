@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Grid, GridItem, Wrap, WrapItem} from "@chakra-ui/react";
+import {Box, Center, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import HomePosition from "./HomePosition";
 import HomePerformance from "./HomePerformance";
 import HomePressures from "./HomePressures";
@@ -9,10 +9,17 @@ import {Footer} from "@/components/Layout";
 const HomeMain = () => {
     return (
         <>
-            <Grid
-                templateRows='repeat(3, 1fr)'
-                templateColumns='repeat(1, 1fr)'
-                gap={2} minWidth={"25%"} minHeight={"25%"}>
+            <Grid  textAlign={"right"} >
+                <GridItem colSpan={1} rowSpan={1}>
+                    <Box bg='white'>
+                        <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
+                                                               color={"black"} fontWeight={"bold"}>  Hello, Peter! </Text></Center>
+                    </Box>
+                    <Box bg='white'>
+                        <Center display='flex' my='1.2'> <Text fontSize={{base: '12px', md: '14px', lg: '16px'}}
+                                                               color={"black"}>  What would you like to do today? </Text></Center>
+                    </Box>
+                </GridItem>
                 <GridItem colSpan={1} rowSpan={1}>
                     <Wrap>
                         <WrapItem width={"40%"} minWidth={"275px"}>
