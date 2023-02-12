@@ -1,5 +1,5 @@
-import {Layout} from "../../Layouts";
-import RHolder from "../../Components/Rechart/Rholder"
+import {Layout} from "../../layouts";
+import RHolder from "../../components/rechart/Rholder"
 
 const Index = () => {
     return (

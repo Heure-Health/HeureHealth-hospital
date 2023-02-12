@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout} from "../../Layouts";
+import {Layout} from "../../layouts";
 import PerformanceMain from "./PerformanceMain";
 
 const Performance = () => {

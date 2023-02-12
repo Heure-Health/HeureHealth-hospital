@@ -1,6 +1,6 @@
 import React from "react";
 import {Box, Card, CardBody, Center, Grid, GridItem, Text} from "@chakra-ui/react";
-import {Footer} from "../../../Layouts";
+import {Footer} from "../../../layouts";
 const PositionCost = () => {
     return (
         <>

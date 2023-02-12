@@ -22,7 +22,7 @@ const HomePressures = (params) => {
                 <Box display='flex' mt='8' textAlign='center'>
                     <Text fontSize='11px'></Text>
                 </Box>
-                <Link as="/" href="/Position">
+                <Link as="/" href="/position">
                     <Button rightIcon={<ArrowRightIcon/>} variant='ghost'/>
                 </Link>
             </Flex>

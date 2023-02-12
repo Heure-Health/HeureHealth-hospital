@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout} from "../../Layouts";
+import {Layout} from "../../layouts";
 import PositionMain from "./PositionMain";
 
 const Position = () => {

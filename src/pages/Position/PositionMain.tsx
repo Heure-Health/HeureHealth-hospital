@@ -1,18 +1,18 @@
 import React from "react";
 import {Box, Center, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import dynamic from "next/dynamic";
-import Card from "../../Components/Container/CardCategoryLg";
-import RLineChart from "../../Components/Rechart/RLineChart";
-import ComposedChartWgt from "../../Components/Rechart/ComposedChart";
-import LinearChartMultiMetric from "../../Components/Rechart/LinearChartMultiMetric";
-import LinearChartOneMetric from "../../Components/Rechart/LinearChartOneMetric";
+import Card from "../../components/container/CardCategoryLg";
+import RLineChart from "../../components/rechart/RLineChart";
+import ComposedChartWgt from "../../components/rechart/ComposedChart";
+import LinearChartMultiMetric from "../../components/rechart/LinearChartMultiMetric";
+import LinearChartOneMetric from "../../components/rechart/LinearChartOneMetric";
 import SCPositioncPct from "./SCPositioncPct";
 import SCSamePosPct from "./SCSamePosPct";
 import SCMvOutNbr from "./SCMvOutNbr";
-import CardTrendDaily from "../../Components/Container/TrendCard/CardTrendDaily";
-import CardTrendAnnual from "../../Components/Container/TrendCard/CardTrendAnnual";
-import CardTrendQtly from "../../Components/Container/TrendCard/CardTrendQtly";
-import {Footer} from "../../Layouts";
+import CardTrendDaily from "../../components/container/trendcard/CardTrendDaily";
+import CardTrendAnnual from "../../components/container/trendcard/CardTrendAnnual";
+import CardTrendQtly from "../../components/container/trendcard/CardTrendQtly";
+import {Footer} from "../../layouts";
 
 const cdata = {
     "position": [
@@ -64,7 +64,7 @@ const cdata = {
 };
 
 const GuageC = dynamic(
-    () => import('../../Components/Rechart/RGuage'),
+    () => import('../../components/rechart/RGuage'),
     {ssr: false}
 )
 

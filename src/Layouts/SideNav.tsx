@@ -3,7 +3,7 @@ import Link from "next/link";
 import {Box, Flex, Text} from "@chakra-ui/react";
 import {BiHome} from "react-icons/bi";
 import {useRouter} from 'next/router';
-import ActiveLink from "../Components/Common/ActiveLink";
+import ActiveLink from "../components/common/ActiveLink";
 
 const SideNav = () => {
     const router = useRouter();
@@ -27,31 +27,31 @@ const SideNav = () => {
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <ActiveLink href={"/Position"} title={"Overall"} prefetch={"/"} />
+                    <ActiveLink href={"/position"} title={"Overall"} prefetch={"/"} />
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <ActiveLink href={"/Position/Growth"} title={"Growth"} prefetch={"/"} />
+                    <ActiveLink href={"/position/growth"} title={"Growth"} prefetch={"/"} />
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <ActiveLink href={"/Position/Quality"} title={"Quality"} prefetch={"/"} />
+                    <ActiveLink href={"/position/quality"} title={"Quality"} prefetch={"/"} />
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <ActiveLink href={"/Position/Cost"} title={"Cost"} prefetch={"/"} />
+                    <ActiveLink href={"/position/cost"} title={"Cost"} prefetch={"/"} />
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <ActiveLink href={"/Position/Comparisons"} title={"Comparisons"} prefetch={"/"} />
+                    <ActiveLink href={"/position/comparisons"} title={"Comparisons"} prefetch={"/"} />
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={4}>

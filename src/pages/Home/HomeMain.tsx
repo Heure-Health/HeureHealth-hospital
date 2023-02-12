@@ -1,10 +1,10 @@
 import React from "react";
 import {Box, Center, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import HomePosition from "./HomePosition";
-import HomePerformance from "./HomePerformance";
-import HomePressures from "./HomePressures";
 import HomeAdvantages from "./HomeAdvantages";
-import {Footer} from "../../Layouts";
+import HomePressures from "./HomePressures";
+import HomePerformance from "./HomePerformance";
+import {Footer} from "../../layouts";
 
 const HomeMain = () => {
     return (

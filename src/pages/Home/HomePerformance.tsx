@@ -2,7 +2,6 @@ import {Box, Button, Center, Flex, Heading, Text} from '@chakra-ui/react';
 import {ArrowForwardIcon} from "@chakra-ui/icons";
 import Link from "next/link";
 import React from "react";
-import Performance from "../Performance";
 
 const HomePosition = (params) => {
     return (
@@ -22,7 +21,7 @@ const HomePosition = (params) => {
                 <Box display='flex' mt='8' textAlign='center'>
                     <Text fontSize='11px'></Text>
                 </Box>
-                <Link as="/" href="/Performance">
+                <Link as="/" href="/performance">
                     <Button rightIcon={<ArrowForwardIcon/>} fontSize={"4xl"} fontWeight={"bold"} variant='ghost'/>
                 </Link>
             </Flex>

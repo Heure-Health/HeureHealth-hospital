@@ -3,7 +3,6 @@ import {LinePath} from "@visx/shape";
 import {curveLinear} from "@visx/curve";
 import {scaleLinear, scaleTime} from "@visx/scale";
 import {extent, max, min} from "d3-array";
-//import { observer } from "mobx-react-lite";
 import styled from '@emotion/styled';
 
 // accessors

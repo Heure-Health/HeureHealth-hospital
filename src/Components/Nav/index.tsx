@@ -1,5 +1,5 @@
-import SideNav from "../../Layouts/SideNav";
-import TopNav from "../../Layouts/TopNav";
-import DashFilters from "../../Layouts/DashFilters"
+import SideNav from "../../layouts/SideNav";
+import TopNav from "../../layouts/TopNav";
+import DashFilters from "../../layouts/DashFilters"
 
 export {TopNav, SideNav, DashFilters};
