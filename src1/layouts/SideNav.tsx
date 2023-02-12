@@ -57,7 +57,7 @@ const SideNav = () => {
             <Flex alignContent="center" mx={4}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/advantages" href="/src/pages/Advantages"
+                    <Link as="/advantages" href="/src1/pages/Advantages"
                           className={router.pathname == "/advantages" ? "text-indigo-600 border-b-2 border-solid border-indigo-600" : ""}>
                         Market Advantages
                     </Link>
@@ -74,7 +74,7 @@ const SideNav = () => {
             <Flex alignContent="center" mx={4}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/pressures" href="/src/pages/Pressures"
+                    <Link as="/pressures" href="/src1/pages/Pressures"
                           className={router.pathname == "/pressures" ? "text-indigo-600 border-b-2 border-solid border-indigo-600" : ""}>
                         Market Pressures
                     </Link>
@@ -83,7 +83,7 @@ const SideNav = () => {
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/chart" href="/src/pages/Chart">
+                    <Link as="/chart" href="/src1/pages/Chart">
                         Pressures Details
                     </Link>
                 </Text>
@@ -100,7 +100,7 @@ const SideNav = () => {
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/chart" href="/src/pages/Chart">
+                    <Link as="/chart" href="/src1/pages/Chart">
                         Performance Details
                     </Link>
                 </Text>
