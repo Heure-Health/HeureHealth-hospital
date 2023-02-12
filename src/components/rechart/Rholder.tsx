@@ -4,7 +4,7 @@ import RBar from "./RBar";
 import RLine from "./RLineChart";
 import RPieChart from "./RPieChart";
 import RRadial from "./RRadial";
-import ChartCard from "../Container/ChartCard";
+import ChartCard from "../container/ChartCard";
 
 export default function RHolder() {
     return (

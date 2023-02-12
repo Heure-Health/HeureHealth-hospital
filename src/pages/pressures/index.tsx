@@ -1,5 +1,5 @@
-import {Layout} from "../../Layouts";
-import Position from "../Position/PositionMain"
+import {Layout} from "../../layouts";
+import Position from "../position/PositionMain"
 
 const Index = () => {
     return (
