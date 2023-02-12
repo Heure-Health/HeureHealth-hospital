@@ -2,11 +2,9 @@ import * as React from "react";
 import {AppProps} from "next/app";
 import dynamic from "next/dynamic";
 import {ChakraProvider, ColorModeScript, extendTheme} from "@chakra-ui/react";
-//import "./styles/main.css";
-//import theme from "../theme";
-import "../Assets/Styles/allstyles.scss";
+import "../assets/styles/allstyles.scss";
 
-const TopProgressBar = dynamic(() => import("src/Layouts/TopProgress"), {
+const TopProgressBar = dynamic(() => import("src/layouts/TopProgress"), {
     ssr: false,
 });
 

@@ -1,6 +1,6 @@
 import React from "react";
-import {Layout} from "../Layouts";
-import Home from "./Home";
+import {Layout} from "../layouts";
+import Home from "./home";
 
 const Index = () => {
     return (
