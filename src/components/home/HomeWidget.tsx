@@ -19,10 +19,10 @@ import React from "react";
 const HomeWidget = (params) => {
     return (
         <>
-            <Box width="100%" p={"5"}>
+            <Box>
                 <Flex direction="column"
                       bgImage={"linear-gradient(45deg, #374F60 -50%, #587183 50%)"}
-                      color="white" shadow="md" borderRadius='10px' height={"14.0em"} width={"18.0em"}>
+                      color="white" shadow="md" borderRadius='10px' height={"14.0em"} width={"18.0em"} minWidth={"100%"}>
                     <Grid textAlign={"right"} templateColumns='repeat(1, 1fr)' height={"14.0em"}>
                         <GridItem colSpan={1} rowSpan={1}>
                             <Wrap>
