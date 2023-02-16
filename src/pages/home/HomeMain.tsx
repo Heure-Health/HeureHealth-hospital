@@ -10,11 +10,11 @@ const HomeMain = () => {
                 <Flex flexDirection={"column"}>
                     <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
                                                            color={"black"} fontWeight={"bold"}> Hello,
-                        Peter! </Text></Center>
+                        Travis! </Text></Center>
                 </Flex>
                 <Flex flexDirection={"column"}>
                     <Center display='flex' my='1.2'> <Text fontSize={{base: '12px', md: '14px', lg: '16px'}}
-                                                           color={"black"}> What would you like to do today? </Text></Center>
+                                                           color={"black"}> Where would you like to start today? </Text></Center>
                 </Flex>
                 <Flex direction="column" color="white">
                     <Center>
