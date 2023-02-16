@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/layout": "^2.1.15",
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -35,6 +36,7 @@
     "framer-motion": "^9.0.1",
     "lodash": "^4.17.21",
     "next": "^13.1.6",
+    "npm": "^9.4.2",
     "nprogress": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
