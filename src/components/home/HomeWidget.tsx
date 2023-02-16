@@ -49,7 +49,7 @@ const HomeWidget = (params) => {
                                     <Text fontSize={"2xl"} color={"white"} paddingLeft={"3"}>{params.marketTypeText}</Text>
                                 </WrapItem>
                                 <WrapItem>
-                                    <Link as="/" href="/position">
+                                    <Link as="/" href={params.navigationUrl}>
                                         <IconButton aria-label='Navigate to Market Position' icon={<ArrowForwardIcon/>} fontSize={"4xl"} fontWeight={"bold"} variant='ghost'/>
                                     </Link>
                                 </WrapItem>

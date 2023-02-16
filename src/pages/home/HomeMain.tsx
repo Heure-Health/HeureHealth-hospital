@@ -28,6 +28,7 @@ const HomeMain = () => {
                                 changeScoreType = "increase"
                                 changeScoreStatHelpNum = "+2%"
                                 changeScoreStatText = "since last quarter"
+                                navigationUrl = "/position"
                             />
                         </WrapItem>
                         <WrapItem width={"40%"} minWidth={"275px"} height={"15em"} paddingLeft={"32"}>
@@ -38,6 +39,7 @@ const HomeMain = () => {
                                 changeScoreType = "decrease"
                                 changeScoreStatHelpNum = "-2%"
                                 changeScoreStatText = "since last quarter"
+                                navigationUrl = "/advantage"
                             />
                         </WrapItem>
                         <WrapItem width={"40%"} minWidth={"275px"} height={"15em"} paddingLeft={"32"}>
@@ -48,6 +50,7 @@ const HomeMain = () => {
                                 changeScoreType = "increase"
                                 changeScoreStatHelpNum = "+15%"
                                 changeScoreStatText = "since last quarter"
+                                navigationUrl = "/pressures"
                             />
                         </WrapItem>
                         <WrapItem width={"40%"} minWidth={"275px"} height={"15em"} paddingLeft={"32"}>
@@ -58,6 +61,7 @@ const HomeMain = () => {
                                 changeScoreType = "decrease"
                                 changeScoreStatHelpNum = "-5%"
                                 changeScoreStatText = "since last quarter"
+                                navigationUrl = "/performance"
                             />
                         </WrapItem>
                     </Wrap>
