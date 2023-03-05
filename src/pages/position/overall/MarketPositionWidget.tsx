@@ -1,20 +1,17 @@
-import React, {ReactNode} from "react";
+import React from "react";
 import {
     Box,
-    Center,
     Divider,
     Flex,
     Heading,
     IconButton,
-    Spacer,
     Text,
     Tooltip,
     useColorModeValue
 } from "@chakra-ui/react";
 import {HiInformationCircle} from "react-icons/hi";
 import RGuage from "../../../components/rechart/RGuage";
-import {AddIcon, ArrowForwardIcon} from "@chakra-ui/icons";
-import {SplitLinePath} from "@visx/shape";
+import {AddIcon} from "@chakra-ui/icons";
 
 type Params = {
     width: string;
