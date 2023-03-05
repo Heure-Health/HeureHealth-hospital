@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import {
     Box,
     Divider,
@@ -10,7 +10,6 @@ import {
     useColorModeValue
 } from "@chakra-ui/react";
 import {HiInformationCircle} from "react-icons/hi";
-import RGuage from "../../../components/rechart/RGuage";
 import {AddIcon} from "@chakra-ui/icons";
 
 type Params = {
@@ -21,13 +20,11 @@ type Params = {
     subheaderlabel: string;
     subheadervalue: string;
     tooltip: string;
-    pieChartWidth: number;
     pieChartHeight: number;
-    pieChartData: Object[];
-    pieChartValue: number;
+    pieChartObject: ReactNode;
 };
 const MarketPositionWidget = (params: Params) => {
-        const {width, height, headerlabel, headervalue, tooltip, pieChartWidth,pieChartHeight, pieChartData, pieChartValue} = params;
+        const {width, height, headerlabel, headervalue, tooltip, pieChartHeight, pieChartObject} = params;
         useColorModeValue("grey.100", "gray.800");
     return (
         <>
@@ -50,7 +47,7 @@ const MarketPositionWidget = (params: Params) => {
                     </Flex>
                 </Flex>
                 <Flex w="100%" height={pieChartHeight} bgColor={"white"}>
-                    <RGuage width={pieChartWidth} chartValue={pieChartValue} colorData={pieChartData}/>
+                    {pieChartObject}
                 </Flex>
                 <Flex textAlign='center' direction={"column"}>
                     <Text fontSize={"12px"} verticalAlign={"text-top"} color={"#000000"}>Your Heure Score today</Text>
@@ -67,5 +64,4 @@ const MarketPositionWidget = (params: Params) => {
         </>
     );
 };
-
 export default MarketPositionWidget;

@@ -1,6 +1,5 @@
 import React from "react";
 import {Box, Center, Flex, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
-import dynamic from "next/dynamic";
 import RLineChart from "../../components/rechart/RLineChart";
 import ComposedChartWgt from "../../components/rechart/ComposedChart";
 import LinearChartMultiMetric from "../../components/rechart/LinearChartMultiMetric";
@@ -72,7 +71,7 @@ const wrapItemWidth = [
     "37%",
 ];
 
-const renderChart = function (name, chartwidth, gdata) {
+const renderChart = function (name, gdata) {
     switch (name) {
         case 'line1':
             return (
@@ -119,12 +118,11 @@ const PositionMain = (params) => {
                                                               headervalue={data2.headervalue}
                                                               subheaderlabel={data2.subheaderlabel} subheadervalue={data2.subheadervalue}
                                                               tooltip={data2.tooltip}
-                                                              pieChartWidth={data2.chartwidth}
                                                               pieChartHeight={250}
-                                                              pieChartData={data2.gdata.data}
-                                                              pieChartValue={data2.gdata.chartValue}
                                                               width={"32em"}
-                                                              height={"23em"}/>
+                                                              height={"23em"}
+                                                              pieChartObject={<RGuage width={data2.chartwidth} chartValue={data2.gdata.chartValue} colorData={data2.gdata.data}/>}
+                                        />
                                     ))}
                                 </Center>
                             </WrapItem>
@@ -230,7 +228,7 @@ const PositionMain = (params) => {
                                                          trendScore3={data2.trendScore3}
                                                          summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
                                                          summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                         chart={renderChart("linearchartmultimetric", data2.chartwidth, data2.gdata)}
+                                                         chart={renderChart("linearchartmultimetric", data2.gdata)}
                                                          width={""} height={""}/>
                                     ))}
                                 </Box>
@@ -255,7 +253,7 @@ const PositionMain = (params) => {
                                                        trendScore3={data2.trendScore3}
                                                        summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
                                                        summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                       chart={renderChart("linearchartonemetric", data2.chartwidth, data2.gdata)}
+                                                       chart={renderChart("linearchartonemetric", data2.gdata)}
                                                        width={""} height={""}/>
                                     ))}
                                 </Box>
@@ -276,7 +274,7 @@ const PositionMain = (params) => {
                                                         trendScore3={data2.trendScore3}
                                                         summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
                                                         summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                        chart={renderChart("composedchart", data2.chartwidth, data2.gdata)}
+                                                        chart={renderChart("composedchart", data2.gdata)}
                                                         width={""} height={""}/>
                                     ))}
                                 </Box>
