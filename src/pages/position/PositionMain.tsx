@@ -1,18 +1,18 @@
 import React from "react";
-import {Box, Center, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
+import {Box, Center, Flex, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import dynamic from "next/dynamic";
-import Card from "../../components/container/CardCategoryLg";
 import RLineChart from "../../components/rechart/RLineChart";
 import ComposedChartWgt from "../../components/rechart/ComposedChart";
 import LinearChartMultiMetric from "../../components/rechart/LinearChartMultiMetric";
 import LinearChartOneMetric from "../../components/rechart/LinearChartOneMetric";
-import SCPositioncPct from "./SCPositioncPct";
-import SCSamePosPct from "./SCSamePosPct";
-import SCMvOutNbr from "./SCMvOutNbr";
+import DonutWidget from "../../components/common/DonutWidget";
+import SnapshotWidget from "./overall/SnapshotWidget";
 import CardTrendDaily from "../../components/container/trendcard/CardTrendDaily";
 import CardTrendAnnual from "../../components/container/trendcard/CardTrendAnnual";
 import CardTrendQtly from "../../components/container/trendcard/CardTrendQtly";
 import {Footer} from "../../layouts";
+import MarketPositionWidget from "./overall/MarketPositionWidget";
+import RGuage from "../../components/rechart/RGuage";
 
 const cdata = {
     "position": [
@@ -37,9 +37,9 @@ const cdata = {
             "summaryvalue1": "0",
             "summary2": "Positioned 3rd from top and below 12% of other Easter Region competitors, presents Banner University with room to move up the Market position dial. Your closest Easter Region competitor is Colorado and is 0.007 points below leaving your current Easter Region position fairly vulnerable",
             "summaryvalue2": "1.5%",
-            "chartwidth": 280,
+            "chartwidth": 400,
             "gdata": {
-                width: 340,
+                width: 325,
                 chartValue: 250,
                 data: [
                     {
@@ -63,18 +63,17 @@ const cdata = {
     ]
 };
 
-const GuageC = dynamic(
-    () => import('../../components/rechart/RGuage'),
-    {ssr: false}
-)
+
+const wrapItemWidth = [
+    "49%",
+    "95%",
+    "100%",
+    "51%",
+    "37%",
+];
 
 const renderChart = function (name, chartwidth, gdata) {
     switch (name) {
-        case 'guage':
-            return (
-                <GuageC width={chartwidth} chartValue={gdata.chartValue}
-                        colorData={gdata.data}/>
-            )
         case 'line1':
             return (
                 <RLineChart width={gdata.chartwidth} data={gdata.data}/>
@@ -94,142 +93,203 @@ const renderChart = function (name, chartwidth, gdata) {
     }
 };
 
-const PositionMain = () => {
+const PositionMain = (params) => {
     return (
         <>
-            <Grid
-                h='200px'
-                templateRows='repeat(3, 1fr)'
-                templateColumns='repeat(1, 1fr)'
-                gap={2} minWidth={"25%"} minHeight={"25%"}>
-                <GridItem colSpan={1} rowSpan={1}>
-                    <Box bg='blue.600'>
-                        <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
-                                                               color={"white"} fontWeight={"bold"}> WMRMC IS CURRENTLY
-                            POSITIONED AS A EASTERN REGION MARKET LEADER </Text></Center>
-                    </Box>
-                </GridItem>
-                <GridItem colSpan={1} rowSpan={1}>
-                    <Wrap>
-                        <WrapItem width={"32%"} minWidth={"420px"}>
-                            <Box width="100%" p={"5"}>
-                                <SCPositioncPct
-                                    title="Today"
-                                    value={"80"}
-                                    region={"Eastern region"}
-                                    circleSize={"3.2em"}
-                                    circleThickness={"12px"}
-                                />
-                            </Box>
-                        </WrapItem>
-                        <WrapItem width={"32%"} minWidth={"420px"}>
-                            <Box width="100%" p={"5"}>
-                                <SCSamePosPct value={"42"} region={"Eastern region"}/>
-                            </Box>
-                        </WrapItem>
-                        <WrapItem width={"32%"} minWidth={"420px"}>
-                            <Box width="100%" p={"5"}>
-                                <SCMvOutNbr value={"7"} region={"Eastern region"}/>
-                            </Box>
-                        </WrapItem>
-                    </Wrap>
-                </GridItem>
-                <GridItem colSpan={1} rowSpan={1}>
-                    <Wrap spacing='20px'>
-                        <WrapItem width={"48%"} minWidth={"410px"}>
-                            <Box width="100%">
-                                {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                    <Card key={data2.card}
-                                          headerlabel={"Banner University Market Position"}
-                                          headervalue={data2.headervalue}
-                                          subheaderlabel={data2.subheaderlabel} subheadervalue={data2.subheadervalue}
-                                          tooltip={data2.tooltip}
-                                          trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                          trendScore1={data2.trendScore1}
-                                          trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                          trendScore2={data2.trendScore2}
-                                          trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                          trendScore3={data2.trendScore3}
-                                          summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                          summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                          chart={renderChart(data2.cardtype, data2.chartwidth, data2.gdata)} width={""}
-                                          height={""}/>
-                                ))}
-                            </Box>
-                        </WrapItem>
-                        <WrapItem width={"48%"} minWidth={"410px"}>
-                            <Box width="100%">
-                                {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                    <CardTrendAnnual key={data2.card}
-                                                     headerlabel={"Banner University Market Position : ANNUAL TRENDLINE"}
-                                                     headervalue={data2.headervalue}
-                                                     subheaderlabel={data2.subheaderlabel}
-                                                     subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                                     trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                                     trendScore1={data2.trendScore1}
-                                                     trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                                     trendScore2={data2.trendScore2}
-                                                     trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                                     trendScore3={data2.trendScore3}
-                                                     summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                                     summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                     chart={renderChart("linearchartmultimetric", data2.chartwidth, data2.gdata)}
-                                                     width={""} height={""}/>
-                                ))}
-                            </Box>
-                        </WrapItem>
-                    </Wrap>
-                </GridItem>
-                <GridItem colSpan={1} rowSpan={1}>
-                    <Wrap spacing='20px'>
-                        <WrapItem width={"48%"} minWidth={"410px"}>
-                            <Box width="100%">
-                                {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                    <CardTrendQtly key={data2.card}
-                                                   headerlabel={"Banner University Market Position : QUARTERLY TRENDLINE"}
-                                                   headervalue={data2.headervalue}
-                                                   subheaderlabel={data2.subheaderlabel}
-                                                   subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                                   trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                                   trendScore1={data2.trendScore1}
-                                                   trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                                   trendScore2={data2.trendScore2}
-                                                   trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                                   trendScore3={data2.trendScore3}
-                                                   summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                                   summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                   chart={renderChart("linearchartonemetric", data2.chartwidth, data2.gdata)}
-                                                   width={""} height={""}/>
-                                ))}
-                            </Box>
-                        </WrapItem>
-                        <WrapItem width={"48%"} minWidth={"410px"}>
-                            <Box width="100%">
-                                {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                    <CardTrendDaily key={data2.card}
-                                                    headerlabel={"Banner University Market Position : DAILY TRENDLINE"}
-                                                    headervalue={data2.headervalue}
-                                                    subheaderlabel={data2.subheaderlabel}
-                                                    subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                                    trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                                    trendScore1={data2.trendScore1}
-                                                    trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                                    trendScore2={data2.trendScore2}
-                                                    trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                                    trendScore3={data2.trendScore3}
-                                                    summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                                    summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                    chart={renderChart("composedchart", data2.chartwidth, data2.gdata)}
-                                                    width={""} height={""}/>
-                                ))}
-                            </Box>
-                        </WrapItem>
-                    </Wrap>
-                </GridItem>
-                <GridItem colSpan={1} rowSpan={1}>
-                    <Footer/>
-                </GridItem>
-            </Grid>
+            <Box width={"100%"} bgColor={params.pageBgColor} alignItems={"center"}>
+                <Grid
+                    h='200px'
+                    templateRows='repeat(3, 1fr)'
+                    templateColumns='repeat(1, 1fr)'
+                    gap={2} minWidth={"25%"} minHeight={"25%"}>
+                    <GridItem colSpan={1} rowSpan={1}>
+                        <Box bg='blue.600'>
+                            <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
+                                                                   color={"white"} fontWeight={"bold"}> WMRMC IS CURRENTLY
+                                POSITIONED AS A EASTERN REGION MARKET LEADER </Text></Center>
+                        </Box>
+                    </GridItem>
+                    <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={2}>
+                        <Wrap align={"center"} width={"100%"}>
+                            <WrapItem width={wrapItemWidth} minWidth={wrapItemWidth} alignContent={"center"}>
+                                <Center>
+                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                        <MarketPositionWidget
+                                                              headerlabel={"West Region Market Position:"}
+                                                              headervalue={data2.headervalue}
+                                                              subheaderlabel={data2.subheaderlabel} subheadervalue={data2.subheadervalue}
+                                                              tooltip={data2.tooltip}
+                                                              pieChartWidth={data2.chartwidth}
+                                                              pieChartHeight={250}
+                                                              pieChartData={data2.gdata.data}
+                                                              pieChartValue={data2.gdata.chartValue}
+                                                              width={"32em"}
+                                                              height={"23em"}/>
+                                    ))}
+                                </Center>
+                            </WrapItem>
+                            <WrapItem width={wrapItemWidth} minWidth={wrapItemWidth} height={"22.7em"} paddingLeft={1}>
+                                <Flex direction={"column"}>
+                                    <Box width="100%" paddingRight={3}>
+                                        <DonutWidget
+                                            value={"80"}
+                                            circleSize={"3.0em"}
+                                            circleThickness={"0.2em"}
+                                            circleTextFontSize ={{ base: '24px', md: '30px', lg: '36px'}}
+                                            circleTextFontColor={"white"}
+                                            widgetHeight={"22.7em"}
+                                            widgetWidth={"10em"}
+                                            widgetBgColor={"#AC7C70"}
+                                            widgetCircleBgColor={"#F1D0BF"}
+                                            widgetCircleTextFontColor={"#FFFFFF"}
+                                            widgetText = "West Region competitors are ahead of your current Market Position giving you potential to capitalize your markets."
+                                            widgetTextFontSize={{base: '10px', md: '12px', lg: '13px'}}
+                                        />
+                                    </Box>
+                                </Flex>
+                                <Flex direction={"column"}>
+                                    <Flex direction={"row"}>
+                                        <Box width="100%">
+                                            <SnapshotWidget
+                                                value={"1.2%"}
+                                                valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
+                                                valueFontColor={"white"}
+                                                widgetText = "of Regional competitors that entered your current tier within the last rolling quarter."
+                                                widgetHeight={"10.8em"}
+                                                widgetWidth={"10.0em"}
+                                                widgetBgColor={"#EB8871"}
+                                                widgetTextFontColor={"white"}
+                                                widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
+                                                widgetToolTip={"There are 9 Position tiers in all. Three main tiers of Leader, Challenger, Aspirant are each further separated into 3."}
+                                            />
+                                        </Box>
+                                        <Box width="100%" paddingLeft={"3.5"} paddingBottom={"3.5"}>
+                                            <SnapshotWidget
+                                                value={"0.256%"}
+                                                valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
+                                                valueFontColor={"white"}
+                                                widgetText = "of your Regional competitors that left your current tier to move up tier(s)."
+                                                widgetHeight={"10.8em"}
+                                                widgetWidth={"10.0em"}
+                                                widgetBgColor={"#EB8871"}
+                                                widgetTextFontColor={"white"}
+                                                widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
+                                                widgetToolTip={"There are 9 Position tiers in all. Three main tiers of Leader, Challenger, Aspirant are each further separated into 3."}
+                                            />
+                                        </Box>
+                                    </Flex>
+                                    <Flex direction={"row"}>
+                                        <Box width="100%">
+                                            <SnapshotWidget
+                                                value={"Pacific"}
+                                                valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
+                                                valueFontColor={"#AC7C70"}
+                                                widgetText = "Division with your closet Regional competitor, based on score differential."
+                                                widgetHeight={"10.8em"}
+                                                widgetWidth={"10.0em"}
+                                                widgetBgColor={"#F1D0BF"}
+                                                widgetTextFontColor={"#AC7C70"}
+                                                widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
+                                                widgetToolTip={""}
+                                            />
+                                        </Box>
+                                        <Box width="100%" paddingLeft={"3.5"} paddingBottom={"3.5"}>
+                                            <SnapshotWidget
+                                                value={"-0.007"}
+                                                valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
+                                                valueFontColor={"#AC7C70"}
+                                                widgetText = "Score differential of your closest competitor."
+                                                widgetHeight={"10.8em"}
+                                                widgetWidth={"10.0em"}
+                                                widgetBgColor={"#F1D0BF"}
+                                                widgetTextFontColor={"#AC7C70"}
+                                                widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
+                                                widgetToolTip={""}
+                                            />
+                                        </Box>
+                                    </Flex>
+                                </Flex>
+                            </WrapItem>
+                        </Wrap>
+                    </GridItem>
+                    <GridItem colSpan={1} rowSpan={1}>
+                        <Wrap spacing='20px'>
+                            <WrapItem width={"48%"}  minWidth={"410px"}>
+                                <Box width="100%">
+                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                        <CardTrendAnnual key={data2.card}
+                                                         headerlabel={"Banner University Market Position : ANNUAL TRENDLINE"}
+                                                         headervalue={data2.headervalue}
+                                                         subheaderlabel={data2.subheaderlabel}
+                                                         subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
+                                                         trend1={data2.trend1} trendInd1={data2.trendInd1}
+                                                         trendScore1={data2.trendScore1}
+                                                         trend2={data2.trend2} trendInd2={data2.trendInd2}
+                                                         trendScore2={data2.trendScore2}
+                                                         trend3={data2.trend3} trendInd3={data2.trendInd3}
+                                                         trendScore3={data2.trendScore3}
+                                                         summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
+                                                         summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
+                                                         chart={renderChart("linearchartmultimetric", data2.chartwidth, data2.gdata)}
+                                                         width={""} height={""}/>
+                                    ))}
+                                </Box>
+                            </WrapItem>
+                        </Wrap>
+                    </GridItem>
+                    <GridItem colSpan={1} rowSpan={1}>
+                        <Wrap spacing='20px'>
+                            <WrapItem width={"48%"} minWidth={"410px"}>
+                                <Box width="100%">
+                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                        <CardTrendQtly key={data2.card}
+                                                       headerlabel={"Banner University Market Position : QUARTERLY TRENDLINE"}
+                                                       headervalue={data2.headervalue}
+                                                       subheaderlabel={data2.subheaderlabel}
+                                                       subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
+                                                       trend1={data2.trend1} trendInd1={data2.trendInd1}
+                                                       trendScore1={data2.trendScore1}
+                                                       trend2={data2.trend2} trendInd2={data2.trendInd2}
+                                                       trendScore2={data2.trendScore2}
+                                                       trend3={data2.trend3} trendInd3={data2.trendInd3}
+                                                       trendScore3={data2.trendScore3}
+                                                       summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
+                                                       summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
+                                                       chart={renderChart("linearchartonemetric", data2.chartwidth, data2.gdata)}
+                                                       width={""} height={""}/>
+                                    ))}
+                                </Box>
+                            </WrapItem>
+                            <WrapItem width={"48%"} minWidth={"410px"}>
+                                <Box width="100%">
+                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                        <CardTrendDaily key={data2.card}
+                                                        headerlabel={"Banner University Market Position : DAILY TRENDLINE"}
+                                                        headervalue={data2.headervalue}
+                                                        subheaderlabel={data2.subheaderlabel}
+                                                        subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
+                                                        trend1={data2.trend1} trendInd1={data2.trendInd1}
+                                                        trendScore1={data2.trendScore1}
+                                                        trend2={data2.trend2} trendInd2={data2.trendInd2}
+                                                        trendScore2={data2.trendScore2}
+                                                        trend3={data2.trend3} trendInd3={data2.trendInd3}
+                                                        trendScore3={data2.trendScore3}
+                                                        summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
+                                                        summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
+                                                        chart={renderChart("composedchart", data2.chartwidth, data2.gdata)}
+                                                        width={""} height={""}/>
+                                    ))}
+                                </Box>
+                            </WrapItem>
+                        </Wrap>
+                    </GridItem>
+                    <GridItem colSpan={1} rowSpan={1}>
+                        <Footer
+                            pageBgColor={params.pageBgColor}
+                        />
+                    </GridItem>
+                </Grid>
+            </Box>
         </>
     )
 }

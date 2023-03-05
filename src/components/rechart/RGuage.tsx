@@ -10,21 +10,6 @@ type Props = {
 const Gauge = (props: Props) => {
 
     const {width, colorData, chartValue} = props;
-    // const width = 400;
-    // const chartValue = 250;
-    // const colorData = [
-    //     {
-    //         name: 'Aspirant',
-    //         value: 100,
-    //         color: '#ff9800',
-    //     },
-    //     {
-    //         name: 'Challenger',
-    //         value: 100,
-    //         color: '#f8f522',
-    //     },
-    //     { name: 'Leader', value: 100, color: '#4caf50' },
-    // ];
 
     const activeSectorIndex = colorData
         .map((cur, index, arr) => {
@@ -51,13 +36,11 @@ const Gauge = (props: Props) => {
     };
 
     const pieRadius = {
-        // innerRadius: (width / 2) * 0.3, outerRadius: (width / 2) * 0.4
-        innerRadius: (width / 2) * 0.4,
-        outerRadius: (width / 2) * 0.7,
+        innerRadius: (width / 2) * 0.40,
+        outerRadius: (width / 2) * 0.65,
     };
 
     const Arrow = ({cx, cy, midAngle, outerRadius}) => {
-        //eslint-disable-line react/no-multi-comp
         const RADIAN = Math.PI / 180;
         const sin = Math.sin(-RADIAN * midAngle);
         const cos = Math.cos(-RADIAN * midAngle);
@@ -76,7 +59,6 @@ const Gauge = (props: Props) => {
             </g>
         );
     };
-
     const ActiveSectorMark = ({
                                   cx,
                                   cy,
@@ -86,7 +68,6 @@ const Gauge = (props: Props) => {
                                   endAngle,
                                   fill,
                               }) => {
-        //eslint-disable-line react/no-multi-comp
         return (
             <g>
                 <Sector
@@ -99,18 +80,6 @@ const Gauge = (props: Props) => {
                     fill={fill}
                 />
             </g>
-        );
-    };
-    let renderLabel = function (entry) {
-        return entry.name;
-    }
-    const CustomizedLabel = ({
-                                 x, y, name
-                             }) => {
-        return (
-            <text x={x + 25} y={y + 10} fontSize="0.9em" fill="black" textAnchor="end" dominantBaseline="central">
-                {name}
-            </text>
         );
     };
 
@@ -129,23 +98,26 @@ const Gauge = (props: Props) => {
             </text>
         );
     };
+
     return (
-        <ResponsiveContainer width={'99%'} minHeight={240}>
-            <PieChart width={width}>//height={width / 2 + 40}
+        <ResponsiveContainer>
+            <PieChart>
                 <Pie
+                    dataKey="value"
+                    startAngle={180}
+                    endAngle={0}
                     activeIndex={activeSectorIndex}
                     activeShape={ActiveSectorMark}
                     data={colorData}
-                    fill="#8884d8"
+                    fill="#000000"
                     {...pieRadius}
                     {...pieProps}
-                    dataKey="value"
                     labelLine={false}
-                    //label={(entry) => entry.name}
-                    label={renderCustomizedLabel}
+                    label={(entry) => entry.name}
+                    //label={renderCustomizedLabel}
                 >
-                    {colorData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={colorData[index].color}/>
+                    {colorData.map( (entry, index) => (
+                        <Cell key={`cell-${index}`} fill={ entry.color}/>
                     ))}
                 </Pie>
                 <Pie
@@ -162,5 +134,4 @@ const Gauge = (props: Props) => {
         </ResponsiveContainer>
     );
 };
-
 export default Gauge;

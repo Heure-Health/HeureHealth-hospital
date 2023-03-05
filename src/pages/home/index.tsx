@@ -3,7 +3,9 @@ import HomeMain from "./HomeMain";
 
 const Home = () => {
     return (
-        <HomeMain/>
+        <HomeMain
+            pageBgColor={"#F2F2F2"}
+        />
     )
 }
 export default Home;

@@ -2,15 +2,30 @@ import React from "react";
 import {Box, Center, Flex, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import {Footer} from "../../layouts";
 import HomeWidget from "../../components/home/HomeWidget";
+import ServerData from "../../services/data/ServerData";
 
-const HomeMain = () => {
+const {userName} = ServerData.loginDetails;
+const { positionScore,
+        positionChangeType,
+        positionChangeValue,
+        advantagesScore,
+        advantagesChangeType,
+        advantagesChangeValue,
+        pressuresScore,
+        pressuresChangeType,
+        pressuresChangeValue,
+        performancesScore,
+        performancesChangeType,
+        performancesChangeValue} = ServerData.home;
+
+const HomeMain = (params) => {
     return (
         <>
-            <Box width={"100%"} bgColor={"#F2F2F2"} alignItems={"center"}>
+            <Box width={"100%"} bgColor={params.pageBgColor} alignItems={"center"}>
                 <Flex flexDirection={"column"}>
                     <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
                                                            color={"black"} fontWeight={"bold"}> Hello,
-                        Travis! </Text></Center>
+                        {userName}! </Text></Center>
                 </Flex>
                 <Flex flexDirection={"column"}>
                     <Center display='flex' my='1.2'> <Text fontSize={{base: '12px', md: '14px', lg: '16px'}}
@@ -24,10 +39,10 @@ const HomeMain = () => {
                                     <WrapItem >
                                         <HomeWidget
                                             marketTypeText = "Market Position"
-                                            scoreStatNum = "5.398"
+                                            scoreStatNum ={positionScore}
                                             scoreStatText = "Today's Score"
-                                            changeScoreType = "increase"
-                                            changeScoreStatHelpNum = "+2%"
+                                            changeScoreType ={positionChangeType}
+                                            changeScoreStatHelpNum ={positionChangeValue}
                                             changeScoreStatText = "since last quarter"
                                             navigationUrl = "/position"
                                         />
@@ -38,10 +53,10 @@ const HomeMain = () => {
                                     <WrapItem>
                                         <HomeWidget
                                             marketTypeText = "Market Advantages"
-                                            scoreStatNum = "2.749"
+                                            scoreStatNum ={advantagesScore}
                                             scoreStatText = "Today's Score"
-                                            changeScoreType = "decrease"
-                                            changeScoreStatHelpNum = "-2%"
+                                            changeScoreType ={advantagesChangeType}
+                                            changeScoreStatHelpNum ={advantagesChangeValue}
                                             changeScoreStatText = "since last quarter"
                                             navigationUrl = "/advantage"
                                         />
@@ -56,10 +71,10 @@ const HomeMain = () => {
                                     <WrapItem>
                                         <HomeWidget
                                             marketTypeText = "Market Pressures"
-                                            scoreStatNum = "4.176"
+                                            scoreStatNum ={pressuresScore}
                                             scoreStatText = "Today's Score"
-                                            changeScoreType = "increase"
-                                            changeScoreStatHelpNum = "+15%"
+                                            changeScoreType ={pressuresChangeType}
+                                            changeScoreStatHelpNum ={pressuresChangeValue}
                                             changeScoreStatText = "since last quarter"
                                             navigationUrl = "/pressures"
                                         />
@@ -70,10 +85,10 @@ const HomeMain = () => {
                                     <WrapItem>
                                         <HomeWidget
                                             marketTypeText = "Market Performance"
-                                            scoreStatNum = "5.739"
+                                            scoreStatNum ={performancesScore}
                                             scoreStatText = "Today's Score"
-                                            changeScoreType = "decrease"
-                                            changeScoreStatHelpNum = "-5%"
+                                            changeScoreType = {performancesChangeType}
+                                            changeScoreStatHelpNum ={performancesChangeValue}
                                             changeScoreStatText = "since last quarter"
                                             navigationUrl = "/performance"
                                         />
@@ -83,7 +98,7 @@ const HomeMain = () => {
                         </Grid>
                     </Center>
                 </Flex>
-                <Footer/>
+                <Footer pageBgColor = {params.pageBgColor} />
             </Box>
         </>
     )

@@ -5,7 +5,8 @@ import PositionMain from "./PositionMain";
 const Position = () => {
     return (
         <Layout>
-            <PositionMain/>
+            <PositionMain
+                pageBgColor={"#F2F2F2"}/>
         </Layout>
     );
 };
