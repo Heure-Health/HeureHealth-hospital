@@ -57,52 +57,109 @@ const SideNav = () => {
             <Flex alignContent="center" mx={4}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/advantages" href="/src/pages/Advantages"
-                          className={router.pathname == "/advantages" ? "text-indigo-600 border-b-2 border-solid border-indigo-600" : ""}>
-                        Market Advantages
-                    </Link>
+                    Market Advantages
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/chart" href="/Chart">
-                        Advantages Details
-                    </Link>
+                    <ActiveLink href={"/advantages"} title={"Overall"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/advantages/growth"} title={"Growth"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/advantages/quality"} title={"Quality"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/advantages/cost"} title={"Cost"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/advantages/comparisons"} title={"Comparisons"} prefetch={"/"} />
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={4}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/pressures" href="/src/pages/Pressures"
-                          className={router.pathname == "/pressures" ? "text-indigo-600 border-b-2 border-solid border-indigo-600" : ""}>
-                        Market Pressures
-                    </Link>
+                    Market Pressures
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/chart" href="/src/pages/Chart">
-                        Pressures Details
-                    </Link>
+                    <ActiveLink href={"/pressures"} title={"Overall"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/pressures/growth"} title={"Growth"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/pressures/quality"} title={"Quality"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/pressures/cost"} title={"Cost"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/pressures/comparisons"} title={"Comparisons"} prefetch={"/"} />
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={4}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/Performance" href="/Performance"
-                          className={router.pathname == "/performance" ? "text-indigo-600 border-b-2 border-solid border-indigo-600" : ""}>
-                        Market Performance
-                    </Link>
+                    Market Performance
                 </Text>
             </Flex>
             <Flex alignContent="center" mx={12}>
                 <Box height="2.6em" width="1.4em"/>
                 <Text p={2} fontSize="lg">
-                    <Link as="/chart" href="/src/pages/Chart">
-                        Performance Details
-                    </Link>
+                    <ActiveLink href={"/performance"} title={"Overall"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/performance/growth"} title={"Growth"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/performance/quality"} title={"Quality"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/performance/cost"} title={"Cost"} prefetch={"/"} />
+                </Text>
+            </Flex>
+            <Flex alignContent="center" mx={12}>
+                <Box height="2.6em" width="1.4em"/>
+                <Text p={2} fontSize="lg">
+                    <ActiveLink href={"/performance/comparisons"} title={"Comparisons"} prefetch={"/"} />
                 </Text>
             </Flex>
         </Flex>

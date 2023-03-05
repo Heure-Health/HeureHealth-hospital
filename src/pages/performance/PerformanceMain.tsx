@@ -8,7 +8,7 @@ const PerformanceMain = () => {return (
         <Grid gap={"16"}>
             <GridItem colSpan={1} rowSpan={1}>
                 <Box bg='blue.600'>
-                    <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}} color={"white"} fontWeight={"bold"}>MARKET PERFORMANCE </Text></Center>
+                    <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}} color={"white"} fontWeight={"bold"}>MARKET PERFORMANCE MAIN PAGE</Text></Center>
                 </Box>
             </GridItem>
             <GridItem colSpan={1} rowSpan={1}>

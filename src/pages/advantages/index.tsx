@@ -1,10 +1,10 @@
 import {Layout} from "../../layouts";
-import Position from "../position";
+import AdvantagesMain from "./AdvantagesMain";
 
 const Index = () => {
     return (
         <Layout>
-            <Position/>
+            <AdvantagesMain/>
         </Layout>
     );
 };

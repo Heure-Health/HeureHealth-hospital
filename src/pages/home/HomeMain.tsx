@@ -58,7 +58,7 @@ const HomeMain = (params) => {
                                             changeScoreType ={advantagesChangeType}
                                             changeScoreStatHelpNum ={advantagesChangeValue}
                                             changeScoreStatText = "since last quarter"
-                                            navigationUrl = "/advantage"
+                                            navigationUrl = "/advantages"
                                         />
                                     </WrapItem>
                                 </Wrap>

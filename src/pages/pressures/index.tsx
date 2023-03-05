@@ -1,10 +1,10 @@
 import {Layout} from "../../layouts";
-import Position from "../position/PositionMain"
+import PressuresMain from "./PressuresMain";
 
 const Index = () => {
     return (
         <Layout>
-            <Position/>
+            <PressuresMain/>
         </Layout>
     );
 };
