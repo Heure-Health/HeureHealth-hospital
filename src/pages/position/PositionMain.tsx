@@ -6,12 +6,12 @@ import LinearChartMultiMetric from "../../components/rechart/LinearChartMultiMet
 import LinearChartOneMetric from "../../components/rechart/LinearChartOneMetric";
 import DonutWidget from "../../components/common/DonutWidget";
 import SnapshotWidget from "./overall/SnapshotWidget";
-import CardTrendDaily from "../../components/container/trendcard/CardTrendDaily";
 import CardTrendAnnual from "../../components/container/trendcard/CardTrendAnnual";
 import CardTrendQtly from "../../components/container/trendcard/CardTrendQtly";
 import {Footer} from "../../layouts";
 import MarketPositionWidget from "./overall/MarketPositionWidget";
 import RGuage from "../../components/rechart/RGuage";
+import TrendlineRegionalWidget from "./overall/TrendlineRegionalWidget";
 
 const cdata = {
     "position": [
@@ -62,7 +62,6 @@ const cdata = {
     ]
 };
 
-
 const wrapItemWidth = [
     "49%",
     "95%",
@@ -71,15 +70,19 @@ const wrapItemWidth = [
     "37%",
 ];
 
+const QTrendwrapItemWidth = [
+    "98%",
+    "98%",
+    "99%",
+    "97%",
+    "99.4%",
+];
+
 const renderChart = function (name, gdata) {
     switch (name) {
         case 'line1':
             return (
                 <RLineChart width={gdata.chartwidth} data={gdata.data}/>
-            )
-        case 'composedchart':
-            return (
-                <ComposedChartWgt/>
             )
         case 'linearchartonemetric':
             return (
@@ -102,13 +105,13 @@ const PositionMain = (params) => {
                     templateColumns='repeat(1, 1fr)'
                     gap={2} minWidth={"25%"} minHeight={"25%"}>
                     <GridItem colSpan={1} rowSpan={1}>
-                        <Box bg='blue.600'>
-                            <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
-                                                                   color={"white"} fontWeight={"bold"}> WMRMC IS CURRENTLY
-                                POSITIONED AS A EASTERN REGION MARKET LEADER </Text></Center>
+                        <Box bg='#F2F2F2'>
+                            <Center display='flex' my='3'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
+                                                                   color={"blue.600"} fontWeight={"bold"}> WMRMC IS CURRENTLY
+                                POSITIONED AS A WESTERN REGION MARKET LEADER </Text></Center>
                         </Box>
                     </GridItem>
-                    <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={2}>
+                    <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={0}>
                         <Wrap align={"center"} width={"100%"}>
                             <WrapItem width={wrapItemWidth} minWidth={wrapItemWidth} alignContent={"center"}>
                                 <Center>
@@ -210,6 +213,25 @@ const PositionMain = (params) => {
                             </WrapItem>
                         </Wrap>
                     </GridItem>
+                    <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={0}>
+                        <Wrap>
+                            <WrapItem width={QTrendwrapItemWidth} minWidth={QTrendwrapItemWidth} alignContent={"center"}>
+                                <Box width="100%">
+                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                        <TrendlineRegionalWidget key={data2.card}
+                                                                 headerlabel={"West Region Quarterly Trendline vs. Regional Average"}
+                                                                 tooltip={"tooltips Trendline vs. Regional"}
+                                                                 summary={"Your Quarterly Trendline can be classified as :"}
+                                                                 summaryValue={"Erratic"}
+                                                                 chart={<ComposedChartWgt/>}
+                                                                 width={""}
+                                                                 height={""}
+                                        />
+                                    ))}
+                                </Box>
+                            </WrapItem>
+                        </Wrap>
+                    </GridItem>
                     <GridItem colSpan={1} rowSpan={1}>
                         <Wrap spacing='20px'>
                             <WrapItem width={"48%"}  minWidth={"410px"}>
@@ -238,46 +260,27 @@ const PositionMain = (params) => {
                     <GridItem colSpan={1} rowSpan={1}>
                         <Wrap spacing='20px'>
                             <WrapItem width={"48%"} minWidth={"410px"}>
-                                <Box width="100%">
-                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                        <CardTrendQtly key={data2.card}
-                                                       headerlabel={"Banner University Market Position : QUARTERLY TRENDLINE"}
-                                                       headervalue={data2.headervalue}
-                                                       subheaderlabel={data2.subheaderlabel}
-                                                       subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                                       trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                                       trendScore1={data2.trendScore1}
-                                                       trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                                       trendScore2={data2.trendScore2}
-                                                       trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                                       trendScore3={data2.trendScore3}
-                                                       summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                                       summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                       chart={renderChart("linearchartonemetric", data2.gdata)}
-                                                       width={""} height={""}/>
-                                    ))}
-                                </Box>
-                            </WrapItem>
-                            <WrapItem width={"48%"} minWidth={"410px"}>
-                                <Box width="100%">
-                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                        <CardTrendDaily key={data2.card}
-                                                        headerlabel={"Banner University Market Position : DAILY TRENDLINE"}
-                                                        headervalue={data2.headervalue}
-                                                        subheaderlabel={data2.subheaderlabel}
-                                                        subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                                        trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                                        trendScore1={data2.trendScore1}
-                                                        trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                                        trendScore2={data2.trendScore2}
-                                                        trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                                        trendScore3={data2.trendScore3}
-                                                        summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                                        summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                        chart={renderChart("composedchart", data2.gdata)}
-                                                        width={""} height={""}/>
-                                    ))}
-                                </Box>
+                                <Flex direction={"column"}>
+                                    <Box width="100%">
+                                        {cdata.position.filter(x => x.card == "1").map((data2) => (
+                                            <CardTrendQtly key={data2.card}
+                                                           headerlabel={"Banner University Market Position : QUARTERLY TRENDLINE"}
+                                                           headervalue={data2.headervalue}
+                                                           subheaderlabel={data2.subheaderlabel}
+                                                           subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
+                                                           trend1={data2.trend1} trendInd1={data2.trendInd1}
+                                                           trendScore1={data2.trendScore1}
+                                                           trend2={data2.trend2} trendInd2={data2.trendInd2}
+                                                           trendScore2={data2.trendScore2}
+                                                           trend3={data2.trend3} trendInd3={data2.trendInd3}
+                                                           trendScore3={data2.trendScore3}
+                                                           summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
+                                                           summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
+                                                           chart={renderChart("linearchartonemetric", data2.gdata)}
+                                                           width={""} height={""}/>
+                                        ))}
+                                    </Box>
+                                </Flex>
                             </WrapItem>
                         </Wrap>
                     </GridItem>

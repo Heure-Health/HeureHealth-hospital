@@ -1,73 +1,138 @@
-/* import "./styles.css";
- */
 import React from "react";
-import {Bar, CartesianGrid, ComposedChart, Line} from "recharts";
+import { Bar, CartesianGrid, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 
 const data = [
     {
-        name: "Page A",
-        uv: 590,
-        pv: 800,
-        amt: 1400,
-        cnt: 490
+        name: '1',
+        avg: 2.000,
+        qs: 1.247,
     },
     {
-        name: "Page B",
-        uv: 868,
-        pv: 967,
-        amt: 1506,
-        cnt: 590
+        name: '2',
+        avg: 1.000,
+        qs: 2.261,
     },
     {
-        name: "Page C",
-        uv: 1397,
-        pv: 1098,
-        amt: 989,
-        cnt: 350
+        name: '3',
+        avg: 2.540,
+        qs: 5.141,
     },
     {
-        name: "Page D",
-        uv: 1480,
-        pv: 1200,
-        amt: 1228,
-        cnt: 480
+        name: '4',
+        avg: 3.000,
+        qs: 1.861,
     },
     {
-        name: "Page E",
-        uv: 1520,
-        pv: 1108,
-        amt: 1100,
-        cnt: 460
+        name: '5',
+        avg: 3.400,
+        qs: 2.511,
     },
     {
-        name: "Page F",
-        uv: 1400,
-        pv: 680,
-        amt: 1700,
-        cnt: 380
+        name: '6',
+        avg: 3.300,
+        qs: 4.291,
+    },
+    {
+        name: '7',
+        avg: 3.000,
+        qs: 2.941,
+    },
+    {
+        name: '8',
+        avg: 2.987,
+        qs: 5.261,
+    },
+    {
+        name: '9',
+        avg: 3.987,
+        qs: 4.261,
+    },
+    {
+        name: '10',
+        avg: 2.257,
+        qs: 4.561,
+    },
+    {
+        name: '11',
+        avg: 3.876,
+        qs: 4.174,
+    },
+    {
+        name: '12',
+        avg: 2.984,
+        qs: 5.131
+    },
+    {
+        name: '13',
+        avg: 1.984,
+        qs: 2.841,
+    },
+    {
+        name: '14',
+        avg: 2.324,
+        qs: 4.151,
+    },
+    {
+        name: '15',
+        avg: 1.326,
+        qs: 5.261,
+    },
+    {
+        name: '16',
+        avg: 3.514,
+        qs: 2.861,
+    },
+    {
+        name: '17',
+        avg: 1.944,
+        qs: 3.761,
+    },
+    {
+        name: '18',
+        avg: 3.984,
+        qs: 2.261,
+    },
+    {
+        name: '19',
+        avg: 4.984,
+        qs: 3.861,
+    },
+    {
+        name: '20',
+        avg: 5.484,
+        qs: 4.261,
+    },
+    {
+        name: '21',
+        avg: 4.374,
+        qs: 3.261,
+    },
+    {
+        name: '22',
+        avg: 5.543,
+        qs: 5.261,
+    },
+    {
+        name: '23',
+        avg: 3.261,
+        qs: 2.261,
     }
 ];
 
 export default function ComposedChartWgt() {
-    return (
-        <ComposedChart
-            width={380}
-            height={220}
-            data={data}
-            margin={{
-                top: 20,
-                right: 80,
-                bottom: 20,
-                left: 20
-            }}
-        >
-            <CartesianGrid stroke="#f5f5f5"/>
-            {/*  <Tooltip /> */}
-            <Bar dataKey="cnt" barSize={20} fill="#436ea0"/>
-            <Bar dataKey="amt" barSize={20} fill="#413ff0"/>
-
-            <Bar dataKey="pv" barSize={20} fill="#413ea0"/>
-            <Line type="monotone" dataKey="uv" stroke="#ff7300"/>
-        </ComposedChart>
-    );
+        return (
+            <div style={{ width: '100%'}}>
+                <ResponsiveContainer>
+                    <ComposedChart data={data}>
+                        <CartesianGrid stroke="#f5f5f5" />
+                        <XAxis dataKey="name" scale="auto" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="qs" name={"Quarterly Scores"} barSize={20} fill="#45B39D" />
+                        <Line dataKey="avg" name={"Average"} type="natural"  stroke="#ff7300" />
+                    </ComposedChart>
+                </ResponsiveContainer>
+            </div>
+        );
 }

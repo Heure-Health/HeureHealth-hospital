@@ -3,7 +3,7 @@ const DonutWidget = (params) => {
     return (
         <>
             <Flex direction="column"
-                  bgColor={params.widgetBgColor} color={params.circleTextFontColor} shadow="md" borderRadius='8px'
+                  bgColor={params.widgetBgColor} color={params.circleTextFontColor} shadow="md" borderRadius='0px'
                   height={params.widgetHeight} width={params.widgetWidth}>
                 <Center display='flex' height={"60%"}>
                     <CircularProgress value={params.value} color={params.widgetCircleBgColor} size={params.circleSize}

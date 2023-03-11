@@ -40,8 +40,7 @@ const CardTrendDaily = (props: Props) => {
                         <Heading as="h2" textAlign="center" fontSize="0.8em">
                             <Flex>
                                 <Text color="gray.50">{props.headerlabel}</Text>
-                                {/*                                 <Text pl="2" color="green.500">{props.headervalue}</Text>
- */}                            </Flex>
+                            </Flex>
                         </Heading>
                     </Flex>
                     <Flex direction="row-reverse">
