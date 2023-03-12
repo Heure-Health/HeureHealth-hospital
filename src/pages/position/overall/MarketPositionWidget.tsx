@@ -17,8 +17,6 @@ type Params = {
     height: string;
     headerlabel: string;
     headervalue: string;
-    subheaderlabel: string;
-    subheadervalue: string;
     tooltip: string;
     pieChartHeight: number;
     pieChartObject: ReactNode;
@@ -38,7 +36,7 @@ const MarketPositionWidget = (params: Params) => {
                             </Flex>
                         </Heading>
                     </Flex>
-                    <Flex direction="row-reverse">
+                    <Flex direction="row">
                         <Tooltip hasArrow label={tooltip} placement="bottom" bg={"black"} color="gray.100">
                             <Box>
                                 <Box as={HiInformationCircle} size="1.25em" color="grey" bgColor={"white"}/>

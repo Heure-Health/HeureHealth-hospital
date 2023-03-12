@@ -1,45 +1,49 @@
 import React, {ReactNode} from "react";
-import {Box, Center, Flex, Heading, Text, Tooltip} from "@chakra-ui/react";
-import {HiInformationCircle} from "react-icons/hi";
+import {Box, Center, Flex, Text} from "@chakra-ui/react";
+import ToolTipWidget from "../../../components/common/ToolTipWidget";
 
 type Props = {
-    width: string;
-    height: string;
-    headerlabel: string;
-    summary: string;
-    summaryValue: string;
-    tooltip: string;
-    chart: ReactNode;
+    widgetBbColor: string,
+    widgetWidth: string;
+    widgetHeight: string;
+    childComponentWidth: string;
+    headerLabel: string;
+    headerTextColor: string;
+    headerTextSize: string;
+    tooltipText: string;
+    footerLabel: string;
+    footerValue: string;
+    footerTextColor: string;
+    footerTextSize: string;
+    footerHeight: string;
+    barLineComposedWidgetHeight: string;
+    barLineComposedWidgetObject: ReactNode;
 };
-
-
 const TrendlineRegionalWidget = (props: Props) => {
+    const {widgetBbColor, widgetWidth, widgetHeight, childComponentWidth, headerLabel, headerTextColor, headerTextSize, footerHeight, tooltipText, footerLabel, footerValue, footerTextColor, footerTextSize, barLineComposedWidgetHeight, barLineComposedWidgetObject} = props;
     return (
         <>
-            <Box w={props.width} h='{props.height}' margin="1" padding="0" shadow="lg"
-                 bg="gray.50" borderWidth="2px" borderRadius="10px" overflow="hidden">
-                <Flex width="100%" p="3" bg="white" shadow="lg">
-                    <Flex w="95%">
-                        <Heading as="h2" textAlign="center" fontSize="0.8em">
-                            <Flex>
-                                <Text color="#000000">{props.headerlabel}</Text>
-                            </Flex>
-                        </Heading>
+            <Box w={widgetWidth} height={widgetHeight} margin="1" padding="0" shadow="lg" overflow="hidden">
+                <Flex width={childComponentWidth} p="3" bg={widgetBbColor} shadow="lg">
+                    <Flex w="99%">
+                        <Text color={headerTextColor} fontSize={headerTextSize} fontWeight={"bold"}>{headerLabel}</Text>
                     </Flex>
-                    <Flex direction="row-reverse">
-                        <Tooltip hasArrow label={props.tooltip} placement="bottom" bg="gray.100" color="gray.800">
-                            <Box>
-                                <Box as={HiInformationCircle} size="1em" color="gray.100"/>
-                            </Box>
-                        </Tooltip>
-                    </Flex>
+                    <ToolTipWidget
+                        tooltipText={tooltipText}
+                        tooltipTextBGColor={"#000000"}
+                        tooltipTextColor={"gray.100"}
+                        tooltipSize={"1.25em"}
+                        tooltipCircleBGColor={"grey"}
+                        tooltipBGColor={"white"}
+                    />
                 </Flex>
-                <Flex w="100%" h="220px" bg="#FFFFFF" shadow="md" height={"22.7em"}>
-                    {props.chart}
+                <Flex w={childComponentWidth} height={barLineComposedWidgetHeight} bg={widgetBbColor} shadow="md">
+                    {barLineComposedWidgetObject}
                 </Flex>
-                <Flex width="100%" bg="white" shadow="md">
-                    <Center fontSize="1.0em" color="gray.500" width={"100%"} fontWeight={"bold"}>
-                        {props.summary} {props.summaryValue}
+                <Flex width={childComponentWidth} bg={widgetBbColor} shadow="md" height={footerHeight}>
+                    <Center fontSize={footerTextSize} color={footerTextColor} width={childComponentWidth}>
+                        <Text>{footerLabel}</Text>
+                        <Text pl="2" fontWeight={"bold"} color={"#000000"}>{footerValue}</Text>
                     </Center>
                 </Flex>
             </Box>

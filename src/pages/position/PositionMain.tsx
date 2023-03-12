@@ -1,7 +1,6 @@
 import React from "react";
 import {Box, Center, Flex, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
-import RLineChart from "../../components/rechart/RLineChart";
-import ComposedChartWgt from "../../components/rechart/ComposedChart";
+import ComposedChartWgt from "../../components/rechart/BarLineComposedWidget";
 import LinearChartMultiMetric from "../../components/rechart/LinearChartMultiMetric";
 import LinearChartOneMetric from "../../components/rechart/LinearChartOneMetric";
 import DonutWidget from "../../components/common/DonutWidget";
@@ -10,8 +9,16 @@ import CardTrendAnnual from "../../components/container/trendcard/CardTrendAnnua
 import CardTrendQtly from "../../components/container/trendcard/CardTrendQtly";
 import {Footer} from "../../layouts";
 import MarketPositionWidget from "./overall/MarketPositionWidget";
-import RGuage from "../../components/rechart/RGuage";
 import TrendlineRegionalWidget from "./overall/TrendlineRegionalWidget";
+import TooltipsData from "../../services/data/TooltipsData";
+import SpeedometerWidget from "../../components/rechart/SpeedometerWidget";
+
+//const {userName} = ServerData.position;
+const { tooltipMarketPosition,
+    //tooltipSpeedometer,
+    tooltipSnapshotWidget1,
+    tooltipSnapshotWidget2,
+    tooltipTrendlineRegional} = TooltipsData.positionPage.overAllPage;
 
 const cdata = {
     "position": [
@@ -38,22 +45,21 @@ const cdata = {
             "summaryvalue2": "1.5%",
             "chartwidth": 400,
             "gdata": {
-                width: 325,
-                chartValue: 250,
+                chartValue: 5.398,
                 data: [
                     {
                         name: 'Aspirant',
-                        value: 100,
+                        value: 2,
                         color: '#FA897B',
                     },
                     {
                         name: 'Challenger',
-                        value: 100,
+                        value: 2,
                         color: '#FBC78D',
                     },
                     {
                         name: 'Leader',
-                        value: 100,
+                        value: 2,
                         color: '#D0E6A5'
                     },
                 ]
@@ -62,6 +68,123 @@ const cdata = {
     ]
 };
 
+const trendlineRegionData = [
+    {
+        quarter: '1',
+        avg: 2.000,
+        score: 1.247,
+    },
+    {
+        quarter: '2',
+        avg: 1.000,
+        score: 2.261,
+    },
+    {
+        quarter: '3',
+        avg: 2.540,
+        score: 5.141,
+    },
+    {
+        quarter: '4',
+        avg: 3.000,
+        score: 1.861,
+    },
+    {
+        quarter: '5',
+        avg: 3.400,
+        score: 2.511,
+    },
+    {
+        quarter: '6',
+        avg: 3.300,
+        score: 4.291,
+    },
+    {
+        quarter: '7',
+        avg: 3.000,
+        score: 2.941,
+    },
+    {
+        quarter: '8',
+        avg: 2.987,
+        score: 5.261,
+    },
+    {
+        quarter: '9',
+        avg: 3.987,
+        score: 4.261,
+    },
+    {
+        quarter: '10',
+        avg: 2.257,
+        score: 4.561,
+    },
+    {
+        quarter: '11',
+        avg: 3.876,
+        score: 4.174,
+    },
+    {
+        quarter: '12',
+        avg: 2.984,
+        score: 5.131
+    },
+    {
+        quarter: '13',
+        avg: 1.984,
+        score: 2.841,
+    },
+    {
+        quarter: '14',
+        avg: 2.324,
+        score: 4.151,
+    },
+    {
+        quarter: '15',
+        avg: 1.326,
+        score: 5.261,
+    },
+    {
+        quarter: '16',
+        avg: 3.514,
+        score: 2.861,
+    },
+    {
+        quarter: '17',
+        avg: 1.944,
+        score: 3.761,
+    },
+    {
+        quarter: '18',
+        avg: 3.984,
+        score: 2.261,
+    },
+    {
+        quarter: '19',
+        avg: 4.984,
+        score: 3.861,
+    },
+    {
+        quarter: '20',
+        avg: 5.484,
+        score: 4.261,
+    },
+    {
+        quarter: '21',
+        avg: 3.374,
+        score: 3.261,
+    },
+    {
+        quarter: '22',
+        avg: 3.543,
+        score: 5.261,
+    },
+    {
+        quarter: '23',
+        avg: 3.261,
+        score: 4.261,
+    }
+];
 const wrapItemWidth = [
     "49%",
     "95%",
@@ -74,16 +197,12 @@ const QTrendwrapItemWidth = [
     "98%",
     "98%",
     "99%",
-    "97%",
+    "99%",
     "99.4%",
 ];
 
-const renderChart = function (name, gdata) {
+const renderChart = function (name) {
     switch (name) {
-        case 'line1':
-            return (
-                <RLineChart width={gdata.chartwidth} data={gdata.data}/>
-            )
         case 'linearchartonemetric':
             return (
                 <LinearChartOneMetric/>
@@ -119,12 +238,11 @@ const PositionMain = (params) => {
                                         <MarketPositionWidget
                                                               headerlabel={"West Region Market Position:"}
                                                               headervalue={data2.headervalue}
-                                                              subheaderlabel={data2.subheaderlabel} subheadervalue={data2.subheadervalue}
-                                                              tooltip={data2.tooltip}
+                                                              tooltip={tooltipMarketPosition}
                                                               pieChartHeight={250}
                                                               width={"32em"}
                                                               height={"23em"}
-                                                              pieChartObject={<RGuage width={data2.chartwidth} chartValue={data2.gdata.chartValue} colorData={data2.gdata.data}/>}
+                                                              pieChartObject={<SpeedometerWidget width={400} chartValue={data2.gdata.chartValue} colorData={data2.gdata.data}/>}
                                         />
                                     ))}
                                 </Center>
@@ -161,7 +279,7 @@ const PositionMain = (params) => {
                                                 widgetBgColor={"#EB8871"}
                                                 widgetTextFontColor={"white"}
                                                 widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
-                                                widgetToolTip={"There are 9 Position tiers in all. Three main tiers of Leader, Challenger, Aspirant are each further separated into 3."}
+                                                widgetToolTip={""}
                                             />
                                         </Box>
                                         <Box width="100%" paddingLeft={"3.5"} paddingBottom={"3.5"}>
@@ -175,7 +293,7 @@ const PositionMain = (params) => {
                                                 widgetBgColor={"#EB8871"}
                                                 widgetTextFontColor={"white"}
                                                 widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
-                                                widgetToolTip={"There are 9 Position tiers in all. Three main tiers of Leader, Challenger, Aspirant are each further separated into 3."}
+                                                widgetToolTip={tooltipSnapshotWidget1}
                                             />
                                         </Box>
                                     </Flex>
@@ -205,7 +323,7 @@ const PositionMain = (params) => {
                                                 widgetBgColor={"#F1D0BF"}
                                                 widgetTextFontColor={"#AC7C70"}
                                                 widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
-                                                widgetToolTip={""}
+                                                widgetToolTip={tooltipSnapshotWidget2}
                                             />
                                         </Box>
                                     </Flex>
@@ -217,17 +335,34 @@ const PositionMain = (params) => {
                         <Wrap>
                             <WrapItem width={QTrendwrapItemWidth} minWidth={QTrendwrapItemWidth} alignContent={"center"}>
                                 <Box width="100%">
-                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                        <TrendlineRegionalWidget key={data2.card}
-                                                                 headerlabel={"West Region Quarterly Trendline vs. Regional Average"}
-                                                                 tooltip={"tooltips Trendline vs. Regional"}
-                                                                 summary={"Your Quarterly Trendline can be classified as :"}
-                                                                 summaryValue={"Erratic"}
-                                                                 chart={<ComposedChartWgt/>}
-                                                                 width={""}
-                                                                 height={""}
-                                        />
-                                    ))}
+                                    <TrendlineRegionalWidget
+                                         widgetBbColor={"#FFFFFF"}
+                                         widgetWidth={"99.7%"}
+                                         widgetHeight={""}
+                                         childComponentWidth={"99.7%"}
+                                         headerTextColor={"#000000"}
+                                         headerTextSize={"0.85em"}
+                                         footerTextColor={"gray.500"}
+                                         footerTextSize={"1.0em"}
+                                         footerHeight={"2.5em"}
+                                         barLineComposedWidgetHeight={"22.7em"}
+                                         tooltipText={tooltipTrendlineRegional}
+                                         headerLabel={"West Region Quarterly Trendline vs. Regional Average"}
+                                         footerLabel={"Your Quarterly Trendline can be classified as :"}
+                                         footerValue={"Erratic"}
+                                         barLineComposedWidgetObject={<ComposedChartWgt
+                                            chartWidth = {"100%"}
+                                            barColor = {"#60B7C0"}
+                                            barSize = {20}
+                                            lineColor = {"#EB8871"}
+                                            barLegendName = {"Quarterly Scores"}
+                                            lineLegandName = {"Average"}
+                                            xAxisDataKey = {"quarter"}
+                                            barDataKey = {"score"}
+                                            lineDataKey = {"avg"}
+                                            chartData = {trendlineRegionData} />
+                                        }
+                                    />
                                 </Box>
                             </WrapItem>
                         </Wrap>
@@ -250,7 +385,7 @@ const PositionMain = (params) => {
                                                          trendScore3={data2.trendScore3}
                                                          summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
                                                          summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                         chart={renderChart("linearchartmultimetric", data2.gdata)}
+                                                         chart={renderChart("linearchartmultimetric")}
                                                          width={""} height={""}/>
                                     ))}
                                 </Box>
@@ -276,7 +411,7 @@ const PositionMain = (params) => {
                                                            trendScore3={data2.trendScore3}
                                                            summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
                                                            summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                           chart={renderChart("linearchartonemetric", data2.gdata)}
+                                                           chart={renderChart("linearchartonemetric")}
                                                            width={""} height={""}/>
                                         ))}
                                     </Box>

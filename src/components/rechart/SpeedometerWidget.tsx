@@ -7,7 +7,7 @@ type Props = {
     chartValue: number;
 };
 
-const Gauge = (props: Props) => {
+const SpeedometerWidget = (props: Props) => {
 
     const {width, colorData, chartValue} = props;
 
@@ -134,4 +134,4 @@ const Gauge = (props: Props) => {
         </ResponsiveContainer>
     );
 };
-export default Gauge;
+export default SpeedometerWidget;
