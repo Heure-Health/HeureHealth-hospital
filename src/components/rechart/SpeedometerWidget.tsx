@@ -15,12 +15,12 @@ const SpeedometerWidget = (props: Props) => {
         .map((cur, index, arr) => {
             const curMax = [...arr]
                 .splice(0, index + 1)
-                .reduce((a, b) => ({value: a.value + b.value})).value;
-            return chartValue > curMax - cur.value && chartValue <= curMax;
+                .reduce((a, b) => ({value: a["value"] + b["value"]}))["value"];
+            return chartValue > curMax - cur["value"] && chartValue <= curMax;
         })
         .findIndex((cur) => cur);
 
-    const sumValues = colorData.map((cur) => cur.value).reduce((a, b) => a + b);
+    const sumValues = colorData.map((cur) => cur["value"]).reduce((a, b) => a + b);
 
     const arrowData = [
         {value: chartValue},
@@ -40,19 +40,21 @@ const SpeedometerWidget = (props: Props) => {
         outerRadius: (width / 2) * 0.65,
     };
 
-    const Arrow = ({cx, cy, midAngle, outerRadius}) => {
+    const Arrow = ({midAngle, outerRadius}) => {
+        const circleX = width / 2;
+        const circleY = width / 2;
         const RADIAN = Math.PI / 180;
         const sin = Math.sin(-RADIAN * midAngle);
         const cos = Math.cos(-RADIAN * midAngle);
-        const mx = cx + (outerRadius + width * 0.03) * cos;
-        const my = cy + (outerRadius + width * 0.03) * sin;
+        const mx = circleX + (outerRadius + width * 0.03) * cos;
+        const my = circleY + (outerRadius + width * 0.03) * sin;
         return (
             <g>
-                <circle cx={cx} cy={cy} r={width * 0.03} fill="#666" stroke="none"/>
+                <circle cx={circleX} cy={circleY} r={width * 0.03} fill="#666666" stroke="none"/>
                 <path
-                    d={`M${cx},${cy}L${mx},${my}`}
+                    d={`M${circleX},${circleY}L${mx},${my}`}
                     strokeWidth="6"
-                    stroke="#666"
+                    stroke="#666666"
                     fill="none"
                     strokeLinecap="round"
                 />
@@ -83,22 +85,6 @@ const SpeedometerWidget = (props: Props) => {
         );
     };
 
-    const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({
-                                       cx, cy, midAngle, innerRadius, outerRadius, name
-                                   }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 1.21;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-        return (
-            <text x={x} y={y} fontSize="0.9em" fill="black"
-                  textAnchor={name == 'Challenger' ? 'middle' : x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {name}
-            </text>
-        );
-    };
-
     return (
         <ResponsiveContainer>
             <PieChart>
@@ -114,10 +100,9 @@ const SpeedometerWidget = (props: Props) => {
                     {...pieProps}
                     labelLine={false}
                     label={(entry) => entry.name}
-                    //label={renderCustomizedLabel}
                 >
                     {colorData.map( (entry, index) => (
-                        <Cell key={`cell-${index}`} fill={ entry.color}/>
+                        <Cell key={`cell-${index}`} fill={ entry["color"]}/>
                     ))}
                 </Pie>
                 <Pie

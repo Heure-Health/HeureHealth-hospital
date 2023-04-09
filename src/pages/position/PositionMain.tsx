@@ -12,21 +12,50 @@ import MarketPositionWidget from "./overall/MarketPositionWidget";
 import TrendlineRegionalWidget from "./overall/TrendlineRegionalWidget";
 import TooltipsData from "../../services/data/TooltipsData";
 import SpeedometerWidget from "../../components/rechart/SpeedometerWidget";
+import ServerData from "../../services/data/ServerData";
 
-//const {userName} = ServerData.position;
 const { tooltipMarketPosition,
     //tooltipSpeedometer,
     tooltipSnapshotWidget1,
     tooltipSnapshotWidget2,
     tooltipTrendlineRegional} = TooltipsData.positionPage.overAllPage;
 
+const {
+    trendlineClassification,
+    trendlineRegionData
+    } = ServerData.positionPage.trendlineRegional;
+
+const {
+        marketScoreHeaderLabel,
+        marketScoreHeaderValue,
+        marketScoreHeureScore
+    } = ServerData.positionPage.marketScore;
+
+const marketScoreWidget = {
+"details": [
+    {
+        name: 'Aspirant',
+        value: 2,
+        color: '#FA897B',
+    },
+    {
+        name: 'Challenger',
+        value: 2,
+        color: '#FBC78D',
+    },
+    {
+        name: 'Leader',
+        value: 2,
+        color: '#D0E6A5'
+    }
+    ]
+}
 const cdata = {
     "position": [
         {
             "card": "1",
             "cardtype": "guage",
             "headerlabel": "OVERALL MARKET POSITION",
-            "headervalue": "LEADER",
             "subheaderlabel": "CURRENTLY AT THE TOP WITH A SCORE OF",
             "subheadervalue": "6.988",
             "tooltip": "Position tooltip",
@@ -43,154 +72,25 @@ const cdata = {
             "summaryvalue1": "0",
             "summary2": "Positioned 3rd from top and below 12% of other Easter Region competitors, presents Banner University with room to move up the Market position dial. Your closest Easter Region competitor is Colorado and is 0.007 points below leaving your current Easter Region position fairly vulnerable",
             "summaryvalue2": "1.5%",
-            "chartwidth": 400,
-            "gdata": {
-                chartValue: 5.398,
-                data: [
-                    {
-                        name: 'Aspirant',
-                        value: 2,
-                        color: '#FA897B',
-                    },
-                    {
-                        name: 'Challenger',
-                        value: 2,
-                        color: '#FBC78D',
-                    },
-                    {
-                        name: 'Leader',
-                        value: 2,
-                        color: '#D0E6A5'
-                    },
-                ]
-            }
+            "headervalue": "LEADER"
         }
     ]
 };
 
-const trendlineRegionData = [
-    {
-        quarter: '1',
-        avg: 2.000,
-        score: 1.247,
-    },
-    {
-        quarter: '2',
-        avg: 1.000,
-        score: 2.261,
-    },
-    {
-        quarter: '3',
-        avg: 2.540,
-        score: 5.141,
-    },
-    {
-        quarter: '4',
-        avg: 3.000,
-        score: 1.861,
-    },
-    {
-        quarter: '5',
-        avg: 3.400,
-        score: 2.511,
-    },
-    {
-        quarter: '6',
-        avg: 3.300,
-        score: 4.291,
-    },
-    {
-        quarter: '7',
-        avg: 3.000,
-        score: 2.941,
-    },
-    {
-        quarter: '8',
-        avg: 2.987,
-        score: 5.261,
-    },
-    {
-        quarter: '9',
-        avg: 3.987,
-        score: 4.261,
-    },
-    {
-        quarter: '10',
-        avg: 2.257,
-        score: 4.561,
-    },
-    {
-        quarter: '11',
-        avg: 3.876,
-        score: 4.174,
-    },
-    {
-        quarter: '12',
-        avg: 2.984,
-        score: 5.131
-    },
-    {
-        quarter: '13',
-        avg: 1.984,
-        score: 2.841,
-    },
-    {
-        quarter: '14',
-        avg: 2.324,
-        score: 4.151,
-    },
-    {
-        quarter: '15',
-        avg: 1.326,
-        score: 5.261,
-    },
-    {
-        quarter: '16',
-        avg: 3.514,
-        score: 2.861,
-    },
-    {
-        quarter: '17',
-        avg: 1.944,
-        score: 3.761,
-    },
-    {
-        quarter: '18',
-        avg: 3.984,
-        score: 2.261,
-    },
-    {
-        quarter: '19',
-        avg: 4.984,
-        score: 3.861,
-    },
-    {
-        quarter: '20',
-        avg: 5.484,
-        score: 4.261,
-    },
-    {
-        quarter: '21',
-        avg: 3.374,
-        score: 3.261,
-    },
-    {
-        quarter: '22',
-        avg: 3.543,
-        score: 5.261,
-    },
-    {
-        quarter: '23',
-        avg: 3.261,
-        score: 4.261,
-    }
-];
-const wrapItemWidth = [
+const snapShotWidgetWidth = [
     "49%",
     "95%",
-    "100%",
-    "51%",
-    "37%",
+    "48.5%",
+    "43.5%",
+    "36%",
+];
+
+const marketPositionWidgetWidth = [
+    "49%",
+    "95%",
+    "48.5%",
+    "43.5%",
+    "36%",
 ];
 
 const QTrendwrapItemWidth = [
@@ -222,7 +122,7 @@ const PositionMain = (params) => {
                     h='200px'
                     templateRows='repeat(3, 1fr)'
                     templateColumns='repeat(1, 1fr)'
-                    gap={2} minWidth={"25%"} minHeight={"25%"}>
+                    gap={3} minWidth={"25%"} minHeight={"25%"}>
                     <GridItem colSpan={1} rowSpan={1}>
                         <Box bg='#F2F2F2'>
                             <Center display='flex' my='3'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
@@ -232,32 +132,40 @@ const PositionMain = (params) => {
                     </GridItem>
                     <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={0}>
                         <Wrap align={"center"} width={"100%"}>
-                            <WrapItem width={wrapItemWidth} minWidth={wrapItemWidth} alignContent={"center"}>
+                            <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"}>
                                 <Center>
-                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
                                         <MarketPositionWidget
-                                                              headerlabel={"West Region Market Position:"}
-                                                              headervalue={data2.headervalue}
-                                                              tooltip={tooltipMarketPosition}
                                                               pieChartHeight={250}
-                                                              width={"32em"}
-                                                              height={"23em"}
-                                                              pieChartObject={<SpeedometerWidget width={400} chartValue={data2.gdata.chartValue} colorData={data2.gdata.data}/>}
+                                                              width={"31em"}
+                                                              height={"23.5em"}
+                                                              scoreFontSize={"20px"}
+                                                              scoreFontColor={"#000000"}
+                                                              tooltipText={tooltipMarketPosition}
+                                                              headerValueFontColor={"black"}
+                                                              headerValueFontSize={"0.85em"}
+                                                              headerLabel={marketScoreHeaderLabel}
+                                                              headerValue={marketScoreHeaderValue}
+                                                              scoreValue={marketScoreHeureScore}
+                                                              pieChartObject={
+                                                                <SpeedometerWidget
+                                                                    width={465}
+                                                                    colorData={marketScoreWidget.details}
+                                                                    chartValue={marketScoreHeureScore}/>
+                                                              }
                                         />
-                                    ))}
                                 </Center>
                             </WrapItem>
-                            <WrapItem width={wrapItemWidth} minWidth={wrapItemWidth} height={"22.7em"} paddingLeft={1}>
-                                <Flex direction={"column"}>
-                                    <Box width="100%" paddingRight={3}>
+                            <WrapItem width={snapShotWidgetWidth} minWidth={snapShotWidgetWidth} height={"22.7em"}>
+                                <Flex direction={"column"} paddingRight={3}>
+                                    <Box width="100%">
                                         <DonutWidget
                                             value={"80"}
                                             circleSize={"3.0em"}
                                             circleThickness={"0.2em"}
                                             circleTextFontSize ={{ base: '24px', md: '30px', lg: '36px'}}
                                             circleTextFontColor={"white"}
-                                            widgetHeight={"22.7em"}
-                                            widgetWidth={"10em"}
+                                            widgetHeight={"22.3em"}
+                                            widgetWidth={"9.5em"}
                                             widgetBgColor={"#AC7C70"}
                                             widgetCircleBgColor={"#F1D0BF"}
                                             widgetCircleTextFontColor={"#FFFFFF"}
@@ -274,8 +182,8 @@ const PositionMain = (params) => {
                                                 valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
                                                 valueFontColor={"white"}
                                                 widgetText = "of Regional competitors that entered your current tier within the last rolling quarter."
-                                                widgetHeight={"10.8em"}
-                                                widgetWidth={"10.0em"}
+                                                widgetHeight={"10.65em"}
+                                                widgetWidth={"9.5em"}
                                                 widgetBgColor={"#EB8871"}
                                                 widgetTextFontColor={"white"}
                                                 widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
@@ -288,8 +196,8 @@ const PositionMain = (params) => {
                                                 valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
                                                 valueFontColor={"white"}
                                                 widgetText = "of your Regional competitors that left your current tier to move up tier(s)."
-                                                widgetHeight={"10.8em"}
-                                                widgetWidth={"10.0em"}
+                                                widgetHeight={"10.65em"}
+                                                widgetWidth={"9.5em"}
                                                 widgetBgColor={"#EB8871"}
                                                 widgetTextFontColor={"white"}
                                                 widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
@@ -304,8 +212,8 @@ const PositionMain = (params) => {
                                                 valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
                                                 valueFontColor={"#AC7C70"}
                                                 widgetText = "Division with your closet Regional competitor, based on score differential."
-                                                widgetHeight={"10.8em"}
-                                                widgetWidth={"10.0em"}
+                                                widgetHeight={"10.65em"}
+                                                widgetWidth={"9.5em"}
                                                 widgetBgColor={"#F1D0BF"}
                                                 widgetTextFontColor={"#AC7C70"}
                                                 widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
@@ -318,8 +226,8 @@ const PositionMain = (params) => {
                                                 valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
                                                 valueFontColor={"#AC7C70"}
                                                 widgetText = "Score differential of your closest competitor."
-                                                widgetHeight={"10.8em"}
-                                                widgetWidth={"10.0em"}
+                                                widgetHeight={"10.65em"}
+                                                widgetWidth={"9.5em"}
                                                 widgetBgColor={"#F1D0BF"}
                                                 widgetTextFontColor={"#AC7C70"}
                                                 widgetTextFontSize={{base: '10px', md: '10px', lg: '12px'}}
@@ -349,18 +257,19 @@ const PositionMain = (params) => {
                                          tooltipText={tooltipTrendlineRegional}
                                          headerLabel={"West Region Quarterly Trendline vs. Regional Average"}
                                          footerLabel={"Your Quarterly Trendline can be classified as :"}
-                                         footerValue={"Erratic"}
-                                         barLineComposedWidgetObject={<ComposedChartWgt
-                                            chartWidth = {"100%"}
-                                            barColor = {"#60B7C0"}
-                                            barSize = {20}
-                                            lineColor = {"#EB8871"}
-                                            barLegendName = {"Quarterly Scores"}
-                                            lineLegandName = {"Average"}
-                                            xAxisDataKey = {"quarter"}
-                                            barDataKey = {"score"}
-                                            lineDataKey = {"avg"}
-                                            chartData = {trendlineRegionData} />
+                                         footerValue={trendlineClassification}
+                                         barLineComposedWidgetObject={
+                                            <ComposedChartWgt
+                                                chartWidth = {"100%"}
+                                                barColor = {"#60B7C0"}
+                                                barSize = {20}
+                                                lineColor = {"#EB8871"}
+                                                barLegendName = {"Quarterly Scores"}
+                                                lineLegandName = {"Average"}
+                                                xAxisDataKey = {"quarter"}
+                                                barDataKey = {"score"}
+                                                lineDataKey = {"avg"}
+                                                chartData = {trendlineRegionData} />
                                         }
                                     />
                                 </Box>

@@ -5,51 +5,54 @@ import {
     Flex,
     Heading,
     IconButton,
-    Text,
-    Tooltip,
-    useColorModeValue
+    Text
 } from "@chakra-ui/react";
-import {HiInformationCircle} from "react-icons/hi";
 import {AddIcon} from "@chakra-ui/icons";
+import ToolTipWidget from "../../../components/common/ToolTipWidget";
 
 type Params = {
     width: string;
     height: string;
-    headerlabel: string;
-    headervalue: string;
-    tooltip: string;
+    headerLabel: string;
+    headerValue: string;
+    headerValueFontSize: string;
+    headerValueFontColor: string;
+    tooltipText: string;
     pieChartHeight: number;
+    scoreFontSize: string;
+    scoreFontColor: string;
+    scoreValue:number;
     pieChartObject: ReactNode;
 };
 const MarketPositionWidget = (params: Params) => {
-        const {width, height, headerlabel, headervalue, tooltip, pieChartHeight, pieChartObject} = params;
-        useColorModeValue("grey.100", "gray.800");
+        const {width, height, headerLabel, headerValue, headerValueFontSize, headerValueFontColor, tooltipText, pieChartHeight, scoreFontSize, scoreFontColor, scoreValue, pieChartObject} = params;
     return (
         <>
             <Box w={width} h={height} shadow="lg" bg="white" borderWidth="2px" borderRadius="10px" minWidth={width}>
                 <Flex width="100%" bg="white" p={2} height={"2em"}>
                     <Flex width={"100%"}>
-                        <Heading as="h3" textAlign="center" fontSize="0.85em">
+                        <Heading as="h3" textAlign="center" fontSize={headerValueFontSize}>
                             <Flex>
-                                <Text color="black">{headerlabel}</Text>
-                                <Text pl="2" color="black">{headervalue}</Text>
+                                <Text color="black">{headerLabel}</Text>
+                                <Text pl="2" color={headerValueFontColor}>{headerValue}</Text>
                             </Flex>
                         </Heading>
                     </Flex>
-                    <Flex direction="row">
-                        <Tooltip hasArrow label={tooltip} placement="bottom" bg={"black"} color="gray.100">
-                            <Box>
-                                <Box as={HiInformationCircle} size="1.25em" color="grey" bgColor={"white"}/>
-                            </Box>
-                        </Tooltip>
-                    </Flex>
+                    <ToolTipWidget
+                        tooltipText={tooltipText}
+                        tooltipTextBGColor={"#000000"}
+                        tooltipTextColor={"gray.100"}
+                        tooltipSize={"1.25em"}
+                        tooltipCircleBGColor={"grey"}
+                        tooltipBGColor={"white"}
+                    />
                 </Flex>
-                <Flex w="100%" height={pieChartHeight} bgColor={"white"}>
+                <Flex w="100%" height={pieChartHeight} bgColor={"white"} width={"100%"}>
                     {pieChartObject}
                 </Flex>
                 <Flex textAlign='center' direction={"column"}>
                     <Text fontSize={"12px"} verticalAlign={"text-top"} color={"#000000"}>Your Heure Score today</Text>
-                    <Text fontSize={"14px"} fontWeight={"bold"} verticalAlign={"text-bottom"} color={"#000000"}>5.398</Text>
+                    <Text fontSize={scoreFontSize} fontWeight={"bold"} verticalAlign={"text-bottom"} color={scoreFontColor}>{scoreValue}</Text>
                 </Flex>
                 <Divider orientation='horizontal' h={"1em"}/>
                 <Flex direction={"row-reverse"}>
