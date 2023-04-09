@@ -13,6 +13,7 @@ import TrendlineRegionalWidget from "./overall/TrendlineRegionalWidget";
 import TooltipsData from "../../services/data/TooltipsData";
 import SpeedometerWidget from "../../components/rechart/SpeedometerWidget";
 import ServerData from "../../services/data/ServerData";
+import PieChartWidget from "../../components/rechart/PieChartWidget";
 
 const { tooltipMarketPosition,
     //tooltipSpeedometer,
@@ -82,7 +83,7 @@ const snapShotWidgetWidth = [
     "95%",
     "48.5%",
     "43.5%",
-    "36%",
+    "32%",
 ];
 
 const marketPositionWidgetWidth = [
@@ -90,7 +91,7 @@ const marketPositionWidgetWidth = [
     "95%",
     "48.5%",
     "43.5%",
-    "36%",
+    "33%",
 ];
 
 const QTrendwrapItemWidth = [
@@ -236,6 +237,11 @@ const PositionMain = (params) => {
                                         </Box>
                                     </Flex>
                                 </Flex>
+                            </WrapItem>
+                            <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"} height={"22.7em"}>
+                                <Center height={"22.5em"}  width={"25em"} bgColor={"#FFFFFF"}>
+                                    <PieChartWidget/>
+                                </Center>
                             </WrapItem>
                         </Wrap>
                     </GridItem>
