@@ -62,14 +62,6 @@ const marketScoreWidget = {
     ]
 }
 
-const snapShotWidgetWidth = [
-    "49%",
-    "95%",
-    "48.5%",
-    "43.5%",
-    "32%",
-];
-
 const marketPositionWidgetWidth = [
     "49%",
     "95%",
@@ -135,7 +127,7 @@ const PositionMain = (params) => {
                                         />
                                 </Center>
                             </WrapItem>
-                            <WrapItem width={snapShotWidgetWidth} minWidth={snapShotWidgetWidth} height={"22.7em"}>
+                            <WrapItem height={"22.7em"}>
                                 <Flex direction={"column"} paddingRight={3}>
                                     <Box width="100%">
                                         <DonutWidget
