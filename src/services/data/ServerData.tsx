@@ -2,6 +2,10 @@ const ServerData = {
     "loginDetails" : {
         "userName": "Travis",
     },
+    "Filter" :{
+      "Region" :"Western",
+      "Zip" :"",
+    },
     "home":
         {
             "positionScore": "7.398",
@@ -25,6 +29,21 @@ const ServerData = {
         },
         "snapshot" :{
 
+         },
+         "competitorPresence" : {
+             "competitorPresenceHeaderLabel" : "Regional Competitor Presence ",
+             "competitorPresenceHeaderValue" : "",
+             "competitorPresenceData" : [
+                 { name: 'State1', value: 260 },
+                 { name: 'State2', value: 240 },
+                 { name: 'State3', value: 340 },
+                 { name: 'State4', value: 140 },
+                 { name: 'State5', value: 240 },
+                 { name: 'State6', value: 160 },
+                 { name: 'State7', value: 140 },
+                 { name: 'State8', value: 110 },
+                 { name: 'State9', value: 240 }
+             ]
          },
          "trendlineRegional" :{
              "trendlineClassification" : "Erratic",
@@ -143,6 +162,39 @@ const ServerData = {
                      quarter: '23',
                      avg: 3.261,
                      score: 4.261,
+                 }
+             ]
+         },
+         "annualTrendlineRegional" :{
+             "annualTrendlineClassification" : "Erratic",
+             "annualTrendlineRegionData" :[
+                 {
+                     year: '2016',
+                     avg: 6.58
+                 },
+                 {
+                     year: '2017',
+                     avg: 3.34
+                 },
+                 {
+                     year: '2018',
+                     avg: 2.23
+                 },
+                 {
+                     year: '2019',
+                     avg: 2.7
+                 },
+                 {
+                     year: '2020',
+                     avg: 3.890
+                 },
+                 {
+                     year: '2021',
+                     avg: 4.390
+                 },
+                 {
+                     year: '2022',
+                     avg: 3.490
                  }
              ]
          }

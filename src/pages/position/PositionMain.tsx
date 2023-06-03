@@ -1,19 +1,18 @@
 import React from "react";
 import {Box, Center, Flex, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import ComposedChartWgt from "../../components/rechart/BarLineComposedWidget";
-import LinearChartMultiMetric from "../../components/rechart/LinearChartMultiMetric";
-import LinearChartOneMetric from "../../components/rechart/LinearChartOneMetric";
 import DonutWidget from "../../components/common/DonutWidget";
 import SnapshotWidget from "./overall/SnapshotWidget";
-import CardTrendAnnual from "../../components/container/trendcard/CardTrendAnnual";
-import CardTrendQtly from "../../components/container/trendcard/CardTrendQtly";
 import {Footer} from "../../layouts";
 import MarketPositionWidget from "./overall/MarketPositionWidget";
-import TrendlineRegionalWidget from "./overall/TrendlineRegionalWidget";
+import QuartelyTrendlineRegionalWidget from "./overall/QuartelyTrendlineRegionalWidget";
 import TooltipsData from "../../services/data/TooltipsData";
 import SpeedometerWidget from "../../components/rechart/SpeedometerWidget";
 import ServerData from "../../services/data/ServerData";
 import PieChartWidget from "../../components/rechart/PieChartWidget";
+import CustomShapeBarChartWidget from "../../components/rechart/CustomShapeBarChartWidget";
+import AnnualTrendlineRegionalWidget from "./overall/AnnualTrendlineRegionalWidget";
+import CompetitorPresencePieWidget from "./overall/CompetitorPresencePieWidget";
 
 const { tooltipMarketPosition,
     //tooltipSpeedometer,
@@ -31,6 +30,17 @@ const {
         marketScoreHeaderValue,
         marketScoreHeureScore
     } = ServerData.positionPage.marketScore;
+
+const {
+    annualTrendlineClassification,
+    annualTrendlineRegionData
+} = ServerData.positionPage.annualTrendlineRegional;
+
+const {
+    competitorPresenceHeaderLabel,
+    competitorPresenceHeaderValue,
+    competitorPresenceData
+} = ServerData.positionPage.competitorPresence;
 
 const marketScoreWidget = {
 "details": [
@@ -51,32 +61,6 @@ const marketScoreWidget = {
     }
     ]
 }
-const cdata = {
-    "position": [
-        {
-            "card": "1",
-            "cardtype": "guage",
-            "headerlabel": "OVERALL MARKET POSITION",
-            "subheaderlabel": "CURRENTLY AT THE TOP WITH A SCORE OF",
-            "subheadervalue": "6.988",
-            "tooltip": "Position tooltip",
-            "trend1": "Annual Score Change",
-            "trendInd1": "down",
-            "trendScore1": "1.20%",
-            "trend2": "Closest Competitor's Score Diff",
-            "trendInd2": "na",
-            "trendScore2": "0.016",
-            "trend3": "Quarterly Score Change",
-            "trendInd3": "up",
-            "trendScore3": "0.45%",
-            "summary1": "Today Banner University is positioned above 88% of its Wester Region Competitors with a HeureScore of 6.72 which puts you in the top 2 slice in the category",
-            "summaryvalue1": "0",
-            "summary2": "Positioned 3rd from top and below 12% of other Easter Region competitors, presents Banner University with room to move up the Market position dial. Your closest Easter Region competitor is Colorado and is 0.007 points below leaving your current Easter Region position fairly vulnerable",
-            "summaryvalue2": "1.5%",
-            "headervalue": "LEADER"
-        }
-    ]
-};
 
 const snapShotWidgetWidth = [
     "49%",
@@ -102,18 +86,13 @@ const QTrendwrapItemWidth = [
     "99.4%",
 ];
 
-const renderChart = function (name) {
-    switch (name) {
-        case 'linearchartonemetric':
-            return (
-                <LinearChartOneMetric/>
-            )
-        case 'linearchartmultimetric':
-            return (
-                <LinearChartMultiMetric/>
-            )
-    }
-};
+const ATrendwrapItemWidth = [
+    "98%",
+    "98%",
+    "99%",
+    "99%",
+    "65.4%",
+];
 
 const PositionMain = (params) => {
     return (
@@ -238,9 +217,26 @@ const PositionMain = (params) => {
                                     </Flex>
                                 </Flex>
                             </WrapItem>
-                            <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"} height={"22.7em"}>
-                                <Center height={"22.5em"}  width={"25em"} bgColor={"#FFFFFF"}>
-                                    <PieChartWidget/>
+                            <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"} height={"22.7em"} borderWidth={2}>
+                                <Center height={"22.5em"} bgColor={"#FFFFFF"}>
+                                    <CompetitorPresencePieWidget
+                                        pieChartHeight={295}
+                                        width={"31em"}
+                                        height={"23.5em"}
+                                        tooltipText={tooltipMarketPosition}
+                                        headerValueFontColor={"black"}
+                                        headerValueFontSize={"0.85em"}
+                                        headerLabel={competitorPresenceHeaderLabel}
+                                        headerValue={competitorPresenceHeaderValue}
+                                        pieChartObject={
+                                            <PieChartWidget
+                                                pieDataKey={"value"}
+                                                pieRadius= {110}
+                                                chartDataColor={['#FA897B', '#60B7C0','#FA138B', '#60B1D0','#AA800B', '#639DC1','#FA858D', '#68B1D0']}
+                                                chartData= {competitorPresenceData}
+                                            />
+                                        }
+                                    />
                                 </Center>
                             </WrapItem>
                         </Wrap>
@@ -249,7 +245,7 @@ const PositionMain = (params) => {
                         <Wrap>
                             <WrapItem width={QTrendwrapItemWidth} minWidth={QTrendwrapItemWidth} alignContent={"center"}>
                                 <Box width="100%">
-                                    <TrendlineRegionalWidget
+                                    <QuartelyTrendlineRegionalWidget
                                          widgetBbColor={"#FFFFFF"}
                                          widgetWidth={"99.7%"}
                                          widgetHeight={""}
@@ -282,55 +278,62 @@ const PositionMain = (params) => {
                             </WrapItem>
                         </Wrap>
                     </GridItem>
-                    <GridItem colSpan={1} rowSpan={1}>
-                        <Wrap spacing='20px'>
-                            <WrapItem width={"48%"}  minWidth={"410px"}>
-                                <Box width="100%">
-                                    {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                        <CardTrendAnnual key={data2.card}
-                                                         headerlabel={"Banner University Market Position : ANNUAL TRENDLINE"}
-                                                         headervalue={data2.headervalue}
-                                                         subheaderlabel={data2.subheaderlabel}
-                                                         subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                                         trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                                         trendScore1={data2.trendScore1}
-                                                         trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                                         trendScore2={data2.trendScore2}
-                                                         trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                                         trendScore3={data2.trendScore3}
-                                                         summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                                         summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                         chart={renderChart("linearchartmultimetric")}
-                                                         width={""} height={""}/>
-                                    ))}
-                                </Box>
+                    <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={0}>
+                        <Wrap align={"center"} width={"100%"}>
+                            <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"} height={"22.7em"} borderWidth={2}>
+                                <Center height={"22.5em"} bgColor={"#FFFFFF"}>
+                                    <CompetitorPresencePieWidget
+                                        pieChartHeight={295}
+                                        width={"31em"}
+                                        height={"23.5em"}
+                                        tooltipText={tooltipMarketPosition}
+                                        headerValueFontColor={"black"}
+                                        headerValueFontSize={"0.85em"}
+                                        headerLabel={competitorPresenceHeaderLabel}
+                                        headerValue={competitorPresenceHeaderValue}
+                                        pieChartObject={
+                                            <PieChartWidget
+                                                pieDataKey={"value"}
+                                                pieRadius= {110}
+                                                chartDataColor={['#FA897B', '#60B7C0','#FA138B', '#60B1D0','#AA800B', '#639DC1','#FA858D', '#68B1D0']}
+                                                chartData= {competitorPresenceData}
+                                            />
+                                        }
+                                    />
+                                </Center>
                             </WrapItem>
-                        </Wrap>
-                    </GridItem>
-                    <GridItem colSpan={1} rowSpan={1}>
-                        <Wrap spacing='20px'>
-                            <WrapItem width={"48%"} minWidth={"410px"}>
-                                <Flex direction={"column"}>
-                                    <Box width="100%">
-                                        {cdata.position.filter(x => x.card == "1").map((data2) => (
-                                            <CardTrendQtly key={data2.card}
-                                                           headerlabel={"Banner University Market Position : QUARTERLY TRENDLINE"}
-                                                           headervalue={data2.headervalue}
-                                                           subheaderlabel={data2.subheaderlabel}
-                                                           subheadervalue={data2.subheadervalue} tooltip={data2.tooltip}
-                                                           trend1={data2.trend1} trendInd1={data2.trendInd1}
-                                                           trendScore1={data2.trendScore1}
-                                                           trend2={data2.trend2} trendInd2={data2.trendInd2}
-                                                           trendScore2={data2.trendScore2}
-                                                           trend3={data2.trend3} trendInd3={data2.trendInd3}
-                                                           trendScore3={data2.trendScore3}
-                                                           summary1={data2.summary1} summaryvalue1={data2.summaryvalue1}
-                                                           summary2={data2.summary2} summaryvalue2={data2.summaryvalue2}
-                                                           chart={renderChart("linearchartonemetric")}
-                                                           width={""} height={""}/>
-                                        ))}
-                                    </Box>
-                                </Flex>
+                            <WrapItem width={ATrendwrapItemWidth} minWidth={ATrendwrapItemWidth} alignContent={"center"} borderWidth={2}>
+                                <Box width="100%">
+                                    <AnnualTrendlineRegionalWidget
+                                        widgetBbColor={"#FFFFFF"}
+                                        widgetWidth={"99.7%"}
+                                        widgetHeight={""}
+                                        childComponentWidth={"99.7%"}
+                                        headerTextColor={"#000000"}
+                                        headerTextSize={"0.85em"}
+                                        footerTextColor={"gray.500"}
+                                        footerTextSize={"1.0em"}
+                                        footerHeight={"2.5em"}
+                                        barLineComposedWidgetHeight={"22.7em"}
+                                        tooltipText={tooltipTrendlineRegional}
+                                        headerLabel={"West Region Annually Trendline vs. Regional Average"}
+                                        footerLabel={"Your Annually Trendline can be classified as :"}
+                                        footerValue={annualTrendlineClassification}
+                                        barLineComposedWidgetObject={
+                                            <CustomShapeBarChartWidget
+                                                chartWidth = {"100%"}
+                                                barColor = {"#60B7C0"}
+                                                barSize = {70}
+                                                lineColor = {"#EB8871"}
+                                                barLegendName = {"Annually Scores"}
+                                                lineLegandName = {"Average"}
+                                                xAxisDataKey = {"year"}
+                                                barDataKey = {"year"}
+                                                lineDataKey = {"avg"}
+                                                chartData = {annualTrendlineRegionData} />
+                                        }
+                                    />
+                                </Box>
                             </WrapItem>
                         </Wrap>
                     </GridItem>
