@@ -25,7 +25,7 @@ const CompetitorPresencePieWidget = (params: Params) => {
         const {width, height, headerLabel, headerValue, headerValueFontSize, headerValueFontColor, tooltipText, pieChartHeight, pieChartObject} = params;
     return (
         <>
-            <Box w={width} h={height} shadow="lg" bg="white" borderWidth="2px" borderRadius="10px" minWidth={width}>
+            <Box w={width} h={height} shadow="lg" bg="white" borderWidth="0px" borderRadius="0px" minWidth={width}>
                 <Flex width="100%" bg="white" p={2} height={"2em"}>
                     <Flex width={"100%"}>
                         <Heading as="h3" textAlign="center" fontSize={headerValueFontSize}>

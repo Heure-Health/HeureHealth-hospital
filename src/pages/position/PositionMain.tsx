@@ -42,6 +42,12 @@ const {
     competitorPresenceData
 } = ServerData.positionPage.competitorPresence;
 
+const {
+    tierDistributionHeaderLabel,
+    tierDistributionHeaderValue,
+    tierDistributionData
+} = ServerData.positionPage.tierDistribution
+
 const marketScoreWidget = {
 "details": [
     {
@@ -224,7 +230,7 @@ const PositionMain = (params) => {
                                             <PieChartWidget
                                                 pieDataKey={"value"}
                                                 pieRadius= {110}
-                                                chartDataColor={['#FA897B', '#60B7C0','#FA138B', '#60B1D0','#AA800B', '#639DC1','#FA858D', '#68B1D0']}
+                                                chartDataColor={['#FA897B', '#60B7C0','#FA138B', '#60B1D0','#AA800B', '#639DC1','#FA858D', '#68B1D0', '#23A4A0']}
                                                 chartData= {competitorPresenceData}
                                             />
                                         }
@@ -272,23 +278,23 @@ const PositionMain = (params) => {
                     </GridItem>
                     <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={0}>
                         <Wrap align={"center"} width={"100%"}>
-                            <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"} height={"22.7em"} borderWidth={2}>
-                                <Center height={"22.5em"} bgColor={"#FFFFFF"}>
+                            <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"} borderWidth={2}>
+                                <Center height={"27.8em"} bgColor={"#FFFFFF"}>
                                     <CompetitorPresencePieWidget
-                                        pieChartHeight={295}
+                                        pieChartHeight={325}
                                         width={"31em"}
                                         height={"23.5em"}
                                         tooltipText={tooltipMarketPosition}
                                         headerValueFontColor={"black"}
                                         headerValueFontSize={"0.85em"}
-                                        headerLabel={competitorPresenceHeaderLabel}
-                                        headerValue={competitorPresenceHeaderValue}
+                                        headerLabel={tierDistributionHeaderLabel}
+                                        headerValue={tierDistributionHeaderValue}
                                         pieChartObject={
                                             <PieChartWidget
                                                 pieDataKey={"value"}
-                                                pieRadius= {110}
-                                                chartDataColor={['#FA897B', '#60B7C0','#FA138B', '#60B1D0','#AA800B', '#639DC1','#FA858D', '#68B1D0']}
-                                                chartData= {competitorPresenceData}
+                                                pieRadius= {100}
+                                                chartDataColor={['#B6D19F', '#CDE0BE','#E7F7D5', '#FAD098','#FCB76C', '#FF9B5D','#E88566', '#E57451', '#E05E44']}
+                                                chartData= {tierDistributionData}
                                             />
                                         }
                                     />

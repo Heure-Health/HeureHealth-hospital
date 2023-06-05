@@ -55,7 +55,7 @@ export default function CustomShapeBarChartWidget(params: Params) {
                     <YAxis />
                     <Tooltip />
                     <Bar dataKey={lineDataKey} name={lineLegandName} fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }} barSize={barSize}>
-                        {chartData.map((entry, index) => (
+                        {chartData.map((_entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index % 20]} />
                         ))}
                     </Bar>

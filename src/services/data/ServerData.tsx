@@ -197,6 +197,21 @@ const ServerData = {
                      avg: 3.490
                  }
              ]
+         },
+         "tierDistribution" :{
+             "tierDistributionHeaderLabel" : "Tier Distribution",
+             "tierDistributionHeaderValue" : "",
+             "tierDistributionData" : [
+                 { name: 'Inspiring Leader', value: 1 },
+                 { name: 'Pursuant Leader', value: 3 },
+                 { name: 'Vulnerable Leader', value: 10 },
+                 { name: 'Intense Challenger', value: 19 },
+                 { name: 'Motivated Challenger', value: 29 },
+                 { name: 'At Risk Challenger', value: 17 },
+                 { name: 'Aggressive Aspirant', value: 11 },
+                 { name: 'Hopeful Aspirant', value: 6 },
+                 { name: 'Trailing Aspirant', value: 4 }
+             ]
          }
      }
 };
