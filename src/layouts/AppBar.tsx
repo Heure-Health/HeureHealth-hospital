@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Flex, Heading} from "@chakra-ui/react";
+import {Box, Flex, Heading, Link, Image, Tab} from "@chakra-ui/react";
 import {BiMenu} from "react-icons/bi";
 import TopNav from "./TopNav";
 
@@ -18,10 +18,10 @@ function AppBar(props: Props) {
                     <Box as="button" ref={onref} onClick={onClick}>
                         <BiMenu size={26}/>
                     </Box>
-                    <Heading as="h4" size="lg" ml={4}>
-                        Heure Health
-                    </Heading>
                 </Flex>
+                <Link href="/">
+                        <Image width='100px' src="https://i.imgur.com/ij8wT22.jpeg" alt="Heure Health"/>
+                </Link>
                 <Flex>
                     <TopNav/>
                 </Flex>

@@ -26,6 +26,7 @@ const SideBar = (props: Props) => {
                             <Box as="button" onClick={onClose}>
                                 <BiMenu size={26}/>
                             </Box>
+                            
                             <Heading as="h4" size="lg" ml={4}>
                                 Heure Health
                             </Heading>
@@ -36,6 +37,7 @@ const SideBar = (props: Props) => {
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
+            
         </div>
     );
 };

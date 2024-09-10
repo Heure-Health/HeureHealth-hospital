@@ -21,15 +21,14 @@ const { positionScore,
 const HomeMain = (params) => {
     return (
         <>
-            <Box width={"100%"} bgColor={params.pageBgColor} alignItems={"center"}>
-                <Flex flexDirection={"column"}>
-                    <Center display='flex' my='1.2'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
-                                                           color={"black"} fontWeight={"bold"}> Hello,
-                        {userName}! </Text></Center>
+            <Box width={"100%"} alignItems={"center"} background={params.pageBgColor}>
+                <Flex flexDirection={"column"} paddingBottom={3}>
+                    <Center display='flex' my='1.2'> <Text fontSize={{base: '24px', md: '26px', lg: '28px'}}
+                                                           color={"#404040"} fontWeight={"bold"}> Hello, {' '}{userName}!</Text></Center>
                 </Flex>
-                <Flex flexDirection={"column"}>
+                <Flex flexDirection={"column"} paddingBottom={10}>
                     <Center display='flex' my='1.2'> <Text fontSize={{base: '12px', md: '14px', lg: '16px'}}
-                                                           color={"black"}> Where would you like to start today? </Text></Center>
+                                                           color={"#404040"}> Where would you like to start today? </Text></Center>
                 </Flex>
                 <Flex direction="column" color="white">
                     <Center>
@@ -38,45 +37,45 @@ const HomeMain = (params) => {
                                 <Wrap>
                                     <WrapItem >
                                         <HomeWidget
-                                            marketTypeText = "Market Position"
+                                            marketTypeText = "Position"
                                             scoreStatNum ={positionScore}
                                             scoreStatText = "Today's Score"
                                             changeScoreType ={positionChangeType}
                                             changeScoreStatHelpNum ={positionChangeValue}
                                             changeScoreStatText = "since last quarter"
                                             navigationUrl = "/position"
+                                            backgroundColor='linear(to-r, green.200, pink.500)'
                                         />
                                     </WrapItem>
                                     <WrapItem >
-                                        <Box height={"14"}></Box>
+                                        <Box height={"20"}></Box>
                                     </WrapItem>
                                     <WrapItem>
                                         <HomeWidget
-                                            marketTypeText = "Market Advantages"
+                                            marketTypeText = "Advantages"
                                             scoreStatNum ={advantagesScore}
                                             scoreStatText = "Today's Score"
                                             changeScoreType ={advantagesChangeType}
                                             changeScoreStatHelpNum ={advantagesChangeValue}
                                             changeScoreStatText = "since last quarter"
                                             navigationUrl = "/advantages"
+                                            backgroundColor='linear(to-r, green.200, pink.500)'
                                         />
                                     </WrapItem>
                                 </Wrap>
                             </GridItem>
-                            <GridItem colSpan={1} rowSpan={1}>
-                                <Box height={"8"}></Box>
-                            </GridItem>
-                            <GridItem colSpan={1} rowSpan={1}>
+                            <GridItem colSpan={1} rowSpan={1} paddingTop={8}>
                                 <Wrap>
                                     <WrapItem>
                                         <HomeWidget
-                                            marketTypeText = "Market Pressures"
+                                            marketTypeText = "Pressures"
                                             scoreStatNum ={pressuresScore}
                                             scoreStatText = "Today's Score"
                                             changeScoreType ={pressuresChangeType}
                                             changeScoreStatHelpNum ={pressuresChangeValue}
                                             changeScoreStatText = "since last quarter"
                                             navigationUrl = "/pressures"
+                                            backgroundColor='linear(to-r, green.200, pink.500)'
                                         />
                                     </WrapItem>
                                     <WrapItem >
@@ -84,13 +83,14 @@ const HomeMain = (params) => {
                                     </WrapItem>
                                     <WrapItem>
                                         <HomeWidget
-                                            marketTypeText = "Market Performance"
+                                            marketTypeText = "Performance"
                                             scoreStatNum ={performancesScore}
                                             scoreStatText = "Today's Score"
                                             changeScoreType = {performancesChangeType}
                                             changeScoreStatHelpNum ={performancesChangeValue}
                                             changeScoreStatText = "since last quarter"
                                             navigationUrl = "/performance"
+                                            backgroundColor='linear(to-r, green.200, pink.500)'
                                         />
                                     </WrapItem>
                                 </Wrap>

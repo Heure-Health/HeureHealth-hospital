@@ -4,7 +4,7 @@ import {
     Flex,
     Grid,
     GridItem,
-    IconButton,
+    Icon,
     Stat,
     StatArrow,
     StatHelpText,
@@ -20,43 +20,48 @@ const HomeWidget = (params) => {
     return (
         <>
             <Box>
+                <Link as="/" href={params.navigationUrl}>
                 <Flex direction="column"
-                      bgImage={"linear-gradient(45deg, #374F60 -50%, #587183 50%)"}
+                      bgGradient='linear(to-bl, #627888, #374F60)'
+                      _hover={{
+                        bgGradient: 'linear(to-bl, #627888, #375590)',
+                      }}
                       color="white" shadow="md" borderRadius='10px' height={"14.0em"} width={"18.0em"} minWidth={"100%"}>
                     <Grid textAlign={"right"} templateColumns='repeat(1, 1fr)' height={"14.0em"}>
                         <GridItem colSpan={1} rowSpan={1}>
                             <Wrap>
-                                <WrapItem width={"35%"} textAlign={"left"}>
+                                <WrapItem width={"50%"} textAlign={"left"}>
                                     <Stat paddingLeft={"3"}>
-                                        <StatNumber color={"#EB8871"} fontSize={"3xl"} height={"9"}>{params.scoreStatNum}</StatNumber>
-                                        <StatHelpText fontSize={"0.5em"} textAlign={"center"}>{params.scoreStatText}</StatHelpText>
+                                        <StatNumber color={"#EB8871"} fontSize={"5xl"} textAlign={"center"}height={"9"}>{params.scoreStatNum}</StatNumber>
+                                        <br></br>
+                                        <StatHelpText fontSize={"1em"} textAlign={"center"}>{params.scoreStatText}</StatHelpText>
                                     </Stat>
                                 </WrapItem>
-                                <WrapItem width={"11%"}>
+                                <WrapItem width={"1%"}>
                                     <Divider orientation='vertical'/>
                                 </WrapItem>
-                                <WrapItem width={"40%"} textAlign={"right"}>
+                                <WrapItem width={"40%"} textAlign={"center"}>
                                     <Stat>
                                         <StatNumber color={"#FFFFFF"} fontSize={"2xl"} height={"9"}><StatArrow type={params.changeScoreType} boxSize={"8"} />{params.changeScoreStatHelpNum}</StatNumber>
-                                        <StatHelpText fontSize={"0.5em"} textAlign={"center"}>{params.changeScoreStatText}</StatHelpText>
+                                        <StatHelpText fontSize={"0.75em"} textAlign={"center"}>{params.changeScoreStatText}</StatHelpText>
                                     </Stat>
                                 </WrapItem>
                             </Wrap>
                         </GridItem>
-                        <GridItem colSpan={1} rowSpan={1} paddingTop={"24"}>
-                            <Wrap height={"10"}>
+                        <GridItem colSpan={1} rowSpan={1} paddingTop={"14"}>
+                            <Wrap height={"20"}>
                                 <WrapItem width={"78%"} textAlign={"left"}>
-                                    <Text fontSize={"2xl"} color={"white"} paddingLeft={"3"}>{params.marketTypeText}</Text>
+                                    <Text fontSize={"2xl"} color={"white"} paddingLeft={"3"} >Market <br></br><b>{params.marketTypeText}</b></Text>
                                 </WrapItem>
-                                <WrapItem>
-                                    <Link as="/" href={params.navigationUrl}>
-                                        <IconButton aria-label='Navigate to Market Position' icon={<ArrowForwardIcon/>} fontSize={"4xl"} fontWeight={"bold"} variant='ghost'/>
-                                    </Link>
+                                <WrapItem  paddingTop="4">
+                                    <ArrowForwardIcon aria-label='Navigate'aria-label='Navigate' fontSize={"4xl"} fontWeight={"bold"} color="white" color="white"/>
                                 </WrapItem>
+                                
                             </Wrap>
                         </GridItem>
                     </Grid>
                 </Flex>
+                </Link>
             </Box>
         </>
     );
