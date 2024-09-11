@@ -8,7 +8,7 @@ type Props = {
 };
 
 const LayoutContainer = styled.div`
-    background-color: #f2f2f2; // Light gray color
+    background-color: #f0f0f0; // Light gray color
     min-height: 100vh;
 `;
 
