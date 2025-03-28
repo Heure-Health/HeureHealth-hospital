@@ -12,7 +12,7 @@ const DonutWidget = (params) => {
                     </CircularProgress>
                 </Center>
                 <Flex textAlign='center' height={"20%"} direction={"column"} my={2}>
-                    <Text fontSize={params.widgetTextFontSize} verticalAlign={"text-bottom"} color={params.widgetCircleTextFontColor}>{params.widgetText}</Text>
+                    <Text paddingLeft={1} paddingRight={1} paddingBottom={1} fontSize={params.widgetTextFontSize} verticalAlign={"text-bottom"} color={params.widgetCircleTextFontColor}>{params.widgetText}</Text>
                 </Flex>
             </Flex>
         </>

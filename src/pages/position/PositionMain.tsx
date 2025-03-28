@@ -1,3 +1,4 @@
+// Importing necessary React components and libraries
 import React from "react";
 import {Box, Center, Flex, Grid, GridItem, Text, Wrap, WrapItem} from "@chakra-ui/react";
 import ComposedChartWgt from "../../components/rechart/BarLineComposedWidget";
@@ -14,6 +15,7 @@ import CustomShapeBarChartWidget from "../../components/rechart/CustomShapeBarCh
 import AnnualTrendlineRegionalWidget from "./overall/AnnualTrendlineRegionalWidget";
 import CompetitorPresencePieWidget from "./overall/CompetitorPresencePieWidget";
 
+// Define constants for various widget widths and tooltip texts
 const { tooltipMarketPosition,
     //tooltipSpeedometer,
     tooltipSnapshotWidget1,
@@ -68,6 +70,7 @@ const marketScoreWidget = {
     ]
 }
 
+// Define constants for various widget widths
 const marketPositionWidgetWidth = [
     "49%",
     "95%",
@@ -92,50 +95,67 @@ const ATrendwrapItemWidth = [
     "65.4%",
 ];
 
+/**
+ * PositionMain component: The main component for the position page.
+ * 
+ * @param params: An object containing the page background color.
+ * @returns The JSX for the position page.
+ */
 const PositionMain = (params) => {
+    // Main component return
     return (
-        <>
+        <>  
+            {/* Main container for the position page */}
             <Box width={"100%"} bgColor={params.pageBgColor} alignItems={"center"}>
+                {/* Grid layout for positioning elements */}
                 <Grid
                     h='200px'
                     templateRows='repeat(3, 1fr)'
                     templateColumns='repeat(1, 1fr)'
                     gap={3} minWidth={"25%"} minHeight={"25%"}>
+                    {/* Header section */}
                     <GridItem colSpan={1} rowSpan={1}>
                         <Box bg='#F2F2F2'>
-                            <Center display='flex' my='3'> <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
-                                                                   color={"blue.600"} fontWeight={"bold"}> WMRMC IS CURRENTLY
-                                POSITIONED AS A WESTERN REGION MARKET LEADER </Text></Center>
+                            <Center display='flex' my='3'>
+                                <Text fontSize={{base: '18px', md: '22px', lg: '26px'}}
+                                      color={"blue.600"} fontWeight={"bold"}>
+                                    WMRMC IS CURRENTLY POSITIONED AS A WESTERN REGION MARKET LEADER
+                                </Text>
+                            </Center>
                         </Box>
                     </GridItem>
+                    {/* Market Position Widget */}
                     <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={0}>
                         <Wrap align={"center"} width={"100%"}>
                             <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"}>
                                 <Center>
-                                        <MarketPositionWidget
-                                                              pieChartHeight={250}
-                                                              width={"31em"}
-                                                              height={"23.5em"}
-                                                              scoreFontSize={"20px"}
-                                                              scoreFontColor={"#000000"}
-                                                              tooltipText={tooltipMarketPosition}
-                                                              headerValueFontColor={"black"}
-                                                              headerValueFontSize={"0.85em"}
-                                                              headerLabel={marketScoreHeaderLabel}
-                                                              headerValue={marketScoreHeaderValue}
-                                                              scoreValue={marketScoreHeureScore}
-                                                              pieChartObject={
-                                                                <SpeedometerWidget
-                                                                    width={465}
-                                                                    colorData={marketScoreWidget.details}
-                                                                    chartValue={marketScoreHeureScore}/>
-                                                              }
-                                        />
+                                    {/* Market Position Widget */}
+                                    <MarketPositionWidget
+                                        pieChartHeight={250}
+                                        width={"31em"}
+                                        height={"23.5em"}
+                                        scoreFontSize={"20px"}
+                                        scoreFontColor={"#000000"}
+                                        tooltipText={tooltipMarketPosition}
+                                        headerValueFontColor={"#548235"}
+                                        headerValueFontSize={"0.85em"}
+                                        headerLabel={marketScoreHeaderLabel}
+                                        headerValue={marketScoreHeaderValue}
+                                        scoreValue={marketScoreHeureScore}
+                                        pieChartObject={
+                                            <SpeedometerWidget
+                                                width={465}
+                                                colorData={marketScoreWidget.details}
+                                                chartValue={marketScoreHeureScore}/>
+                                        }
+                                    />
                                 </Center>
                             </WrapItem>
+                            {/* Donut Widget Section */}
                             <WrapItem height={"22.7em"}>
                                 <Flex direction={"column"} paddingRight={3}>
                                     <Box width="100%">
+                                        {/* Donut Widget */}
                                         <DonutWidget
                                             value={"80"}
                                             circleSize={"3.0em"}
@@ -149,12 +169,16 @@ const PositionMain = (params) => {
                                             widgetCircleTextFontColor={"#FFFFFF"}
                                             widgetText = "West Region competitors are ahead of your current Market Position giving you potential to capitalize your markets."
                                             widgetTextFontSize={{base: '10px', md: '12px', lg: '13px'}}
+                                            widgetTextAlignment="center"
+                                            widgetTextPadding="5px"
                                         />
                                     </Box>
                                 </Flex>
+                                {/* Snapshot Widget Section */}
                                 <Flex direction={"column"}>
                                     <Flex direction={"row"}>
                                         <Box width="100%">
+                                            {/* Snapshot Widget */}
                                             <SnapshotWidget
                                                 value={"1.2%"}
                                                 valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
@@ -169,6 +193,7 @@ const PositionMain = (params) => {
                                             />
                                         </Box>
                                         <Box width="100%" paddingLeft={"3.5"} paddingBottom={"3.5"}>
+                                            {/* Snapshot Widget */}
                                             <SnapshotWidget
                                                 value={"0.256%"}
                                                 valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
@@ -185,6 +210,7 @@ const PositionMain = (params) => {
                                     </Flex>
                                     <Flex direction={"row"}>
                                         <Box width="100%">
+                                            {/* Snapshot Widget */}
                                             <SnapshotWidget
                                                 value={"Pacific"}
                                                 valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
@@ -199,6 +225,7 @@ const PositionMain = (params) => {
                                             />
                                         </Box>
                                         <Box width="100%" paddingLeft={"3.5"} paddingBottom={"3.5"}>
+                                            {/* Snapshot Widget */}
                                             <SnapshotWidget
                                                 value={"-0.007"}
                                                 valueFontSize={{base: '26px', md: '30px', lg: '36px'}}
@@ -217,6 +244,7 @@ const PositionMain = (params) => {
                             </WrapItem>
                             <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"} height={"22.7em"} borderWidth={2}>
                                 <Center height={"22.5em"} bgColor={"#FFFFFF"}>
+                                    {/* Competitor Presence Pie Widget */}
                                     <CompetitorPresencePieWidget
                                         pieChartHeight={295}
                                         width={"31em"}
@@ -239,10 +267,12 @@ const PositionMain = (params) => {
                             </WrapItem>
                         </Wrap>
                     </GridItem>
+                    {/* Quarterly Trendline Regional Widget */}
                     <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={0}>
                         <Wrap>
                             <WrapItem width={QTrendwrapItemWidth} minWidth={QTrendwrapItemWidth} alignContent={"center"}>
                                 <Box width="100%">
+                                    {/* Quarterly Trendline Regional Widget */}
                                     <QuartelyTrendlineRegionalWidget
                                          widgetBbColor={"#FFFFFF"}
                                          widgetWidth={"99.7%"}
@@ -276,10 +306,12 @@ const PositionMain = (params) => {
                             </WrapItem>
                         </Wrap>
                     </GridItem>
+                    {/* Annual Trendline Regional Widget */}
                     <GridItem colSpan={1} rowSpan={1} bgColor={params.pageBgColor} borderWidth={0}>
                         <Wrap align={"center"} width={"100%"}>
                             <WrapItem width={marketPositionWidgetWidth} minWidth={marketPositionWidgetWidth} alignContent={"center"} borderWidth={2}>
                                 <Center height={"27.8em"} bgColor={"#FFFFFF"}>
+                                    {/* Competitor Presence Pie Widget */}
                                     <CompetitorPresencePieWidget
                                         pieChartHeight={325}
                                         width={"31em"}
@@ -302,6 +334,7 @@ const PositionMain = (params) => {
                             </WrapItem>
                             <WrapItem width={ATrendwrapItemWidth} minWidth={ATrendwrapItemWidth} alignContent={"center"} borderWidth={2}>
                                 <Box width="100%">
+                                    {/* Annual Trendline Regional Widget */}
                                     <AnnualTrendlineRegionalWidget
                                         widgetBbColor={"#FFFFFF"}
                                         widgetWidth={"99.7%"}
@@ -335,6 +368,7 @@ const PositionMain = (params) => {
                             </WrapItem>
                         </Wrap>
                     </GridItem>
+                    {/* Footer */}
                     <GridItem colSpan={1} rowSpan={1}>
                         <Footer
                             pageBgColor={params.pageBgColor}
@@ -343,6 +377,8 @@ const PositionMain = (params) => {
                 </Grid>
             </Box>
         </>
-    )
-}
+    );
+};
+
+// Exporting the PositionMain component for use in other parts of the application
 export default PositionMain;

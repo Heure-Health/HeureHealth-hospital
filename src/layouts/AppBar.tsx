@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Flex, Heading, Link, Image, Tab} from "@chakra-ui/react";
+import {Box, Flex, Link, Image} from "@chakra-ui/react";
 import {BiMenu} from "react-icons/bi";
 import TopNav from "./TopNav";
 

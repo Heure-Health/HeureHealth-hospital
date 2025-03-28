@@ -24,7 +24,7 @@ const ServerData = {
      "positionPage":{
         "marketScore" : {
             "marketScoreHeaderLabel" : "West Region Market Position: ",
-            "marketScoreHeaderValue" : "LEADER",
+            "marketScoreHeaderValue" : "Vulnerable Leader",
             "marketScoreHeureScore" : 5.398
         },
         "snapshot" :{
